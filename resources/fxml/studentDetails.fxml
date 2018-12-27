@@ -82,31 +82,31 @@
                  </font>
               </Label>
               <JFXButton layoutX="288.0" layoutY="469.0" mnemonicParsing="false" text="Save" />
-            <JFXTextField labelFloat="true" layoutX="24.0" layoutY="278.0" promptText="First Name">
+            <JFXTextField labelFloat="true" layoutX="14.0" layoutY="263.0" promptText="First Name">
                <font>
                   <Font size="14.0" />
                </font>
             </JFXTextField>
-            <JFXTextField labelFloat="true" layoutX="193.0" layoutY="278.0" promptText="Last Name">
+            <JFXTextField labelFloat="true" layoutX="191.0" layoutY="263.0" promptText="Last Name">
                <font>
                   <Font size="14.0" />
                </font>
             </JFXTextField>
-            <JFXTextField labelFloat="true" layoutX="24.0" layoutY="358.0" promptText="Second Name">
+            <JFXTextField labelFloat="true" layoutX="14.0" layoutY="336.0" promptText="Second Name">
                <font>
                   <Font size="14.0" />
                </font>
             </JFXTextField>
-            <JFXTextField labelFloat="true" layoutX="210.0" layoutY="430.0" prefHeight="30.0" prefWidth="140.0" promptText="Gender">
+            <JFXTextField labelFloat="true" layoutX="200.0" layoutY="391.0" prefHeight="30.0" prefWidth="140.0" promptText="Gender">
                <font>
                   <Font size="14.0" />
                </font>
             </JFXTextField>
-            <Label layoutX="140.0" layoutY="239.0" text="Personal Details" />
-            <JFXDatePicker layoutX="17.0" layoutY="432.0" />
-            <Label layoutX="17.0" layoutY="415.0" text="Date of Birth" />
-            <ChoiceBox layoutX="199.0" layoutY="361.0" prefHeight="25.0" prefWidth="140.0" />
-            <Label layoutX="206.0" layoutY="334.0" text="Gender" />
+            <Label layoutX="146.0" layoutY="224.0" text="Personal Details" />
+            <JFXDatePicker layoutX="17.0" layoutY="418.0" />
+            <Label layoutX="17.0" layoutY="389.0" text="Date of Birth" />
+            <ChoiceBox layoutX="191.0" layoutY="339.0" prefHeight="25.0" prefWidth="140.0" />
+            <Label layoutX="191.0" layoutY="312.0" text="Gender" />
             <MaterialIconView fill="#111111" glyphName="BRIGHTNESS_1" layoutX="299.0" layoutY="232.0" size="60.0" strokeType="OUTSIDE" strokeWidth="0.0" />
             <MaterialIconView fill="WHITE" glyphName="CREATE" layoutX="312.0" layoutY="220.0" size="35" strokeType="OUTSIDE" strokeWidth="0.0" />
           </AnchorPane>
