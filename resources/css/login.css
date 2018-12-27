@@ -45,7 +45,7 @@
 -fx-font-size:20;
 -fx-text-fill:white;
 }
-
+ /*this is hovering effect*/
  .button:hover{
    -fx-background-color: -fx-primary;
    -fx-text-fill: -fx-secondary;
