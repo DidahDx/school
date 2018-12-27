@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import de.jensd.fx.glyphs.materialdesignicons.MaterialDesignIconView?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+
+<BorderPane fx:id="borderPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1180.0" stylesheets="@../css/mainUi.css" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controllers.mainUi">
+
+    <top>
+        <AnchorPane prefHeight="38.0" style="-fx-background-color: #7A8AFF;" styleClass="topBar" BorderPane.alignment="CENTER">
+            <BorderPane.margin>
+                <Insets />
+            </BorderPane.margin>
+            <FontAwesomeIconView fx:id="user" onMouseClicked="#logOut" glyphName="USER_CIRCLE" layoutX="14.0" layoutY="26.0" size="25.0" strokeType="OUTSIDE" strokeWidth="0.0" AnchorPane.bottomAnchor="5.428571701049805" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="4.571428298950195" />
+            <MaterialDesignIconView fx:id="threeDots" glyphName="DOTS_VERTICAL" layoutX="1146.0" layoutY="30.0"  size="30.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="27.0" AnchorPane.bottomAnchor="4.25" AnchorPane.rightAnchor="7.0" AnchorPane.topAnchor="3.75" />
+
+         <Label fx:id="showSideMenu" layoutX="481.0" layoutY="4.0" prefHeight="30.0" prefWidth="218.0" AnchorPane.bottomAnchor="6.0" AnchorPane.leftAnchor="481.0" AnchorPane.topAnchor="4.0">
+           
+         </Label>
+         <Label fx:id="loggedIn" layoutX="51.0" layoutY="6.0" />
+
+            <effect>
+               <DropShadow height="38.79" radius="9.1975" width="0.0" />
+            </effect>
+        </AnchorPane>
+    </top>
+
+
+   <left>
+       <AnchorPane prefHeight="685.0" prefWidth="213.0" styleClass="vBoxLeft" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <AnchorPane layoutX="-1.0" prefHeight="522.0" prefWidth="43.0" style="-fx-background-color: #494B59;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0" />
+           <JFXButton alignment="BASELINE_LEFT" graphicTextGap="35.0" mnemonicParsing="false" onAction="#dashboard" prefHeight="47.0" prefWidth="229.0" ripplerFill="#a4a1a1" styleClass="glyph-icon" text="Dashboard" AnchorPane.topAnchor="0.0">
+               <graphic>
+                  <FontAwesomeIconView glyphName="ALIGN_JUSTIFY" size="22.0" strokeType="OUTSIDE" strokeWidth="0.0" />
+               </graphic>
+           </JFXButton>
+
+            <JFXButton alignment="BASELINE_LEFT" graphicTextGap="35.0" layoutY="47.0" mnemonicParsing="false" onAction="#admission" prefHeight="47.0" prefWidth="229.0" ripplerFill="#a4a1a1" styleClass="glyph-icon" text="Admission">
+               <graphic>
+                  <FontAwesomeIconView glyphName="USERS" size="22.0" strokeType="OUTSIDE" strokeWidth="0.0" />
+               </graphic>
+            </JFXButton>
+
+
+            <JFXButton alignment="BASELINE_LEFT" graphicTextGap="35.0" layoutY="139.0" mnemonicParsing="false" onAction="#exam" prefHeight="47.0" prefWidth="229.0" ripplerFill="#a4a1a1" styleClass="glyph-icon" text="Examination">
+               <graphic>
+                  <FontAwesomeIconView glyphName="BOOK" size="22.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="glyph-icon" />
+               </graphic>
+            </JFXButton>
+
+         <JFXButton alignment="BASELINE_LEFT" graphicTextGap="45.0" layoutY="94.0" mnemonicParsing="false" onAction="#finance" prefHeight="47.0" prefWidth="229.0" ripplerFill="#a4a1a1" styleClass="glyph-icon" text="Finance">
+            <graphic>
+               <FontAwesomeIconView glyphName="DOLLAR" size="24.0" strokeType="OUTSIDE" strokeWidth="0.0" />
+            </graphic>
+         </JFXButton>
+            <effect>
+               <DropShadow />
+            </effect>
+           </AnchorPane>
+   </left>
+
+   <center>
+      <AnchorPane fx:id="AnchorPane" BorderPane.alignment="CENTER">
+
+      </AnchorPane>
+   </center>
+
+</BorderPane>

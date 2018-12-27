@@ -1,0 +1,28 @@
+.vBoxLeft{
+-fx-background-color: black;
+}
+
+.vBoxLeft .button{
+-fx-font-family:"SansSerif Bold";
+ -fx-font-size:18;
+-fx-padding:10 0 10 10;
+-fx-text-fill:white;
+}
+
+.vBoxLeft .button:pressed{
+-fx-border-color:black black black  #948EE6;
+-fx-border-width:0 0 0 4px;
+}
+.vBoxLeft .button:focused{
+-fx-border-color:black black black #948EE6;
+-fx-border-width:0 0 0 4px;
+}
+.glyph-icon:focused{
+-fx-fill:#F81616;
+}
+.topBar .label{
+-fx-font-family:"SansSerif Bold";
+ -fx-font-size:16;
+ -fx-font-weight:bold;
+-fx-text-fill:black;
+}

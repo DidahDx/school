@@ -1,0 +1,16 @@
+@import url("universal.css");
+.table-view{
+-fx-font-size:15px;
+-fx-font-weight:bold;
+-fx-text-fill:black;
+}
+.table-column:focused .table-column:selected{
+ -fx-text-fill:white;
+  -fx-background-color:#A914FF;
+
+}
+
+.table-column {
+-fx-text-fill:black;
+ 
+}

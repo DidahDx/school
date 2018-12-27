@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXDatePicker?>
+<?import com.jfoenix.controls.JFXRadioButton?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import com.jfoenix.validation.RequiredFieldValidator?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.control.Tooltip?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane fx:id="anchorPane" maxHeight="755.0" maxWidth="608.0" minHeight="691.0" minWidth="608.0" prefHeight="691.0" prefWidth="608.0" styleClass="mPane" stylesheets="@../css/admission.css" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controllers.admissionsForm">
+    <Label layoutX="217.0" layoutY="28.0" style="-fx-background-color: black;" text="STUDENT DETAILS" textFill="#ce3bff">
+    </Label>
+    <JFXTextField fx:id="studentFirstName" labelFloat="true" layoutX="17.0" layoutY="88.0" prefHeight="37.0" prefWidth="160.0" promptText="FirstName" styleClass="promptText" />
+
+    <JFXTextField fx:id="studentLastName" labelFloat="true" layoutX="404.0" layoutY="88.0" prefHeight="37.0" prefWidth="160.0" promptText="LastName" styleClass="promptText" unFocusColor="#f28333" />
+    <JFXTextField fx:id="studentMiddleName" labelFloat="true" layoutX="212.0" layoutY="88.0" prefHeight="37.0" prefWidth="160.0" promptText="SecondName" styleClass="promptText" />
+
+    <Label layoutX="264.0" layoutY="163.0" text="Select Gender" />
+    <JFXRadioButton layoutX="248.0" layoutY="188.0" mnemonicParsing="false" text="male">
+        <toggleGroup>
+            <ToggleGroup fx:id="Gender" />
+        </toggleGroup>
+    </JFXRadioButton>
+    <JFXRadioButton layoutX="310.0" layoutY="188.0" mnemonicParsing="false" text="female" toggleGroup="$Gender" />
+
+    <Label layoutX="48.0" layoutY="163.0" text="County of residence" textFill="#71f016" />
+    <JFXComboBox fx:id="County" layoutX="44.0" layoutY="187.0" onAction="#handleForm" prefHeight="10.0" prefWidth="134.0" styleClass="choiceBox" />
+
+    <Label layoutX="221.0" layoutY="256.0" style="-fx-text-fill: black;" text="GUARDIAN DETAILS" textAlignment="CENTER" />
+    <JFXTextField fx:id="guardianFirstName" labelFloat="true" layoutX="31.0" layoutY="309.0" prefHeight="37.0" prefWidth="160.0" promptText="FirstName" styleClass="promptText" />
+    <JFXTextField fx:id="guardianLastName" labelFloat="true" layoutX="221.0" layoutY="309.0" prefHeight="37.0" prefWidth="160.0" promptText="LastName" styleClass="promptText" />
+    <JFXTextField fx:id="phoneNumber" labelFloat="true" layoutX="428.0" layoutY="309.0" prefHeight="37.0" prefWidth="160.0" promptText="Phone Number" styleClass="promptText" />
+    <JFXTextField fx:id="guardianEmail" labelFloat="true" layoutX="34.0" layoutY="386.0" promptText="Email address" styleClass="promptText" />
+
+    <Label layoutX="247.0" layoutY="452.0" style="-fx-text-fill: black;" text="SCHOOL DETAILS" textFill="#ab3520" />
+    <Label layoutX="27.0" layoutY="493.0" style="-fx-text-fill: black;" text="Date of Admission" />
+    <Label layoutX="476.0" layoutY="493.0" style="-fx-text-fill: black;" text="Select form">
+        <graphic>
+            <RequiredFieldValidator fx:id="selectFormValidator" message="invalid" />
+        </graphic></Label>
+    <JFXComboBox fx:id="Form" layoutX="468.0" layoutY="511.0" onAction="#handleForm" prefHeight="17.0" prefWidth="94.0" styleClass="choiceBox" />
+    <Label layoutX="266.0" layoutY="493.0" style="-fx-text-fill: black;" text="Select student type" />
+
+    <JFXRadioButton layoutX="241.0" layoutY="523.0" mnemonicParsing="false" text="Boarder">
+        <toggleGroup>
+            <ToggleGroup fx:id="Select" />
+        </toggleGroup>
+    </JFXRadioButton>
+    <JFXRadioButton layoutX="322.0" layoutY="523.0" mnemonicParsing="false" text="Dayschollar" toggleGroup="$Select" />
+    <JFXDatePicker fx:id="dateOfAdmission" layoutX="26.0" layoutY="519.0" promptText="mm/dd/yyyy" />
+
+    <JFXButton id="button" buttonType="RAISED" layoutX="462.0" layoutY="619.0" mnemonicParsing="false" onAction="#submitStudentDetails" text="submit" />
+    <JFXDatePicker layoutX="423.0" layoutY="184.0" promptText="mm/dd/yyyy" />
+    <Label layoutX="440.0" layoutY="165.0" text="Date of Birth" />
+    <JFXTextField fx:id="lastAdmissionNumber" labelFloat="true" layoutX="27.0" layoutY="582.0" onMouseClicked="#showHint" prefHeight="37.0" prefWidth="267.0" promptText="Enter Last Admission Number" styleClass="promptText">
+        <tooltip>
+            <Tooltip fx:id="tooltip" text="The last admission number given to a student" />
+        </tooltip>
+    </JFXTextField>
+    <Separator layoutX="2.0" layoutY="234.0" prefHeight="1.0" prefWidth="608.0" style="-fx-background-color: blue;" />
+    <Separator layoutX="2.0" layoutY="435.0" prefHeight="1.0" prefWidth="608.0" style="-fx-background-color: blue;" />
+
+</AnchorPane>

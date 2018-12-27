@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="libfont">
+    <CLASSES>
+      <root url="file://$USER_HOME$/Documents/external libraries/lib" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+    <jarDirectory url="file://$USER_HOME$/Documents/external libraries/lib" recursive="false" />
+  </library>
+</component>

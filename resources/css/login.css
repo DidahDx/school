@@ -1,0 +1,84 @@
+@import url("universal.css");
+
+.containerBody{
+-fx-background-color:-fx-primary;
+}
+
+.label{
+ -fx-text-fill:-fx-primaryLabel;
+-fx-font-size:13pt;
+ }
+
+ .button{
+ -fx-background-color:-fx-secondary;
+  -fx-font-weight:bold;
+-fx-text-fill: -fx-primary;
+-fx-font-size:13pt;
+-fx-border-color: -fx-secondary;
+-fx-border-radius: 20px;
+-fx-background-radius: 20px;
+ -fx-border-width:2;
+ }
+
+.choiceBox{
+
+ -fx-background-color:-fx-primaryLabel;
+  -fx-font-weight:bold;
+-fx-text-fill: black;
+-fx-font-size:13pt;
+-fx-border-color: -fx-secondary;
+-fx-border-radius: 20px;
+-fx-background-radius: 20px;
+ -fx-border-width:2;
+}
+
+.choiceBox .label{
+
+-fx-text-fill:black;
+-fx-font-size:15px;
+-fx-border-radius: 20px;
+-fx-background-radius: 20px;
+}
+
+.promptText{
+-fx-prompt-text-fill:-fx-secondary;
+-fx-font-size:20;
+-fx-text-fill:white;
+}
+
+ .button:hover{
+   -fx-background-color: -fx-primary;
+   -fx-text-fill: -fx-secondary;
+   -fx-border-color:  -fx-secondary;
+   -fx-border-radius: 20px;
+ -fx-border-width:1;
+ -fx-font-weight:bold;
+ }
+
+.glyph-icon{
+-fx-fill:#A6A6A6;
+-fx-border-color:white;
+-fx-padding:10;
+}
+
+.glyph-icon:hover{
+-fx-fill:white;
+}
+
+.textField{
+-fx-text-fill:white;
+-fx-font-size:20;
+}
+
+.hyperlink{
+-fx-font-size:20;
+}
+.hyperlink:active{
+-fx-text-fill:blue;
+}
+
+.radioButton{
+-fx-font-size:14px;
+-fx-text-fill:-fx-primaryLabel;
+-fx-fill:black;
+}

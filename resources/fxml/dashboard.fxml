@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.LineChart?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane stylesheets="@../css/dashboard.css" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controllers.dashboard">
+    <ScrollPane layoutX="10.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <VBox alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefWidth="1115.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+
+            <ImageView fitHeight="343.0" fitWidth="1074.0" nodeOrientation="INHERIT" pickOnBounds="true" smooth="false">
+                <Image url="@../images/ea.png" />
+                <VBox.margin>
+                    <Insets bottom="10.0" />
+                </VBox.margin>
+            </ImageView>
+            <HBox alignment="CENTER" prefHeight="240.0" styleClass="hBox">
+
+
+                <VBox.margin>
+                    <Insets bottom="50.0" top="35.0" />
+                </VBox.margin>
+                <padding>
+                    <Insets bottom="15.0" top="15.0" />
+                </padding>
+            <children>
+               <JFXButton buttonType="RAISED" layoutX="542.0" layoutY="168.0" mnemonicParsing="false" prefHeight="128.0" prefWidth="241.0" style="-fx-background-color: yellow;" text="Button">
+                  <HBox.margin>
+                     <Insets left="15.0" right="15.0" />
+                  </HBox.margin></JFXButton>
+               <JFXButton buttonType="RAISED" layoutX="447.0" layoutY="66.0" mnemonicParsing="false" prefHeight="128.0" prefWidth="241.0" style="-fx-background-color: #00F200;" text="Button" />
+            </children>
+
+            </HBox>
+
+            <LineChart fx:id="LineChart" prefHeight="681.0" title="Population Line graph">
+                <xAxis>
+                    <CategoryAxis side="BOTTOM" fx:id="x" />
+                </xAxis>
+                <yAxis>
+                    <NumberAxis fx:id="y" side="LEFT" />
+                </yAxis>
+                <VBox.margin>
+                    <Insets bottom="10.0" top="5.0" />
+                </VBox.margin>
+            </LineChart>
+        </VBox>
+
+    </ScrollPane>
+</AnchorPane>
