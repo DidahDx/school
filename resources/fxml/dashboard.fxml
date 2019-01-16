@@ -12,12 +12,12 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane stylesheets="@../css/dashboard.css" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controllers.dashboard">
+<AnchorPane fx:id="anchorPane" stylesheets="@../css/dashboard.css" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controllers.dashboard">
     <ScrollPane layoutX="10.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <VBox alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefWidth="1115.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
 
             <ImageView fitHeight="343.0" fitWidth="1074.0" nodeOrientation="INHERIT" pickOnBounds="true" smooth="false">
-                <Image url="@../images/ea.png" />
+                <Image url="@../images/school_building.jpg" />
                 <VBox.margin>
                     <Insets bottom="10.0" />
                 </VBox.margin>
