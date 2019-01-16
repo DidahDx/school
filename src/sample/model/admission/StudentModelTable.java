@@ -1,4 +1,4 @@
-package sample.database;
+package sample.model.admission;
 
 public class StudentModelTable {
 

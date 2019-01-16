@@ -5,15 +5,15 @@ import java.sql.SQLException;
 import java.util.Random;
 
 /**
- * THIS CLASS IS USED TO GENERATE ADMISSION TO NEW STUDENTS,
+ * THIS CLASS IS USED TO GENERATE ADMISSION NUMBER TO NEW STUDENTS,
  * ASSIGN A STUDENT A CLASSROOM AND
  * A DORM ROOM WHERE NECESSARY
  *
  */
-public class schoolDetailsGenerator {
+public class SchoolDetailsGenerator {
 
 private DataAccessObject dataAccessObject =new DataAccessObject();
-    Random random=new Random();
+    private Random random=new Random();
 
   //this method generates and return the new student's admission number
     public int getAdmissionNumber(){
