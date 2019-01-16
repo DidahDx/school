@@ -1,14 +1,20 @@
 package sample;
 
+import animatefx.animation.*;
+import de.jensd.fx.glyphs.emojione.EmojiOneView;
+import de.jensd.fx.glyphs.weathericons.WeatherIcon;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
+import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import javafx.util.Duration;
 
 import java.io.IOException;
 import java.util.Optional;
@@ -22,15 +28,15 @@ public class Controller {
 
     private Stage stage = new Stage();
  private double x,y;
-
+    Parent root1;
     // This method is used to loads a different User Interface screens
     public void changeUi(String ui){
 
         FXMLLoader loadUi = new FXMLLoader(getClass().getResource("/fxml/" + ui +".fxml"));
         try {
-            Parent root1 = loadUi.load();
+            root1= loadUi.load();
             Scene scene= new Scene(root1);
-            stage.setScene(scene);
+
 
 
             switch (ui) {
@@ -41,10 +47,14 @@ public class Controller {
                     stage.setOnCloseRequest(e -> {
                         e.consume();
                         closeMainUi();
-                    });
 
+                    });
                     break;
 
+                case "splashScreen":
+                    stage.initStyle(StageStyle.UNDECORATED);
+                    break;
+                    
                 case "login":
                     stage.initStyle(StageStyle.UNDECORATED);
 
@@ -58,23 +68,36 @@ public class Controller {
                         stage.setX(event.getScreenX()-x);
                         stage.setY(event.getScreenY()-y);
                     });
+
+
                     break;
 
                 case "admissionsForm":
                     stage.setTitle(("Admissions Form").toUpperCase());
                     stage.setResizable(false);
                     stage.setMaximized(false);
+                  //  stage.initModality(Modality.APPLICATION_MODAL); //blocks events from being delivered to any other application window.
                     break;
                 case "studentDetails":
                       stage.setResizable(true);
                       stage.setMaximized(true);
+                    stage.setTitle(("Student Details").toUpperCase());
+                      break;
+                case "guardianDetails":
+                    stage.setResizable(true);
+                    stage.setMaximized(true);
+                    stage.setTitle(("Guardian Details").toUpperCase());
                     break;
-                default:
+              default:
                     stage.setTitle((ui).toUpperCase());
                     stage.setResizable(true);
                     break;
             }
 
+
+            stage.setScene(scene);
+            Image image=new Image("/images/DX9.png"); //logo icon for application
+            stage.getIcons().add(image);
           stage.show();
         }catch (IOException e) {
             e.printStackTrace();
@@ -88,7 +111,7 @@ public class Controller {
     }
 
     //This method is used to close the mainUi screens
-    public void closeMainUi(){
+    private void closeMainUi(){
 
         Alert alert=new Alert(Alert.AlertType.CONFIRMATION);
         alert.setContentText("Are you sure you want to exit ? Press OK to Exit");
@@ -96,8 +119,8 @@ public class Controller {
 
         Optional<ButtonType> answer= alert.showAndWait();
 
-          if(answer.get()==ButtonType.OK){
-          stage.close();
+          if(answer.get() ==ButtonType.OK){
+              stage.close();
         }
     }
 
@@ -105,6 +128,13 @@ public class Controller {
     public void close(BorderPane borderPane){
         Stage stage= (Stage) borderPane.getScene().getWindow();
         stage.close();
+    }
+
+    //this method is used to minimise a window
+    public void Minimise(AnchorPane anchorPane){
+        Stage stage= (Stage) anchorPane.getScene().getWindow();
+        stage.setIconified(true);
+
     }
 
 }

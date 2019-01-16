@@ -14,11 +14,21 @@
   -fx-font-weight:bold;
 -fx-text-fill: -fx-primary;
 -fx-font-size:13pt;
--fx-border-color: -fx-secondary;
+-fx-border-color: -fx-primary;
 -fx-border-radius: 20px;
 -fx-background-radius: 20px;
  -fx-border-width:2;
  }
+
+/*this is hovering effect*/
+.button:hover{
+    -fx-background-color: -fx-primary;
+    -fx-text-fill: -fx-secondary;
+    -fx-border-color:  -fx-secondary;
+    -fx-border-radius: 20px;
+    -fx-border-width:1;
+    -fx-font-weight:bold;
+}
 
 .choiceBox{
 
@@ -45,23 +55,21 @@
 -fx-font-size:20;
 -fx-text-fill:white;
 }
- /*this is hovering effect*/
- .button:hover{
-   -fx-background-color: -fx-primary;
-   -fx-text-fill: -fx-secondary;
-   -fx-border-color:  -fx-secondary;
-   -fx-border-radius: 20px;
- -fx-border-width:1;
- -fx-font-weight:bold;
- }
 
-.glyph-icon{
+
+ .glyph-icon{
+    -fx-fill:#CCC9C9;
+    -fx-border-color:white;
+    -fx-padding:10;
+}
+.hBox .glyph-icon{
 -fx-fill:#A6A6A6;
 -fx-border-color:white;
 -fx-padding:10;
+
 }
 
-.glyph-icon:hover{
+.hBox .glyph-icon:hover{
 -fx-fill:white;
 }
 
@@ -72,9 +80,10 @@
 
 .hyperlink{
 -fx-font-size:20;
+-fx-text-fill:orange ;
 }
-.hyperlink:active{
--fx-text-fill:blue;
+.hyperlink:hover{
+-fx-text-fill:yellow;
 }
 
 .radioButton{

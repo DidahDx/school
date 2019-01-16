@@ -5,89 +5,91 @@
 
 /*styling the background */
 .mPane{
--fx-background-color:white;
+    -fx-background-color:white;
 }
-
 
 /* Styling buttons in admission fxml file*/
 .hBox .button{
--fx-border-radius: 48;
- -fx-background-radius: 48;
- -fx-background-insets:15;
- -fx-text-fill:black;
- -fx-opacity: 0.7;
- -fx-font-weight:bold;
- -fx-font-size:13px;
+    -fx-border-radius: 48;
+    -fx-background-radius: 48;
+    -fx-background-insets:15;
+    -fx-text-fill:black;
+    -fx-opacity: 0.7;
+    -fx-font-weight:bold;
+    -fx-font-size:13px;
 }
 
 /*Styling button on hover*/
 .hBox .button:hover{
- -fx-opacity: 1;
+    -fx-opacity: 1;
 }
 
 /* Styling buttons in admission fxml */
- #button{
- -fx-background-color:-fx-secondary;
-  -fx-font-weight:bold;
--fx-text-fill: -fx-primary;
--fx-font-size:13pt;
--fx-border-color: -fx-secondary;
--fx-border-radius: 20px;
--fx-background-radius: 20px;
- -fx-border-width:2;
- }
+#button{
+    -fx-background-color:-fx-secondary;
+    -fx-font-weight:bold;
+    -fx-text-fill: -fx-primary;
+    -fx-font-size:13pt;
+    -fx-border-color: -fx-secondary;
+    -fx-border-radius: 20px;
+    -fx-background-radius: 20px;
+    -fx-border-width:2;
+}
 
 
 /*Styling button on hover*/
 #button:hover{
-   -fx-background-color: -fx-primary;
-   -fx-text-fill: -fx-secondary;
-   -fx-border-color:  -fx-secondary;
-   -fx-border-radius: 20px;
- -fx-border-width:1;
- -fx-font-weight:bold;
- }
+    -fx-background-color: -fx-primary;
+    -fx-text-fill: -fx-secondary;
+    -fx-border-color:  -fx-secondary;
+    -fx-border-radius: 20px;
+    -fx-border-width:1;
+    -fx-font-weight:bold;
+}
 
 /*styling TextField inputs*/
 .textField{
--fx-text-fill:black;
--fx-font-size:20;
+    -fx-text-fill:black;
+    -fx-font-size:20;
 }
 
 /*styling the displayed promptText for TextFields*/
 .promptText{
--fx-prompt-text-fill:-fx-secondary;
--fx-font-size:20;
--fx-text-fill:black;
+    -fx-prompt-text-fill:-fx-secondary;
+    -fx-font-size:20;
+    -fx-text-fill:black;
 }
 
 /*styling the label*/
 .label{
- -fx-text-fill:-fx-primaryLabel;
--fx-font-size:13pt;
+    -fx-text-fill:-fx-primaryLabel;
+    -fx-font-size:13pt;
 }
 
 /*radio button*/
 #radio-button{
--fx-background-color:black;
+    -fx-background-color:black;
 }
 
 .choiceBox{
-
- -fx-background-color:-fx-primaryLabel;
-  -fx-font-weight:bold;
--fx-text-fill: black;
--fx-font-size:13pt;
--fx-border-color: -fx-secondary;
--fx-border-radius: 20px;
--fx-background-radius: 20px;
- -fx-border-width:2;
+    -fx-background-color:-fx-primaryLabel;
+    -fx-font-weight:bold;
+    -fx-text-fill: black;
+    -fx-font-size:13pt;
+    -fx-border-color: -fx-secondary;
+    -fx-border-radius: 20px;
+    -fx-background-radius: 20px;
+    -fx-border-width:2;
 }
 
 .choiceBox .label{
+    -fx-text-fill:black;
+    -fx-font-size:15px;
+    -fx-border-radius: 20px;
+    -fx-background-radius: 20px;
+}
 
--fx-text-fill:black;
--fx-font-size:15px;
--fx-border-radius: 20px;
--fx-background-radius: 20px;
+.text-area{
+    -fx-font-size:12pt;
+    -fx-font-weight: bold;
 }

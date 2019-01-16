@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<AnchorPane  fx:id="slashPane" maxHeight="407.0" maxWidth="683.0" minHeight="407.0" minWidth="610.0" prefHeight="407.0" prefWidth="610.0"  style="-fx-background-color: green;" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controllers.splashScreen">
+   <children>
+      <Label layoutX="238.0" layoutY="183.0" text="Label" />
+   </children>
+</AnchorPane>

@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane stylesheets="@../css/admission.css" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controllers.admission">
+<AnchorPane fx:id="anchorPane" stylesheets="@../css/admission.css" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controllers.admission.admission">
 
       <VBox alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefWidth="1115.0" styleClass="mPane" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
 
@@ -18,7 +18,7 @@
                <Insets bottom="10.0" />
             </VBox.margin>
             <image>
-               <Image url="@../images/School_Garden.png" />
+               <Image url="@../images/library.jpg" />
             </image>
          </ImageView>
          <HBox alignment="CENTER" prefHeight="240.0" styleClass="hBox" stylesheets="@../css/admission.css">

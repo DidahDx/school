@@ -13,16 +13,27 @@
 -fx-border-color:black black black  #948EE6;
 -fx-border-width:0 0 0 4px;
 }
+
 .vBoxLeft .button:focused{
 -fx-border-color:black black black #948EE6;
 -fx-border-width:0 0 0 4px;
 }
-.glyph-icon:focused{
--fx-fill:#F81616;
-}
+
 .topBar .label{
 -fx-font-family:"SansSerif Bold";
  -fx-font-size:16;
  -fx-font-weight:bold;
 -fx-text-fill:black;
+}
+
+.topBar{
+ -fx-background-color:  #7A8AFF;
+}
+
+.topBar .glyph-icon{
+    -fx-fill:black;
+}
+
+.topBar .glyph-icon:hover{
+    -fx-fill:white;
 }

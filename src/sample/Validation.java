@@ -1,11 +1,17 @@
 package sample;
 
+import com.jfoenix.controls.JFXDatePicker;
+import javafx.util.StringConverter;
+
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+
 /**
  * THIS CLASS USED FOR VALIDATING USER INPUTS
  * AND IT RETURNS A TRUE OR FALSE AFTER VALIDATING
  *
  * */
-public class validation {
+public class Validation {
     private boolean check,checkPassword ,checkUserName,checkEmail,checkPhoneNumber;
 
 
@@ -81,6 +87,47 @@ public class validation {
             checkPhoneNumber=false;
         }
         return checkPhoneNumber;
+    }
+
+    //This method is used to change the date format
+    public void changeDateFormat(JFXDatePicker jfxDatePicker)
+    {
+        DateTimeFormatter dateTimeFormatter=DateTimeFormatter.ofPattern("dd/MM/yyyy");
+
+        jfxDatePicker.setConverter(new StringConverter<LocalDate>()
+        {
+            @Override
+            public String toString(LocalDate object)
+            {
+                if(object!=null)
+                {
+                    return dateTimeFormatter.format(object);
+                }
+                return null;
+            }
+
+            @Override
+            public LocalDate fromString(String string)
+            {
+              if(string !=null && !string.trim().isEmpty())
+              {
+                   return LocalDate.parse(string,dateTimeFormatter);
+              }
+              return null;
+            }
+        });
+    }
+
+    //This method prevents users from choosing future dates
+    public boolean pastDates(JFXDatePicker jfxDatePicker){
+      boolean check=false;
+        LocalDate today=LocalDate.now();
+        LocalDate date=jfxDatePicker.getValue();
+
+        if(!(date==null || date.isAfter(today))){
+           check=true;
+       }
+        return check;
     }
 
 }

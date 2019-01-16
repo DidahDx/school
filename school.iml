@@ -20,5 +20,6 @@
       </library>
     </orderEntry>
     <orderEntry type="library" name="controlsfx-8.40" level="project" />
+    <orderEntry type="library" name="io.github.typhon0:AnimateFX:1.2.0" level="project" />
   </component>
 </module>
