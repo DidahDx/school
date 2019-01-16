@@ -1,4 +1,4 @@
-package sample.controllers;
+package sample.controllers.admission;
 
 import com.jfoenix.controls.JFXTextField;
 import javafx.collections.FXCollections;
@@ -12,6 +12,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import sample.Controller;
 import sample.database.DataAccessObject;
+import sample.model.MyPrinter;
 import sample.model.admission.StudentModelTable;
 
 import java.net.URL;
@@ -123,7 +124,8 @@ public class studentDetails implements Initializable {
             while(rs.next()){
                     oblist.add(new StudentModelTable(rs.getString("first_name"),rs.getString("second_name"),
                             rs.getString("stream"), rs.getInt("form"),
-                            rs.getString("gender"),rs.getInt("admission_number"),rs.getString("last_name")));
+                            rs.getString("gender"),rs.getInt("admission_number"),
+                            rs.getString("last_name")));
             }
 
         firstName.setCellValueFactory(new PropertyValueFactory<>("firstName"));
@@ -158,4 +160,7 @@ public class studentDetails implements Initializable {
 
     }
 
+    public void printTable(ActionEvent actionEvent) {
+     new MyPrinter().Print(table);
+    }
 }

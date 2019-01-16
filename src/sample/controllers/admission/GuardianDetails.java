@@ -1,9 +1,8 @@
-package sample.controllers;
+package sample.controllers.admission;
 
-import javafx.collections.FXCollections;
+ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
-import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TableColumn;
@@ -14,7 +13,6 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import sample.database.DataAccessObject;
 import sample.model.admission.GuardianModelTable;
-
 import java.net.URL;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -67,12 +65,24 @@ public class GuardianDetails implements Initializable {
 
     public void loadForms(ActionEvent actionEvent) {
         ResultSet rs;
-        try {
-            rs=dao.loadGuardianForms(Integer.parseInt(SearchForms.getValue().toString()));
-            fillTable(rs);
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+     if(!(SearchForms.getValue().toString()== "All")) {
+         try {
+             rs = dao.loadGuardianForms(Integer.parseInt(SearchForms.getValue().toString()));
+             fillTable(rs);
+         } catch (SQLException e) {
+             e.printStackTrace();
+         }
+     }
+     else{
+
+         try {
+             rs=dao.loadGuardianTable();
+             fillTable(rs);
+         } catch (SQLException e) {
+             e.printStackTrace();
+         }
+     }
+
 
     }
 
@@ -92,7 +102,7 @@ public class GuardianDetails implements Initializable {
             email.setCellValueFactory(new PropertyValueFactory<>("email"));
 
             table.setItems(oblist);
-        
+
 
     }
 

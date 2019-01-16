@@ -9,7 +9,7 @@ import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import sample.Controller;
-import sample.validation;
+import sample.Validation;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -27,7 +27,7 @@ public class signUp implements Initializable {
 
 
 
-   private validation valid=new validation();
+   private Validation valid=new Validation();
    private Controller con =new Controller();
 
     private ObservableList list = FXCollections.observableArrayList();

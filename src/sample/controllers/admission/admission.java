@@ -1,11 +1,23 @@
-package sample.controllers;
+package sample.controllers.admission;
 
+import animatefx.animation.*;
 import javafx.event.ActionEvent;
+import javafx.fxml.Initializable;
+import javafx.scene.layout.AnchorPane;
 import sample.Controller;
 
-public class admission {
+import java.net.URL;
+import java.util.ResourceBundle;
 
+public class admission implements Initializable {
+
+    public AnchorPane anchorPane;
    Controller control=new Controller();
+
+   @Override
+   public void initialize(URL url, ResourceBundle resourceBundle){
+       new SlideInRight(anchorPane).play();
+   }
 
    //changes user interface to admissionForm
     public void studentsAdmission(ActionEvent actionEvent) {
@@ -24,5 +36,6 @@ public class admission {
 
     //changes user interface to school
     public void schoolStatistics(ActionEvent actionEvent) {
+        control.changeUi("schoolPopulation");
     }
 }

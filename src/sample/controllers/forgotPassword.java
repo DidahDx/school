@@ -7,7 +7,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import sample.Controller;
-import sample.validation;
+import sample.Validation;
 
 
 public class forgotPassword {
@@ -22,7 +22,7 @@ public class forgotPassword {
 
     Controller con= new Controller();
 
-     validation valid= new validation();
+     Validation valid= new Validation();
     public void submitButton(ActionEvent actionEvent) {
 
 

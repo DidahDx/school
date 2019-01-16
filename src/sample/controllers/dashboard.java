@@ -1,10 +1,12 @@
 package sample.controllers;
 
+import animatefx.animation.SlideInLeft;
 import javafx.fxml.Initializable;
 import javafx.scene.chart.CategoryAxis;
 import javafx.scene.chart.LineChart;
 import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.XYChart;
+import javafx.scene.layout.AnchorPane;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -13,9 +15,12 @@ public class dashboard implements Initializable {
     public CategoryAxis x;
     public NumberAxis y;
     public LineChart<?,?> LineChart;
+    public AnchorPane anchorPane;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        new SlideInLeft(anchorPane).play();
+
         XYChart.Series series=new XYChart.Series();
         series.getData().add(new XYChart.Data("Form 1 EAST", 23));
         series.getData().add(new XYChart.Data("Form 1 west", 12));

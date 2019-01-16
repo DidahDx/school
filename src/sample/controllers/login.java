@@ -1,34 +1,41 @@
 package sample.controllers;
 
+import animatefx.animation.FadeIn;
+import animatefx.animation.SlideInLeft;
+import animatefx.animation.ZoomInUp;
+import animatefx.animation.ZoomOutDown;
 import com.jfoenix.controls.JFXPasswordField;
 import com.jfoenix.controls.JFXTextField;
+import com.jfoenix.validation.RequiredFieldValidator;
+import de.jensd.fx.glyphs.materialdesignicons.MaterialDesignIcon;
+import de.jensd.fx.glyphs.materialdesignicons.MaterialDesignIconView;
+import javafx.animation.FadeTransition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.util.Duration;
 import sample.Controller;
 import sample.database.DBConnector;
-import sample.validation;
+import sample.Validation;
+
+import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ResourceBundle;
-import org.controlsfx.control.textfield.TextFields;
-
-
-
-import static org.controlsfx.control.textfield.TextFields.createClearableTextField;
 
 public class login implements Initializable {
 
+    public AnchorPane slashPane;
     @FXML
     AnchorPane anchorPane;
     @FXML
@@ -42,9 +49,24 @@ public class login implements Initializable {
     @FXML
     JFXTextField showPasswordField;
 
+    static String id;
     private Controller con = new Controller();
-    private validation valid =new validation();
+    private Validation valid =new Validation();
+//    RequiredFieldValidator requiredFieldValidator=new RequiredFieldValidator();
+//    MaterialDesignIconView icon = new MaterialDesignIconView(MaterialDesignIcon.CLOSE_CIRCLE);
 
+    //it initial hides the TextField, used to show the Password after the login finishes to load
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+
+        new ZoomInUp(anchorPane).play();
+        showPasswordField.setVisible(false);
+//        emailTextField.getValidators().add(requiredFieldValidator);
+//        requiredFieldValidator.setMessage("");
+//        requiredFieldValidator.setIcon(icon);
+
+
+    }
 
 //handles login by checking the database for correct userName and password if it is true it logs in
     public void handleLogin(ActionEvent actionEvent) {
@@ -54,12 +76,13 @@ public class login implements Initializable {
             Connection connect= DBConnector.getConnection();
             try {
                 Statement statement=connect.createStatement();
-                String sql="select user_name,password from users_details where user_name='"+emailTextField.getText().trim()+"' and password='"+
+                String sql="select user_name,password from users_details where user_name='"
+                        +emailTextField.getText().trim()+"' and password='"+
                         passwordField.getText().trim()+"' ;";
                 ResultSet results =statement.executeQuery(sql);
 
                 if (results.next()){
-
+                    id=emailTextField.getText();
                     con.changeUi("mainUi");
                     errorLabel.setText(" ");
                     con.close(anchorPane);
@@ -117,15 +140,16 @@ public class login implements Initializable {
       }
     }
 
-    //it initial hides the TextField, used to show the Password after the login finishes to load
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
-        showPasswordField.setVisible(false);
-    }
-
      //set the password field text after a key is released
     public void setPassword(KeyEvent keyEvent) {
         passwordField.setText(showPasswordField.getText().trim());
     }
+
+    //this method is used to minimise the login screen
+    public void minimise(MouseEvent mouseEvent) {
+
+        con.Minimise(anchorPane);
+    }
+
 
 }

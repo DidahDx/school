@@ -1,5 +1,6 @@
 package sample.controllers;
 
+import animatefx.animation.*;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXPopup;
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView;
@@ -8,6 +9,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.geometry.Pos;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
@@ -21,20 +23,24 @@ import java.util.ResourceBundle;
 
 public class mainUi implements Initializable {
 
-
+    public String userId;
     @FXML public MaterialDesignIconView threeDots;
-   @FXML public Label loggedIn;
-    public FontAwesomeIconView user;
+    @FXML public  Label loggedIn;
+    @FXML public FontAwesomeIconView user;
     @FXML private BorderPane borderPane;
     @FXML private AnchorPane AnchorPane;
-    @FXML private Label showSideMenu;
+    @FXML private Label showSideMenuName;
  Controller controller=new Controller();
+
+ public mainUi() {
+     userId=login.id;
+ }
 
     //this loads the dashboard user interface to center of the borderPane of the main user interface(mainUi.fxml)
     public void dashboard(ActionEvent actionEvent) {
         try {
             loadUiTabs("dashboard");
-            showSideMenu.setText(("dashboard").toUpperCase());
+            showSideMenuName.setText(("dashboard").toUpperCase());
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -43,10 +49,10 @@ public class mainUi implements Initializable {
 
     //this loads the examination user interface to center of the borderPane of the main user interface(mainUi.fxml)
     public void exam(ActionEvent actionEvent) {
-          String exam="exam";
+          String exam="examination";
         try {
             loadUiTabs(exam);
-            showSideMenu.setText(exam.toUpperCase());
+            showSideMenuName.setText(exam.toUpperCase());
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -56,7 +62,7 @@ public class mainUi implements Initializable {
     public void admission(ActionEvent actionEvent)  {
         try {
             loadUiTabs("admission");
-            showSideMenu.setText(("admission").toUpperCase());
+            showSideMenuName.setText(("admission").toUpperCase());
 
         } catch (IOException e) {
             e.printStackTrace();
@@ -67,7 +73,7 @@ public class mainUi implements Initializable {
     public void finance(ActionEvent actionEvent) {
         try {
             loadUiTabs("finance");
-            showSideMenu.setText(("finance").toUpperCase());
+            showSideMenuName.setText(("finance").toUpperCase());
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -81,19 +87,22 @@ public class mainUi implements Initializable {
         borderPane.setStyle("-fx-margin:0;");
         borderPane.setLayoutX(0);
         borderPane.setLayoutY(0);
+
     }
 
     //this loads the dashboard to center of the borderPane(mainUi.fxml) when the programs initial runs mainUi.fxml
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+           loggedIn.setText(userId);
 
-
-        showSideMenu.setText(("dashboard").toUpperCase());
+        showSideMenuName.setText(("dashboard").toUpperCase());
         try {
             loadUiTabs("dashboard");
         } catch (IOException e) {
             e.printStackTrace();
         }
+
+
     }
 
 
@@ -101,11 +110,11 @@ public class mainUi implements Initializable {
     //handles logOut
     @FXML
     public void logOut(MouseEvent mouseEvent) {
-      initPopup(mouseEvent);
+      initPopup();
 
     }
 
-    public void initPopup(MouseEvent evet){
+    public void initPopup(){
         JFXButton log_out=new JFXButton("Log Out");
         JFXButton profile=new JFXButton("Profile");
         JFXButton settings=new JFXButton("Settings");
@@ -115,10 +124,12 @@ public class mainUi implements Initializable {
                  controller.changeUi("login");
              });
         VBox vbox=new VBox(profile,settings,about,log_out);
-        vbox.setStyle("-fx-alignment: center;");
+//        vbox.setStyle("-fx-alignment: center;");
+        vbox.setAlignment(Pos.CENTER);
         JFXPopup popup=new JFXPopup();
         popup.setPopupContent(vbox);
 
        popup.show(user);
+
     }
 }
