@@ -6,7 +6,10 @@
 <?import de.jensd.fx.glyphs.materialdesignicons.MaterialDesignIconView?>
 <?import de.jensd.fx.glyphs.materialicons.MaterialIconView?>
 <?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
@@ -17,14 +20,15 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="anchorPane" prefHeight="600.0" prefWidth="950.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controllers.studentDetails">
-    <BorderPane prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+<AnchorPane fx:id="anchorPane" prefHeight="600.0" prefWidth="950.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controllers.admission.studentDetails">
+    <BorderPane fx:id="borderPane" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <center>
-            <TableView fx:id="table" prefHeight="516.0" prefWidth="413.0" stylesheets="@../css/tableView.css" BorderPane.alignment="CENTER">
+            <TableView fx:id="table" onKeyPressed="#selected" onKeyReleased="#selected" onMouseClicked="#selected" prefHeight="516.0" prefWidth="413.0" stylesheets="@../css/tableView.css" BorderPane.alignment="CENTER">
                 <columns>
                     <TableColumn fx:id="admissionNumber" prefWidth="144.0" text="Admission Number" />
                     <TableColumn fx:id="firstName" prefWidth="139.0" text="FirstName" />
                     <TableColumn fx:id="secondName" prefWidth="179.0" text="SecondName" />
+                    <TableColumn fx:id="lastName" prefWidth="75.0" text="LastName" />
                     <TableColumn fx:id="stream" prefWidth="139.0" text="Stream" />
                     <TableColumn fx:id="form" prefWidth="133.0" text="Form" />
                     <TableColumn fx:id="gender" prefWidth="103.0" text="Gender" />
@@ -57,54 +61,83 @@
                 <Label layoutX="30.0" layoutY="33.0" text="select form" />
             </AnchorPane>
         </top>
-
-        <left>
-            <AnchorPane prefHeight="516.0" prefWidth="132.0" BorderPane.alignment="CENTER">
-                <JFXButton layoutX="21.0" layoutY="85.0" mnemonicParsing="false" text="Edit selected Row" />
-
-            </AnchorPane>
-        </left>
         <right>
-            <AnchorPane prefHeight="575.0" prefWidth="366.0" BorderPane.alignment="CENTER">
-                <ImageView fitHeight="338.0" fitWidth="192.0" layoutX="88.0" layoutY="-60.0" pickOnBounds="true" preserveRatio="true" rotate="90.0">
+            <AnchorPane fx:id="AnchorPane" BorderPane.alignment="CENTER">
+
+                <ScrollPane prefHeight="677.0" prefWidth="400.0" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="240.0">
+                    <AnchorPane prefHeight="556.0" prefWidth="384.0">
+                        <Label layoutX="136.0" layoutY="14.0" text="Personal Details" />
+                        <JFXTextField fx:id="eAdmissionNumber" labelFloat="true" layoutX="14.0" layoutY="60.0" prefHeight="30.0" prefWidth="157.0" promptText="Admission Number">
+                            <font>
+                                <Font name="System Bold" size="14.0" />
+                            </font>
+                        </JFXTextField>
+                        <JFXTextField fx:id="eFirstName" labelFloat="true" layoutX="193.0" layoutY="60.0" promptText="First Name">
+                            <font>
+                                <Font size="14.0" />
+                            </font>
+                        </JFXTextField>
+                        <JFXTextField fx:id="eSecondName" labelFloat="true" layoutX="14.0" layoutY="124.0" promptText="Second Name">
+                            <font>
+                                <Font size="14.0" />
+                            </font>
+                        </JFXTextField>
+                        <JFXTextField fx:id="eLastName" labelFloat="true" layoutX="193.0" layoutY="124.0" promptText="Last Name">
+                            <font>
+                                <Font size="14.0" />
+                            </font>
+                        </JFXTextField>
+                        <Label layoutX="30.0" layoutY="180.0" text="Date of Birth" />
+                        <JFXDatePicker fx:id="eDateOfBirth" layoutX="7.0" layoutY="209.0" />
+                        <Label layoutX="223.0" layoutY="188.0" text="Gender" />
+                        <ComboBox fx:id="eGender" layoutX="202.0" layoutY="209.0" prefHeight="25.0" prefWidth="140.0" />
+                        <Label layoutX="15.0" layoutY="261.0" text="County of resident" />
+                        <ComboBox fx:id="eCounty" layoutX="7.0" layoutY="286.0" prefHeight="25.0" prefWidth="140.0" />
+                        <JFXButton layoutX="211.0" layoutY="284.0" onAction="#edit" text="Edit">
+                            <graphic>
+                                <MaterialIconView fill="#141414" glyphName="CREATE" size="18" strokeType="OUTSIDE" strokeWidth="0.0" />
+                            </graphic>
+                        </JFXButton>
+                        <JFXButton layoutX="312.0" layoutY="286.0" text="Save" />
+                        <Separator layoutX="7.0" layoutY="329.0" prefHeight="3.0" prefWidth="370.0" />
+                        <Label layoutX="126.0" layoutY="346.0" text="School Details" />
+                        <Label layoutX="36.0" layoutY="377.0" text="Form" />
+                        <ChoiceBox fx:id="eForm" layoutX="15.0" layoutY="402.0" prefHeight="25.0" prefWidth="107.0" />
+                        <Label layoutX="194.0" layoutY="377.0" text="Date of Admission" />
+                        <JFXDatePicker layoutX="193.0" layoutY="402.0" />
+                        <Label layoutX="29.0" layoutY="457.0" text="Student Type" />
+                        <ChoiceBox layoutX="18.0" layoutY="481.0" prefWidth="150.0" />
+                        <JFXButton layoutX="211.0" layoutY="500.0" text="Edit">
+                            <graphic>
+                                <MaterialIconView fill="#030303" glyphName="CREATE" size="18" strokeType="OUTSIDE" strokeWidth="0.0" />
+                            </graphic>
+                        </JFXButton>
+                        <JFXButton layoutX="322.0" layoutY="501.0" text="Save" />
+
+                    </AnchorPane>
+                </ScrollPane>
+                <ImageView fitHeight="368.0" fitWidth="204.0" layoutX="98.0" layoutY="-66.0" pickOnBounds="true" preserveRatio="true" rotate="90.0">
                     <effect>
                         <Glow />
                     </effect>
-                    <image>
-                        <Image url="@../images/students.jpg" />
-                    </image>
+                    <Image url="@../images/students.jpg" />
                 </ImageView>
-                <Label layoutX="157.0" layoutY="125.0" text="Label" textFill="WHITE">
+                <Label fx:id="NameDisplayed" layoutX="129.0" layoutY="94.0" text="label" textFill="WHITE">
                     <font>
                         <Font name="Calibri Bold" size="24.0" />
                     </font>
                 </Label>
-                <JFXButton layoutX="288.0" layoutY="469.0" mnemonicParsing="false" text="Save" />
-                <JFXTextField labelFloat="true" layoutX="14.0" layoutY="263.0" promptText="First Name">
-                    <font>
-                        <Font size="14.0" />
-                    </font>
-                </JFXTextField>
-                <JFXTextField labelFloat="true" layoutX="191.0" layoutY="263.0" promptText="Last Name">
-                    <font>
-                        <Font size="14.0" />
-                    </font>
-                </JFXTextField>
-                <JFXTextField labelFloat="true" layoutX="14.0" layoutY="336.0" promptText="Second Name">
-                    <font>
-                        <Font size="14.0" />
-                    </font>
-                </JFXTextField>
-                <Label layoutX="146.0" layoutY="224.0" text="Personal Details" />
-                <JFXDatePicker layoutX="17.0" layoutY="421.0" />
-                <Label layoutX="17.0" layoutY="403.0" text="Date of Birth" />
-                <ChoiceBox layoutX="200.0" layoutY="339.0" prefHeight="25.0" prefWidth="140.0" />
-                <Label layoutX="212.0" layoutY="313.0" text="Gender" />
-                <MaterialIconView fill="#111111" glyphName="BRIGHTNESS_1" layoutX="302.0" layoutY="233.0" size="58.0" strokeType="OUTSIDE" strokeWidth="0.0" />
-                <MaterialIconView fill="WHITE" glyphName="CREATE" layoutX="314.0" layoutY="221.0" size="34" strokeType="OUTSIDE" strokeWidth="0.0" />
-                <ChoiceBox layoutX="210.0" layoutY="421.0" prefHeight="25.0" prefWidth="140.0" />
-                <Label layoutX="212.0" layoutY="395.0" text="County of resident" />
             </AnchorPane>
         </right>
+      <left>
+         <AnchorPane prefHeight="516.0" prefWidth="70.0" BorderPane.alignment="CENTER">
+            <children>
+               <JFXButton buttonType="RAISED" mnemonicParsing="false" onAction="#printTable" style="-fx-background-color: #595950;" text="Print table" textFill="WHITE">
+                  <font>
+                     <Font size="13.0" />
+                  </font>
+               </JFXButton>
+            </children></AnchorPane>
+      </left>
     </BorderPane>
 </AnchorPane>
