@@ -21,13 +21,13 @@ class connectionProperties {
     }
 
     //these are getters to return the userName ,password and databaseUrl
-   public String getUser(){
+    public String getUser(){
         return user;
     }
     public String getPassword(){
         return password;
     }
-   public String getDatabaseUrl(){
+    public String getDatabaseUrl(){
         return databaseUrl;
      }
 

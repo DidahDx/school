@@ -1,6 +1,6 @@
 package sample.database;
 
-import sample.model.admission.schoolDetailsGenerator;
+import sample.model.admission.SchoolDetailsGenerator;
 
 import java.sql.*;
 /**
@@ -30,9 +30,9 @@ public class databaseTester {
             System.out.println("Server Offline");
             e.printStackTrace();
         }
-        schoolDetailsGenerator sdg=new schoolDetailsGenerator();
-
-        System.out.println( sdg.getAdmissionNumber()+"  " + sdg.getStream()+" "+ sdg.getDorm());
+        SchoolDetailsGenerator sdg=new SchoolDetailsGenerator();
+        DataAccessObject dao=new DataAccessObject();
+        System.out.println( sdg.getAdmissionNumber()+"  " + sdg.getStream()+" "+ sdg.getDorm() );
 
     }
 }
