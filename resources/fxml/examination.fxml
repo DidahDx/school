@@ -1,25 +1,52 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
+<?import com.jfoenix.controls.JFXButton?>
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import de.jensd.fx.glyphs.materialicons.MaterialIconView?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
-<?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: yellow;"
-            xmlns="http://javafx.com/javafx/8.0.172-ea">
-    <Label layoutX="282.0" layoutY="38.0" text="Examination">
-        <font>
-          <Font name="System Bold" size="18.0"/>
-        </font>
-    </Label>
-    <VBox prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0"
-          AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-        <AnchorPane prefHeight="146.0" prefWidth="600.0">
-            <Button layoutX="498.0" layoutY="48.0" mnemonicParsing="false" text="Button"
-                    AnchorPane.rightAnchor="50.0"/>
-            <Button layoutX="74.0" layoutY="48.0" mnemonicParsing="false" text="Button"
-                    AnchorPane.leftAnchor="74.0"/>
-        </AnchorPane>
+<AnchorPane fx:id="anchorPane" stylesheets="@../css/admission.css" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controllers.examination.Examination">
+
+    <VBox alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefWidth="1115.0" styleClass="mPane" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+
+        <ImageView fitHeight="343.0" fitWidth="1074.0" nodeOrientation="INHERIT" opacity="1" pickOnBounds="true" smooth="false">
+            <VBox.margin>
+                <Insets bottom="10.0" />
+            </VBox.margin>
+            <image>
+                <Image url="@../images/class.jpg" />
+            </image>
+        </ImageView>
+        <HBox alignment="CENTER" prefHeight="240.0" styleClass="hBox" stylesheets="@../css/admission.css">
+            <JFXButton alignment="CENTER" buttonType="RAISED" contentDisplay="TOP" graphicTextGap="19.0" prefHeight="128.0" prefWidth="241.0" style="-fx-background-color: #AB6130;" stylesheets="@../css/admission.css" text="Enter Exam Marks">
+            <graphic>
+               <MaterialIconView glyphName="LIBRARY_BOOKS" size="23.0" strokeType="OUTSIDE" strokeWidth="0.0" />
+            </graphic>
+            </JFXButton>
+            <JFXButton alignment="CENTER" buttonType="RAISED" contentDisplay="TOP" graphicTextGap="19.0" layoutX="568.0" layoutY="66.0" prefHeight="128.0" prefWidth="241.0" style="-fx-background-color: #14C8D9;" text="Edit and View Exam Marks">
+                <graphic>
+                    <FontAwesomeIconView glyphName="SEARCH" size="24.0" strokeType="OUTSIDE" strokeWidth="0.0" />
+                </graphic>
+            </JFXButton>
+            <JFXButton alignment="CENTER" buttonType="RAISED" contentDisplay="TOP" graphicTextGap="19.0" layoutX="688.0" layoutY="66.0" prefHeight="128.0" prefWidth="241.0" style="-fx-background-color: #4500A6;" text="View Exam Statistics">
+                <graphic>
+                    <FontAwesomeIconView glyphName="BAR_CHART" size="24.0" strokeType="OUTSIDE" strokeWidth="0.0" />
+                </graphic>
+            </JFXButton>
+            <VBox.margin>
+                <Insets bottom="50.0" top="35.0" />
+            </VBox.margin>
+            <padding>
+                <Insets bottom="15.0" top="15.0" />
+            </padding>
+
+        </HBox>
+
     </VBox>
+
 </AnchorPane>
