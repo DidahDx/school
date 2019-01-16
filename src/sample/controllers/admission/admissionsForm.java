@@ -42,13 +42,14 @@ public class admissionsForm implements Initializable {
     //Called to initialize a controller after its root element has been completely processed.
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        loadChoiceBox();
+       loadComboBox(this.County);
         FormComboBox();
         setLastAdmissionNumber();
     }
 
+
     //This method is used to Add items to the County ChoiceBox
-    private void loadChoiceBox(){
+    public void loadComboBox(ComboBox County){
         list_of_counties.removeAll( list_of_counties );
         String counties[]={"Mombasa", "Kwale", "Kilifi", "Tana River","Lamu", "Taita–Taveta", "Garissa", "Wajir",
                 "Mandera", "Marsabit", "Isiolo", "Meru","Tharaka-Nithi","Embu", "Kitui", "Machakos", "Makueni", "Nyandarua",

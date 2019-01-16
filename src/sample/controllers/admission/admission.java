@@ -12,7 +12,7 @@ public class admission {
         control.changeUi("admissionsForm");
     }
 
-    //changes user interface to editStudentDetails
+    //changes user interface to EditStudentDetails
     public void editStudentDetails(ActionEvent actionEvent) {
          control.changeUi("studentDetails");
       }

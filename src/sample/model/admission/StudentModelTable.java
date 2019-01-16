@@ -1,17 +1,20 @@
 package sample.database;
 
-public class modelTable {
+public class StudentModelTable {
 
-    String firstName,secondName,stream,gender;
+    String firstName,secondName,stream,gender,lastName;
     int form,admissionNumber;
 
-    public modelTable(String firstName, String secondName, String stream, int form,String gender, int admissionNumber){
+
+    public StudentModelTable(String firstName, String secondName, String stream, int form, String gender, int admissionNumber, String lastName){
         this.firstName= firstName;
         this.secondName= secondName;
         this.stream= stream;
         this.gender= gender;
         this.form= form;
         this.admissionNumber=admissionNumber;
+        this.lastName=lastName;
+
     }
 
     public int getAdmissionNumber() {
@@ -60,6 +63,14 @@ public class modelTable {
 
     public void setForm(int form) {
         this.form = form;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 
 }
