@@ -1,5 +1,6 @@
 package sample.database;
 
+import sample.database.admission.DataAccessObject;
 import sample.model.admission.SchoolDetailsGenerator;
 
 import java.sql.*;
