@@ -75,6 +75,7 @@ public class EndTermExams implements Initializable {
     private int endTermId=0;
     private StudentDao stDao=new StudentDao();
     private CatMarks catMarks=new CatMarks();
+    int form=0,term=0;
 
 
     @Override
@@ -141,6 +142,7 @@ public class EndTermExams implements Initializable {
             if (answer.get()==ButtonType.OK) {
                 endTermDao.DeleteEndTermMarks(endTermId);
                 loadTable();
+                calculateAverageMarks.AddCatAndEndTermMark(form,Integer.parseInt(eAdmissionNumber.getText()),term);
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -180,7 +182,7 @@ public class EndTermExams implements Initializable {
                         Integer.parseInt(history.getText()), Integer.parseInt(geography.getText()), Integer.parseInt(cre.getText()),
                         Integer.parseInt(business.getText()), Integer.parseInt(computerStudies.getText()), Integer.parseInt(agriculture.getText()),
                         form, term,endTermId,now,today);
-                calculateAverageMarks.AddCatAndEndTermMark(form,term,Integer.parseInt(eAdmissionNumber.getText()));
+                calculateAverageMarks.AddCatAndEndTermMark(form,Integer.parseInt(eAdmissionNumber.getText()),term);
             }
             ForButtonVisibility(true);
             loadTable();
@@ -214,7 +216,7 @@ public class EndTermExams implements Initializable {
                         Integer.parseInt(history.getText()), Integer.parseInt(geography.getText()), Integer.parseInt(cre.getText()),
                         Integer.parseInt(business.getText()), Integer.parseInt(computerStudies.getText()), Integer.parseInt(agriculture.getText()),
                         form, term,today,now);
-                    calculateAverageMarks.AddCatAndEndTermMark(form,term,Integer.parseInt(eAdmissionNumber.getText()));
+                    calculateAverageMarks.AddCatAndEndTermMark(form,Integer.parseInt(eAdmissionNumber.getText()),term);
                 }
             }else{
                 CheckStudentExist(eAdmissionNumber);
@@ -250,6 +252,8 @@ public class EndTermExams implements Initializable {
             while(rs.next()){
                 second=rs.getString("second_name");
                 name=rs.getString("first_name");
+                form=rs.getInt("form");
+                term=rs.getInt("term");
             }
 
             NameDisplayed.setText(name+"\t"+second);

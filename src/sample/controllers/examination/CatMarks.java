@@ -75,6 +75,7 @@ public class CatMarks implements Initializable {
     private ObservableList listForm= FXCollections.observableArrayList();
     private int catId=0;
     private String name="",second="";
+    int form=0,term=0;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -142,6 +143,8 @@ public class CatMarks implements Initializable {
             while(rs.next()){
                 name=rs.getString("first_name");
                 second=rs.getString("second_name");
+                form=rs.getInt("form");
+                term=rs.getInt("term");
             }
 
             NameDisplayed.setText(name+"\t"+second);
@@ -201,7 +204,7 @@ public class CatMarks implements Initializable {
                     Integer.parseInt(history.getText()), Integer.parseInt(geography.getText()), Integer.parseInt(cre.getText()),
                     Integer.parseInt(business.getText()), Integer.parseInt(computerStudies.getText()), Integer.parseInt(agriculture.getText()),
                     form, term,catId,now,today);
-            calculateAverageMarks.AddCatAndEndTermMark(form,term,Integer.parseInt(eAdmissionNumber.getText()));
+            calculateAverageMarks.AddCatAndEndTermMark(form,Integer.parseInt(eAdmissionNumber.getText()),term);
         }
         ForButtonVisibility(true);
         loadTable();
@@ -234,7 +237,7 @@ public class CatMarks implements Initializable {
                        Integer.parseInt(history.getText()), Integer.parseInt(geography.getText()), Integer.parseInt(cre.getText()),
                        Integer.parseInt(business.getText()), Integer.parseInt(computerStudies.getText()), Integer.parseInt(agriculture.getText()),
                        form, term,today,now);
-                   calculateAverageMarks.AddCatAndEndTermMark(form,term,Integer.parseInt(eAdmissionNumber.getText()));
+                   calculateAverageMarks.AddCatAndEndTermMark(form,Integer.parseInt(eAdmissionNumber.getText()),term);
                }
            }else{
                EndTermExams.CheckStudentExist(eAdmissionNumber);
@@ -257,6 +260,7 @@ public class CatMarks implements Initializable {
             if (answer.get()==ButtonType.OK) {
                 catMarkDao.DeleteCatMarks(catId);
                 loadTable();
+                calculateAverageMarks.AddCatAndEndTermMark(form,Integer.parseInt(eAdmissionNumber.getText()),term);
             }
         } catch (SQLException e) {
             e.printStackTrace();
