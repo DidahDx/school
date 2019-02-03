@@ -2,38 +2,37 @@ package sample.model;
 
 import javafx.print.*;
 import javafx.scene.Node;
-import javafx.stage.Stage;
-import javafx.stage.StageStyle;
+import javafx.scene.control.Alert;
 
 public class MyPrinter {
 
     public void Print(Node node){
-        Printer printer = Printer.getDefaultPrinter();
+        Alert alert=new Alert(Alert.AlertType.INFORMATION);
+        alert.setHeaderText(null);
+
+
+        Printer printer = Printer.getDefaultPrinter(); //gets the default printer.
 
         PageLayout pageLayout = printer.createPageLayout(
-                Paper.A2, PageOrientation.PORTRAIT, Printer.MarginType.EQUAL_OPPOSITES);
-        Stage dialogStage = new Stage(StageStyle.DECORATED);
-        PrinterJob job = PrinterJob.createPrinterJob(printer);
-        if(printer!=null || job!=null) {
+                Paper.A3, PageOrientation.PORTRAIT, 20,20,15,12);  //setting pagelayout
+
+        PrinterJob job = PrinterJob.createPrinterJob(printer); //create a job for a specified printer
+
+        if((printer!=null || job!=null) && job.showPrintDialog(node.getScene().getWindow())) {
+
             System.out.println(printer.getName());
             System.out.println(job.jobStatusProperty().asString());
-            boolean printed=job.printPage(pageLayout,node);
-            boolean showDialog = job.showPageSetupDialog(dialogStage);
-            if (showDialog) {
-                node.setScaleX(0.60);
-                node.setScaleY(0.60);
-                node.setTranslateX(-220);
-                node.setTranslateY(-70);
-                boolean success = job.printPage(node);
+
+                boolean success = job.printPage(pageLayout,node); // Prints the specified node eg. anchorPane
                 if (success) {
                     job.endJob();
+                    alert.setContentText("Printed successfully");
+                    alert.showAndWait();
+                }else{
+                    alert.setContentText("Print Failed");
+                    alert.showAndWait();
                 }
-                node.setTranslateX(0);
-                node.setTranslateY(0);
-                node.setScaleX(1.0);
-                node.setScaleY(1.0);
             }
-        }
         else{
             System.out.println("failed print");
         }

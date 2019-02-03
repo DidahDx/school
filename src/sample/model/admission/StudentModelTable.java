@@ -6,7 +6,8 @@ public class StudentModelTable {
     int form,admissionNumber;
 
 
-    public StudentModelTable(String firstName, String secondName, String stream, int form, String gender, int admissionNumber, String lastName){
+    public StudentModelTable(String firstName, String secondName, String stream, int form, String gender,
+                             int admissionNumber, String lastName){
         this.firstName= firstName;
         this.secondName= secondName;
         this.stream= stream;

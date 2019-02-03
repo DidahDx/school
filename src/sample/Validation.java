@@ -3,12 +3,18 @@ package sample;
 import com.jfoenix.controls.JFXDatePicker;
 import javafx.util.StringConverter;
 
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.Date;
 
 /**
  * THIS CLASS USED FOR VALIDATING USER INPUTS
  * AND IT RETURNS A TRUE OR FALSE AFTER VALIDATING
+ *  TODO:make validations for number inputs
+ *
+ *  TODO:MAKE ALPHABETIC VALIDATION INPUTS
+ *
  *
  * */
 public class Validation {
@@ -28,6 +34,7 @@ public class Validation {
         }
         return check;
     }
+
 
     //This method is used to validates the Password
     public boolean validatePassword(String nValues){
@@ -89,8 +96,8 @@ public class Validation {
         return checkPhoneNumber;
     }
 
-    //This method is used to change the date format
-    public void changeDateFormat(JFXDatePicker jfxDatePicker)
+    //This method is used to change the date format of the JFXDatePicker
+    public void changeDatePickerFormat(JFXDatePicker jfxDatePicker)
     {
         DateTimeFormatter dateTimeFormatter=DateTimeFormatter.ofPattern("dd/MM/yyyy");
 
@@ -118,7 +125,7 @@ public class Validation {
         });
     }
 
-    //This method prevents users from choosing future dates
+    //This method prevents users from choosing future dates from the JFXDatePicker
     public boolean pastDates(JFXDatePicker jfxDatePicker){
       boolean check=false;
         LocalDate today=LocalDate.now();
@@ -130,4 +137,10 @@ public class Validation {
         return check;
     }
 
+    //changes the date format to dd/MM/yyyy
+    public String changeDateFormat(LocalDate date) {
+
+        DateTimeFormatter DateFormat =DateTimeFormatter.ofPattern("dd/MM/yyyy");
+      return date.format(DateFormat);
+    }
 }

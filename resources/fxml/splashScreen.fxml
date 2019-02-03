@@ -1,11 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.jfoenix.controls.JFXProgressBar?>
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ProgressIndicator?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
-<AnchorPane  fx:id="slashPane" maxHeight="407.0" maxWidth="683.0" minHeight="407.0" minWidth="610.0" prefHeight="407.0" prefWidth="610.0"  style="-fx-background-color: green;" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controllers.splashScreen">
+<AnchorPane fx:id="slashPane" maxHeight="407.0" maxWidth="683.0" minHeight="366.0" minWidth="575.0" prefHeight="366.0" prefWidth="575.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controllers.splashScreen">
    <children>
-      <Label layoutX="238.0" layoutY="183.0" text="Label" />
+      <Label layoutX="238.0" layoutY="183.0" />
+      <ProgressIndicator layoutX="181.0" layoutY="57.0" prefHeight="242.0" prefWidth="212.0">
+         <cursor>
+            <Cursor fx:constant="WAIT" />
+         </cursor>
+      </ProgressIndicator>
+      <ProgressIndicator layoutX="256.0" layoutY="156.0" prefHeight="55.0" prefWidth="62.0" />
+      <ProgressIndicator layoutX="227.0" layoutY="113.0" prefHeight="129.0" prefWidth="120.0">
+         <effect>
+            <DropShadow />
+         </effect></ProgressIndicator>
+      <JFXProgressBar layoutX="13.0" layoutY="325.0" prefHeight="0.0" prefWidth="551.0" secondaryProgress="-23.0" style="-fx-background-color: red;" />
+      <ImageView fitHeight="129.0" fitWidth="172.0" layoutY="105.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/DX9.png" />
+         </image>
+      </ImageView>
    </children>
+   <cursor>
+      <Cursor fx:constant="WAIT" />
+   </cursor>
 </AnchorPane>

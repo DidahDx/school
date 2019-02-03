@@ -1,6 +1,6 @@
 package sample.model.admission;
 
-import sample.database.DataAccessObject;
+import sample.dataAccessObject.admission.StudentDao;
 import java.sql.SQLException;
 import java.util.Random;
 
@@ -12,7 +12,7 @@ import java.util.Random;
  */
 public class SchoolDetailsGenerator {
 
-private DataAccessObject dataAccessObject =new DataAccessObject();
+private StudentDao dataAccessObject =new StudentDao();
     private Random random=new Random();
 
   //this method generates and return the new student's admission number
@@ -43,26 +43,30 @@ private DataAccessObject dataAccessObject =new DataAccessObject();
     }
 
     //this method generates and returns the Dorm the student is placed in
-    public String getDorm(){
-        String dorm;
-        int randomDorm=random.nextInt(4);
+    public String getDorm(String gender){
+        String dorm = null;
+        int randomDorm=random.nextInt(2);
 
-        switch(randomDorm) {
-            case 0:
-                dorm="Elgon";
-                break;
-            case 1:
-                dorm="Kenya";
-                break;
-            case 2:
-                dorm="Kilimanjaro";
-                break;
-            case 3:
-                dorm="Longonot";
-                break;
-        default:
-            dorm="Elgon";
-            break;
+        if(gender.matches("male")){
+            switch(randomDorm) {
+                case 0:
+                    dorm = "Elgon";
+                    break;
+                case 1:
+                    dorm = "Kenya";
+                    break;
+            }
+
+        }else if (gender.matches("female")){
+            switch(randomDorm) {
+
+                case 0:
+                    dorm="Kilimanjaro";
+                    break;
+                case 1:
+                    dorm="Longonot";
+                    break;
+            }
         }
 
        return dorm;

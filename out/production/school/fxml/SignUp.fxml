@@ -10,7 +10,7 @@
 <?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane fx:id="anchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="697.0" prefWidth="770.0" styleClass="containerBody" stylesheets="@../css/login.css" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controllers.signUp">
+<AnchorPane fx:id="anchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="697.0" prefWidth="770.0" styleClass="containerBody" stylesheets="@../css/login.css" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controllers.user.signUp">
    <JFXTextField focusColor="#ffb60d" labelFloat="true" layoutX="22.0" layoutY="107.0" prefHeight="37.0" prefWidth="186.0" promptText="FirstName*" styleClass="promptText" unFocusColor="WHITE" />
 
    <JFXTextField focusColor="#ffb60d" labelFloat="true" layoutX="248.0" layoutY="106.0" prefHeight="37.0" prefWidth="186.0" promptText="MiddleName" styleClass="promptText" unFocusColor="WHITE" />
@@ -38,7 +38,7 @@
    <JFXTextField fx:id="password" focusColor="#ffb60d" labelFloat="true" layoutX="54.0" layoutY="333.0" prefHeight="28.0" prefWidth="202.0" promptText="Password*" styleClass="promptText" unFocusColor="WHITE" />
 
    <JFXTextField fx:id="confirmPassword" focusColor="#ffb60d" labelFloat="true" layoutX="54.0" layoutY="408.0" prefHeight="28.0" prefWidth="202.0" promptText="Confirm password*" styleClass="promptText" unFocusColor="WHITE" />
-   <JFXButton buttonType="RAISED" layoutX="538.0" layoutY="464.0" onAction="#handleSubmit" text="Submit" textFill="#e41818" />
+   <JFXButton fx:id="button" buttonType="RAISED" layoutX="538.0" layoutY="464.0" onAction="#handleSubmit" text="Submit" textFill="#e41818" />
 
    <ChoiceBox fx:id="roles" layoutX="433.0" layoutY="255.0" prefHeight="32.0" prefWidth="209.0" styleClass="choiceBox" />
    <Label layoutX="325.0" layoutY="261.0" text="Choose Role*" />

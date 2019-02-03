@@ -1,4 +1,4 @@
-package sample.database;
+package sample.dataAccessObject;
 
 import javafx.scene.control.Alert;
 import java.sql.Connection;

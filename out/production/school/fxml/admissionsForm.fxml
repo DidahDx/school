@@ -6,6 +6,7 @@
 <?import com.jfoenix.controls.JFXRadioButton?>
 <?import com.jfoenix.controls.JFXTextField?>
 <?import com.jfoenix.validation.RequiredFieldValidator?>
+<?import de.jensd.fx.glyphs.materialdesignicons.MaterialDesignIconView?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Separator?>
@@ -31,7 +32,7 @@
     <JFXRadioButton fx:id="female" layoutX="342.0" layoutY="188.0" mnemonicParsing="false" text="female" toggleGroup="$Gender" />
 
     <Label layoutX="48.0" layoutY="163.0" text="County of residence" textFill="#71f016" />
-    <JFXComboBox fx:id="County" layoutX="11.0" layoutY="188.0" onAction="#handleForm" prefHeight="36.0" prefWidth="207.0" promptText="select County">
+    <JFXComboBox fx:id="County" layoutX="11.0" layoutY="188.0" prefHeight="36.0" prefWidth="207.0" promptText="select County">
       <opaqueInsets>
          <Insets />
       </opaqueInsets>
@@ -47,11 +48,11 @@
 
     <Label layoutX="247.0" layoutY="452.0" style="-fx-text-fill: black;" text="SCHOOL DETAILS" textFill="#ab3520" />
     <Label layoutX="27.0" layoutY="493.0" style="-fx-text-fill: black;" text="Date of Admission" />
-    <Label layoutX="476.0" layoutY="493.0" style="-fx-text-fill: black;" text="Select form">
+    <Label layoutX="466.0" layoutY="483.0" style="-fx-text-fill: black;" text="Select form">
         <graphic>
             <RequiredFieldValidator fx:id="selectFormValidator" message="invalid" />
         </graphic></Label>
-    <JFXComboBox fx:id="Form" layoutX="468.0" layoutY="511.0" onAction="#handleForm" prefHeight="17.0" prefWidth="94.0" styleClass="choiceBox" />
+    <JFXComboBox fx:id="Form" layoutX="468.0" layoutY="511.0" prefHeight="17.0" prefWidth="94.0" styleClass="choiceBox" />
     <Label layoutX="266.0" layoutY="493.0" style="-fx-text-fill: black;" text="Select student type" />
 
     <JFXRadioButton fx:id="boarder" layoutX="241.0" layoutY="523.0" mnemonicParsing="false" text="Boarder">
@@ -60,21 +61,24 @@
         </toggleGroup>
     </JFXRadioButton>
     <JFXRadioButton fx:id="DayScholar" layoutX="322.0" layoutY="523.0" mnemonicParsing="false" text="Dayschollar" toggleGroup="$Select" />
-    <JFXDatePicker fx:id="dateOfAdmission" layoutX="26.0" layoutY="519.0" promptText="dd/mm/yyyy" showWeekNumbers="true" />
+    <JFXDatePicker fx:id="dateOfAdmission" layoutX="26.0" layoutY="519.0" prefHeight="31.0" prefWidth="192.0" promptText="dd/mm/yyyy" showWeekNumbers="true" />
 
     <JFXButton id="button" buttonType="RAISED" layoutX="462.0" layoutY="619.0" mnemonicParsing="false" onAction="#submitStudentDetails" text="submit" />
-    <JFXDatePicker fx:id="dateOfBirth" defaultColor="#ffb60d" layoutX="433.0" layoutY="184.0" onAction="#validateBirthDate" promptText="dd/mm/yyyy" showWeekNumbers="true" />
-    <Label layoutX="440.0" layoutY="165.0" text="Date of Birth" />
-    <JFXTextField fx:id="lastAdmissionNumber" labelFloat="true" layoutX="27.0" layoutY="582.0" onMouseClicked="#showHint" prefHeight="37.0" prefWidth="267.0" promptText="Enter Last Admission Number" styleClass="promptText">
+    <JFXDatePicker fx:id="dateOfBirth" defaultColor="#ffb60d" layoutX="433.0" layoutY="184.0" onAction="#validateBirthDate" prefHeight="31.0" prefWidth="192.0" promptText="dd/mm/yyyy" showWeekNumbers="true" />
+    <Label fx:id="labelDOB" layoutX="440.0" layoutY="165.0" text="Date of Birth" />
+    <JFXTextField fx:id="lastAdmissionNumber" labelFloat="true" layoutX="27.0" layoutY="582.0" onMouseClicked="#showHint" prefHeight="37.0" prefWidth="207.0" promptText="Enter Last Admission Number" styleClass="promptText">
         <tooltip>
             <Tooltip fx:id="tooltip" text="The last admission number given to a student" />
         </tooltip>
     </JFXTextField>
-    <Separator layoutX="2.0" layoutY="234.0" prefHeight="1.0" prefWidth="608.0" style="-fx-background-color: blue;" />
-    <Separator layoutX="2.0" layoutY="435.0" prefHeight="1.0" prefWidth="608.0" style="-fx-background-color: blue;" />
+    <Separator layoutX="2.0" layoutY="234.0" prefHeight="1.0" prefWidth="608.0" style="-fx-background-color: #CCC9C9;" />
+    <Separator layoutX="2.0" layoutY="435.0" prefHeight="1.0" prefWidth="608.0" style="-fx-background-color: #CCC9C9;" />
    <Separator layoutX="642.0" layoutY="1.0" orientation="VERTICAL" prefHeight="691.0" prefWidth="3.0" />
 
-   <JFXButton layoutX="1036.0" layoutY="626.0" mnemonicParsing="false" onAction="#printDetails" text="Print" />
+   <JFXButton layoutX="1036.0" layoutY="626.0" mnemonicParsing="false" onAction="#printDetails" text="Print">
+      <graphic>
+         <MaterialDesignIconView fill="#544646" glyphName="PRINTER" size="18.0" strokeType="OUTSIDE" strokeWidth="0.0" />
+      </graphic></JFXButton>
    <AnchorPane fx:id="printArea" layoutX="650.0" layoutY="10.0" prefHeight="599.0" prefWidth="475.0">
        <TextArea fx:id="studentDetails" editable="false" layoutX="12.0" layoutY="3.0" prefHeight="594.0" prefWidth="452.0" wrapText="true">
            <opaqueInsets>
@@ -84,5 +88,11 @@
                <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
            </padding></TextArea>
    </AnchorPane>
+   <JFXComboBox fx:id="term" layoutX="267.0" layoutY="581.0" prefHeight="31.0" prefWidth="131.0" />
+   <Label layoutX="265.0" layoutY="561.0" style="-fx-text-fill: black;" text="Select Term">
+      <graphic>
+         <RequiredFieldValidator fx:id="selectFormValidator1" message="invalid" />
+      </graphic>
+   </Label>
 
 </AnchorPane>

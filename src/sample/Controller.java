@@ -1,9 +1,8 @@
 package sample;
 
-import animatefx.animation.*;
-import de.jensd.fx.glyphs.emojione.EmojiOneView;
-import de.jensd.fx.glyphs.weathericons.WeatherIcon;
+import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
@@ -11,10 +10,8 @@ import javafx.scene.control.ButtonType;
 import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
-import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
-import javafx.util.Duration;
 
 import java.io.IOException;
 import java.util.Optional;
@@ -27,8 +24,9 @@ import java.util.Optional;
 public class Controller {
 
     private Stage stage = new Stage();
- private double x,y;
+    private double x,y;
     Parent root1;
+
     // This method is used to loads a different User Interface screens
     public void changeUi(String ui){
 
@@ -37,8 +35,7 @@ public class Controller {
             root1= loadUi.load();
             Scene scene= new Scene(root1);
 
-
-
+            //the switch case is used set the Characteristics of the stage such title,initStyle,Maximized,Resizability
             switch (ui) {
                 case "mainUi":
                     //setting the Title of maiUi to Sigiria secondary school
@@ -47,14 +44,13 @@ public class Controller {
                     stage.setOnCloseRequest(e -> {
                         e.consume();
                         closeMainUi();
-
                     });
                     break;
 
                 case "splashScreen":
                     stage.initStyle(StageStyle.UNDECORATED);
                     break;
-                    
+
                 case "login":
                     stage.initStyle(StageStyle.UNDECORATED);
 
@@ -69,45 +65,41 @@ public class Controller {
                         stage.setY(event.getScreenY()-y);
                     });
 
-
                     break;
 
                 case "admissionsForm":
                     stage.setTitle(("Admissions Form").toUpperCase());
                     stage.setResizable(false);
                     stage.setMaximized(false);
-                  //  stage.initModality(Modality.APPLICATION_MODAL); //blocks events from being delivered to any other application window.
+                 //   stage.initModality(Modality.APPLICATION_MODAL); //blocks events from being delivered to any other application window.
                     break;
+
                 case "studentDetails":
                       stage.setResizable(true);
                       stage.setMaximized(true);
                     stage.setTitle(("Student Details").toUpperCase());
                       break;
+
                 case "guardianDetails":
                     stage.setResizable(true);
                     stage.setMaximized(true);
                     stage.setTitle(("Guardian Details").toUpperCase());
                     break;
+
               default:
                     stage.setTitle((ui).toUpperCase());
                     stage.setResizable(true);
                     break;
             }
 
-
             stage.setScene(scene);
-            Image image=new Image("/images/DX9.png"); //logo icon for application
+           Image image=new Image("/images/DX9.png"); //logo icon for application
             stage.getIcons().add(image);
           stage.show();
+
         }catch (IOException e) {
             e.printStackTrace();
         }
-    }
-
-     //This method is used to close screens
-    public void close(AnchorPane anchorPane){
-        Stage stage= (Stage) anchorPane.getScene().getWindow();
-        stage.close();
     }
 
     //This method is used to close the mainUi screens
@@ -119,12 +111,20 @@ public class Controller {
 
         Optional<ButtonType> answer= alert.showAndWait();
 
-          if(answer.get() ==ButtonType.OK){
-              stage.close();
+        if((answer.get() ==ButtonType.OK)){
+            Platform.exit();
+            stage.close();
         }
     }
 
     //This method is used to close screens
+    public void close(Node node){
+        Stage stage= (Stage) node.getScene().getWindow();
+       // Platform.exit();
+        stage.close();
+    }
+
+    //This method is used to logOut
     public void close(BorderPane borderPane){
         Stage stage= (Stage) borderPane.getScene().getWindow();
         stage.close();
@@ -132,8 +132,8 @@ public class Controller {
 
     //this method is used to minimise a window
     public void Minimise(AnchorPane anchorPane){
-        Stage stage= (Stage) anchorPane.getScene().getWindow();
-        stage.setIconified(true);
+        Stage stage= (Stage) anchorPane.getScene().getWindow(); //get the window
+        stage.setIconified(true); //minimises the window
 
     }
 

@@ -15,16 +15,16 @@ public class GuardianDao {
     public void AddGuardianDetails(String GuardianFirstName, String GuardianLastName, String GuardianEmail, int phoneNumber, int admissionNumber)
     {
 
-        String sql="INSERT INTO guardian_details(guardian_first_name,guardian_last_name,guardian_phone_number,guardian_email,admission_number) VALUES (?,?,?,?,?)";
+        String sql="INSERT INTO guardian_details(guardian_first_name,guardian_last_name,guardian_phone_number,guardian_email,admission_number) VALUES (?,?,?,?,?) ";
         try {
-            PreparedStatement preparedStatement = connection.prepareStatement(sql);
-            preparedStatement.setString(1,GuardianFirstName);
-            preparedStatement.setString(2,GuardianLastName);
-            preparedStatement.setInt(3,phoneNumber);
-            preparedStatement.setString(4, GuardianEmail);
-            preparedStatement.setInt(5,admissionNumber);
+            PreparedStatement ps = connection.prepareStatement(sql);
+            ps.setString(1,GuardianFirstName);
+            ps.setString(2,GuardianLastName);
+            ps.setString(4, GuardianEmail);
+            ps.setInt(5,admissionNumber);
+            ps.setInt(3,phoneNumber);
 
-            preparedStatement.executeUpdate();
+            ps.executeUpdate();
 
         } catch (SQLException e)
         {

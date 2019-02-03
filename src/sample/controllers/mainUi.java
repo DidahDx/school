@@ -1,6 +1,6 @@
 package sample.controllers;
 
-import animatefx.animation.*;
+import animatefx.animation.SlideInRight;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXPopup;
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView;
@@ -16,6 +16,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
 import sample.Controller;
+import sample.controllers.user.login;
 
 import java.io.IOException;
 import java.net.URL;
@@ -33,7 +34,7 @@ public class mainUi implements Initializable {
  Controller controller=new Controller();
 
  public mainUi() {
-     userId=login.id;
+     userId= login.id;
  }
 
     //this loads the dashboard user interface to center of the borderPane of the main user interface(mainUi.fxml)
@@ -84,6 +85,7 @@ public class mainUi implements Initializable {
 
        AnchorPane= FXMLLoader.load(getClass().getResource("/fxml/"+ui+".fxml"));
         borderPane.setCenter(AnchorPane);
+        new SlideInRight(AnchorPane).play();
         borderPane.setStyle("-fx-margin:0;");
         borderPane.setLayoutX(0);
         borderPane.setLayoutY(0);
@@ -94,6 +96,7 @@ public class mainUi implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
            loggedIn.setText(userId);
+           user.setStyleClass("user-circle");
 
         showSideMenuName.setText(("dashboard").toUpperCase());
         try {
@@ -101,11 +104,7 @@ public class mainUi implements Initializable {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
-
     }
-
-
 
     //handles logOut
     @FXML
@@ -117,18 +116,16 @@ public class mainUi implements Initializable {
     public void initPopup(){
         JFXButton log_out=new JFXButton("Log Out");
         JFXButton profile=new JFXButton("Profile");
-        JFXButton settings=new JFXButton("Settings");
-        JFXButton about=new JFXButton("About");
+
              log_out.setOnAction(event -> {
-                 controller.close(borderPane);
+
+                controller.close(borderPane);
                  controller.changeUi("login");
              });
-        VBox vbox=new VBox(profile,settings,about,log_out);
-//        vbox.setStyle("-fx-alignment: center;");
+        VBox vbox=new VBox(profile,log_out);
         vbox.setAlignment(Pos.CENTER);
         JFXPopup popup=new JFXPopup();
         popup.setPopupContent(vbox);
-
        popup.show(user);
 
     }

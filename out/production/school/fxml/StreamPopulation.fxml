@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import javafx.scene.chart.PieChart?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+
+<AnchorPane prefHeight="552.0" prefWidth="794.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controllers.admission.StreamPopulation">
+   <children>
+      <BorderPane prefHeight="552.0" prefWidth="794.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <top>
+            <AnchorPane prefHeight="67.0" prefWidth="794.0" style="-fx-background-color: #7A8AFF;" BorderPane.alignment="CENTER">
+               <children>
+                  <JFXComboBox fx:id="form" layoutX="397.0" layoutY="13.0" onAction="#loadChart" prefHeight="25.0" prefWidth="76.0" AnchorPane.leftAnchor="397.0" />
+                  <JFXComboBox fx:id="Stream" layoutX="667.0" layoutY="13.0" onAction="#loadChart" prefHeight="25.0" prefWidth="168.0" AnchorPane.leftAnchor="667.0" />
+                  <Label layoutX="321.0" layoutY="17.0" text="Select Form" />
+                  <Label layoutX="578.0" layoutY="17.0" text="Select Stream" />
+               </children>
+            </AnchorPane>
+         </top>
+         <left>
+            <AnchorPane prefHeight="567.0" prefWidth="700.0" BorderPane.alignment="CENTER">
+               <children>
+                  <PieChart fx:id="pieChart" layoutX="119.0" layoutY="136.0" prefHeight="421.0" prefWidth="431.0" />
+                  <Label layoutX="58.0" layoutY="52.0" text="Total population :" />
+                  <Label layoutX="332.0" layoutY="52.0" text="Boys Population :" />
+                  <Label layoutX="226.0" layoutY="14.0" text="Population of  Form" AnchorPane.leftAnchor="226.0" />
+                  <Label layoutX="347.0" layoutY="14.0" text="1" AnchorPane.leftAnchor="347.0" />
+                  <Label layoutX="331.0" layoutY="86.0" text="Girls Population  :" />
+                  <Label fx:id="fTotalPopulation" layoutX="171.0" layoutY="52.0" text="1" />
+                  <Label fx:id="fBoysPopulation" layoutX="440.0" layoutY="52.0" text="1" />
+                  <Label fx:id="fGirlsPopulation" layoutX="440.0" layoutY="86.0" text="1" />
+               </children>
+            </AnchorPane>
+         </left>
+
+         <right>
+            <AnchorPane prefHeight="567.0" prefWidth="700.0" BorderPane.alignment="CENTER">
+               <children>
+                  <PieChart fx:id="pieChart1" layoutX="171.0" layoutY="136.0" prefHeight="421.0" prefWidth="431.0" />
+                  <Label layoutX="86.0" layoutY="52.0" text="Total population :" AnchorPane.leftAnchor="86.0" />
+                  <Label layoutX="327.0" layoutY="52.0" text="Boys Population :" />
+                  <Label layoutX="221.0" layoutY="9.0" text="Population of  Form" AnchorPane.leftAnchor="221.0" />
+                  <Label layoutX="347.0" layoutY="9.0" prefHeight="17.0" prefWidth="6.0" text="1" AnchorPane.leftAnchor="347.0" />
+                  <Label layoutX="326.0" layoutY="86.0" text="Girls Population  :" />
+                  <Label fx:id="sTotalPopulation" layoutX="197.0" layoutY="52.0" text="1" />
+                  <Label fx:id="sBoysPopulation" layoutX="428.0" layoutY="52.0" text="1" />
+                  <Label fx:id="sGirlsPopulation" layoutX="428.0" layoutY="86.0" text="1" />
+               </children>
+            </AnchorPane>
+         </right>
+         <center>
+            <Separator orientation="VERTICAL" prefHeight="553.0" prefWidth="0.0" BorderPane.alignment="CENTER" />
+         </center></BorderPane>
+   </children>
+</AnchorPane>

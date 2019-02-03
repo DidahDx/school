@@ -7,8 +7,11 @@ import javafx.scene.chart.LineChart;
 import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.XYChart;
 import javafx.scene.layout.AnchorPane;
+import sample.dataAccessObject.admission.SchoolStatisticsDao;
 
 import java.net.URL;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
 
 public class dashboard implements Initializable {
@@ -16,20 +19,65 @@ public class dashboard implements Initializable {
     public NumberAxis y;
     public LineChart<?,?> LineChart;
     public AnchorPane anchorPane;
+    private SchoolStatisticsDao schoolStatisticsDao=new SchoolStatisticsDao();
+    private int E1,W1,E2,W2,E3,W3,W4,E4;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        new SlideInLeft(anchorPane).play();
+       // new SlideInLeft(anchorPane).play();
+
+      setSchoolStatistics();
 
         XYChart.Series series=new XYChart.Series();
-        series.getData().add(new XYChart.Data("Form 1 EAST", 23));
-        series.getData().add(new XYChart.Data("Form 1 west", 12));
-        series.getData().add(new XYChart.Data("Form 2 EAST", 53));
-        series.getData().add(new XYChart.Data("Form 2 west", 13));
-        series.getData().add(new XYChart.Data("Form 3 EAST", 73));
-        series.getData().add(new XYChart.Data("Form 3 west", 43));
-        series.getData().add(new XYChart.Data("Form 4 EAST", 83));
-        series.getData().add(new XYChart.Data("Form 4 west", 3));
+        series.getData().add(new XYChart.Data("Form 1 EAST", E1));
+        series.getData().add(new XYChart.Data("Form 1 WEST", W1));
+        series.getData().add(new XYChart.Data("Form 2 EAST", E2));
+        series.getData().add(new XYChart.Data("Form 2 WEST", W2));
+        series.getData().add(new XYChart.Data("Form 3 EAST", E3));
+        series.getData().add(new XYChart.Data("Form 3 WEST", W3));
+        series.getData().add(new XYChart.Data("Form 4 EAST", E4));
+        series.getData().add(new XYChart.Data("Form 4 WEST", W4));
 
         LineChart.getData().addAll(series);}
+
+        public void setSchoolStatistics(){
+
+            try {
+               ResultSet rs=schoolStatisticsDao.StreamFormStatistics(1,"EAST");
+               while(rs.next()) {
+                 E1=rs.getInt("COUNT(admission_number)");
+               }
+                ResultSet rs1=schoolStatisticsDao.StreamFormStatistics(1,"WEST");
+                while(rs1.next()) {
+                    W1=rs1.getInt("COUNT(admission_number)");
+                }
+                ResultSet rs2=schoolStatisticsDao.StreamFormStatistics(2,"EAST");
+                while(rs2.next()) {
+                    E2=rs2.getInt("COUNT(admission_number)");
+                }
+                ResultSet rs3=schoolStatisticsDao.StreamFormStatistics(2,"WEST");
+                while(rs3.next()) {
+                    W2=rs3.getInt("COUNT(admission_number)");
+                }
+                ResultSet rs4=schoolStatisticsDao.StreamFormStatistics(3,"EAST");
+                while(rs4.next()) {
+                    E3=rs4.getInt("COUNT(admission_number)");
+                }
+                ResultSet rs5=schoolStatisticsDao.StreamFormStatistics(3,"WEST");
+                while(rs5.next()) {
+                    W3=rs5.getInt("COUNT(admission_number)");
+                }
+                ResultSet rs6=schoolStatisticsDao.StreamFormStatistics(4,"EAST");
+                while(rs6.next()) {
+                    E4=rs6.getInt("COUNT(admission_number)");
+                }
+                ResultSet rs7=schoolStatisticsDao.StreamFormStatistics(4,"WEST");
+                while(rs7.next()) {
+                    W4=rs7.getInt("COUNT(admission_number)");
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+
 }

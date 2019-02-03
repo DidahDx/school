@@ -1,4 +1,4 @@
-package sample.database;
+package sample.dataAccessObject;
 
 
 import java.util.ResourceBundle;

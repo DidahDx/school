@@ -16,7 +16,7 @@
             <BorderPane.margin>
                 <Insets />
             </BorderPane.margin>
-            <FontAwesomeIconView fx:id="user" glyphName="USER_CIRCLE" layoutX="14.0" layoutY="26.0" onMouseClicked="#initPopup" size="30" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="glyph-icon" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="4.571428298950195" />
+            <FontAwesomeIconView fx:id="user" glyphName="USER_CIRCLE" layoutX="14.0" layoutY="26.0" onMouseClicked="#initPopup" size="30" strokeType="OUTSIDE" strokeWidth="0.0" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="4.571428298950195" />
 
             <Label fx:id="showSideMenuName" layoutX="709.0" layoutY="10.0" prefHeight="30.0" prefWidth="218.0" AnchorPane.leftAnchor="709.0">
 

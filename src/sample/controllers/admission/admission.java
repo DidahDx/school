@@ -36,6 +36,6 @@ public class admission implements Initializable {
 
     //changes user interface to school
     public void schoolStatistics(ActionEvent actionEvent) {
-        control.changeUi("schoolPopulation");
+        control.changeUi("schoolStatistics");
     }
 }

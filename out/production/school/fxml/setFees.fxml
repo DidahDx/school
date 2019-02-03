@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="529.0" prefWidth="569.0" stylesheets="@../css/finance.css" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controllers.finance.SetFees">
+    <Text layoutX="205.0" layoutY="37.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Set School fees" />
+    <JFXComboBox fx:id="forms" labelFloat="true" layoutX="133.0" layoutY="75.0" onAction="#handlesForms" prefHeight="29.0" prefWidth="113.0" promptText="Select Form" />
+    <JFXTextField fx:id="term1" labelFloat="true" layoutX="188.0" layoutY="160.0" prefHeight="26.0" prefWidth="160.0" promptText="Term 1" />
+    <JFXTextField fx:id="term2" labelFloat="true" layoutX="188.0" layoutY="229.0" prefHeight="26.0" prefWidth="160.0" promptText="Term 2" />
+    <JFXTextField fx:id="term3" labelFloat="true" layoutX="188.0" layoutY="304.0" prefHeight="26.0" prefWidth="160.0" promptText="Term 3" />
+    <JFXButton fx:id="Update" layoutX="297.0" layoutY="388.0" onAction="#handleUpdate" prefHeight="32.0" prefWidth="72.0" text="Update" />
+    <JFXComboBox fx:id="studentType" labelFloat="true" layoutX="296.0" layoutY="75.0" onAction="#handlesForms" prefHeight="29.0" prefWidth="152.0" promptText="Student Type" />
+   <JFXButton fx:id="addFees" layoutX="194.0" layoutY="392.0" mnemonicParsing="false" onAction="#handleAddFees" text="Add" />
+</AnchorPane>

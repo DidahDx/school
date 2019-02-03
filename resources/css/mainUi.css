@@ -3,10 +3,11 @@
 }
 
 .vBoxLeft .button{
--fx-font-family:"SansSerif Bold";
+-fx-font-family:"Times New Roman";
  -fx-font-size:18;
 -fx-padding:10 0 10 10;
 -fx-text-fill:white;
+    -fx-font-weight: bold;
 }
 
 .vBoxLeft .button:pressed{

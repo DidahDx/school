@@ -48,15 +48,35 @@
 }
 
 /*styling TextField inputs*/
-.textField{
-    -fx-text-fill:black;
-    -fx-font-size:20;
-}
+/*.textField{*/
+    /*-fx-text-fill:black;*/
+    /*-fx-font-size:20;*/
+/*}*/
 
 /*styling the displayed promptText for TextFields*/
 .promptText{
     -fx-prompt-text-fill:-fx-secondary;
-    -fx-font-size:20;
+    -fx-font-size:13pt;
+    -fx-text-fill:black;
+}
+
+/*styling the displayed promptText for TextFields when focused*/
+.promptText:focused, .promptText:selected {
+    -fx-prompt-text-fill:black;
+    -fx-text-fill:black;
+}
+
+/*styling the displayed promptText for TextFields*/
+.jfx-text-field{
+    -fx-prompt-text-fill:-fx-secondary;
+    -fx-font-size:11pt;
+    -fx-font-weight: bold;
+    -fx-text-fill:black;
+}
+
+/*styling the displayed promptText for TextFields when focused*/
+.jfx-text-field:focused, .jfx-text-field:selected {
+    -fx-prompt-text-fill:black;
     -fx-text-fill:black;
 }
 

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXTabPane?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<AnchorPane prefHeight="539.0" prefWidth="856.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controllers.admission.SchoolStatistics">
+    <JFXTabPane prefHeight="539.0" prefWidth="856.0" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0"
+                AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+
+            <Tab text="Stream  Statistics">
+                <fx:include fx:id="Stream" source="StreamPopulation.fxml"/>
+            </Tab>
+
+            <Tab text="Dorm  Statistics">
+                <fx:include fx:id="Dorm" source="DormStatistics.fxml"/>
+            </Tab>
+
+        </JFXTabPane>
+</AnchorPane>

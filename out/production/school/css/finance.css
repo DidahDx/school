@@ -1,0 +1,19 @@
+@import url("universal.css");
+
+.text-area{
+    -fx-font-size:13pt;
+    -fx-text-fill: black;
+    -fx-padding: 10;
+}
+
+.jfx-text-field{
+    -fx-prompt-text-fill: #25375E;
+    -fx-font-size:12;
+    -fx-text-fill: black;
+}
+
+.jfx-combo-box{
+    -fx-prompt-text-fill: #1E2735;
+    -fx-font-weight: bold;
+    -fx-background-color: #586682;
+}

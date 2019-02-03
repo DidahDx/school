@@ -29,7 +29,7 @@
 }
 .scroll-bar:horizontal .thumb, .scroll-bar:vertical .thumb{
 -fx-background-color:#B2B2B2;
--fx-background-radius:6em;
+-fx-background-radius:5em;
 }
 
 .scroll-pane > .corner{
