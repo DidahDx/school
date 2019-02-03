@@ -25,7 +25,7 @@ public class CalculateAverageMarks {
     AverageMarksDao averageMarksDao=new AverageMarksDao();
     EndTermDao endTermDao=new EndTermDao();
 
-    public void AddCatAndEndTermMark(int form,int term,int admissionNumber){
+    public void AddCatAndEndTermMark(int form,int admissionNumber,int term){
 
         LocalDate today=LocalDate.now();
         LocalTime now=LocalTime.now();
@@ -100,22 +100,21 @@ public class CalculateAverageMarks {
 
     //this method is used to check if the records exist in the average mark table in the database
     public boolean checkIfRecordsExist(int form,int admissionNumber,int term){
-        boolean check=false; int sform=0,sterm=0;
+        boolean check=false; int sform = 0,sterm = 0;
         try {
-           ResultSet rs= averageMarksDao.getCurrentStudentAveragemMarks(form,admissionNumber,term);
+           ResultSet rs= averageMarksDao.getCurrentStudentAveragemMarks(form,term,admissionNumber);
            while(rs.next()){
                sform=rs.getInt("form");
                sterm=rs.getInt("term");
                averageMarksId =rs.getInt("average_marks_id");
            }
+            if (sform==0 && sterm==0){
+                check=true;
+            }else{
+                check=false;
+            }
         } catch (SQLException e) {
             e.printStackTrace();
-        }
-
-        if (sform==0 && sterm==0){
-            check=true;
-        }else{
-            check=false;
         }
 
         return check;
