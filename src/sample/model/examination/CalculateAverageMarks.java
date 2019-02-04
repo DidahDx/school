@@ -25,7 +25,7 @@ public class CalculateAverageMarks {
     AverageMarksDao averageMarksDao=new AverageMarksDao();
     EndTermDao endTermDao=new EndTermDao();
 
-    public void AddCatAndEndTermMark(int form,int admissionNumber,int term){
+    public void AddCatAndEndTermMark(int form,int admissionNumber,int term,String stream){
 
         LocalDate today=LocalDate.now();
         LocalTime now=LocalTime.now();
@@ -65,32 +65,32 @@ public class CalculateAverageMarks {
             }
 
             int nMath=Maths+Maths1;
+            int nKiswahili=Kiswahili+Kiswahili1;
             int nPhysics=Physics+Physics1;
             int nCre=Cre+Cre1;
-            int nHistory=History+History1;
-            int nKiswahili=Kiswahili+Kiswahili1;
             int nBiology=Biology+Biology1;
+            int nBusiness =BusinessStudies+BusinessStudies1;
+            int nHistory=History+History1;
             int nChemistry=Chemistry+Chemistry1;
             int nEnglish=English+English1;
             int nGeography=Geography+Geography1;
-            int nComputer=ComputerStudies+ComputerStudies1;
             int nAgriculture=agriculture+agriculture1;
-            int nBusiness =BusinessStudies+BusinessStudies1;
+            int nComputer=ComputerStudies+ComputerStudies1;
 
             int total=nMath+nEnglish+nKiswahili+nBiology+nPhysics+nChemistry+nHistory+
-                    nGeography +nCre+nBusiness+nComputer+nAgriculture;
+                    nGeography +nCre+nBusiness+nComputer+nAgriculture;  //adding total marks
 
-
+            //if the records exist it is updated else it is added to the database
             if (checkIfRecordsExist(form,admissionNumber,term)){
                 averageMarksDao.InsertAverageMarks(admissionNumber,nMath,nEnglish,nKiswahili, nBiology,nPhysics,nChemistry,nHistory,
-                      nGeography ,nCre,nBusiness,nComputer,nAgriculture,form,term,today,now,total);
+                      nGeography ,nCre,nBusiness,nComputer,nAgriculture,form,term,today,now,total,stream);
             }else{
                 averageMarksDao.UpdateAverageMarks(admissionNumber,nMath,nEnglish,nKiswahili, nBiology,nPhysics,nChemistry,nHistory,
-                        nGeography ,nCre,nBusiness,nComputer,nAgriculture,form,term,today,now,total);
+                        nGeography ,nCre,nBusiness,nComputer,nAgriculture,form,term,today,now,total,stream);
             }
 
             if(checkRecords(form,admissionNumber,term)){
-                averageMarksDao.DeleteAvearageMarks(averageMarksId);
+                averageMarksDao.DeleteAvearageMarks(averageMarksId); //used to delete data in the average marks table
             }
 
         } catch (SQLException e) {
@@ -120,7 +120,7 @@ public class CalculateAverageMarks {
         return check;
     }
 
-    //this method check if any records exist in the cat and endTerm tables  in the database
+    //this method checks if any records exist in the cat and endTerm tables  in the database
     public boolean checkRecords(int form,int admissionNumber,int term){
         int sform=0,sform1=0,mTerm=0,mTerm1=0;boolean check=false;
         try {
