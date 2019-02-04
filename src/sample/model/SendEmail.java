@@ -13,17 +13,18 @@ import java.util.Properties;
 public class SendEmail {
 
 
-    public static void main(String[]args){
+    public boolean sendEmailMessage(String tSubject,String tMessage,String tReceiver){
+        boolean check=false;
         try {
         String host="smtp.gmail.com";
         String user="projectuoe@gmail.com";
         String password="123@project";
         String from="projectuoe@gmail.com";
-        String subject="test Subject";
-        String message=" message";
+        String subject=tSubject;
+        String message=tMessage;
 
 
-            String to = "didahdaniel@gmail.com,projectuoe@gmail.com";
+            String to = "projectuoe@gmail.com,"+ tReceiver;
             String[] recipientList = to.split(",");
             InternetAddress[] recipientAddress = new InternetAddress[recipientList.length];
             int counter = 0;
@@ -58,10 +59,15 @@ public class SendEmail {
             transport.sendMessage(ms,ms.getAllRecipients());
             transport.close();
 
+            System.out.println("email sent");
+            check=true;
+
         } catch (Exception e) {
             e.printStackTrace();
+            check=false;
         }
 
+        return check;
     }
 
 
