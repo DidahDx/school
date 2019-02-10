@@ -11,6 +11,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import sample.dataAccessObject.admission.StudentDao;
 import sample.dataAccessObject.examination.EndTermDao;
 import sample.model.examination.CalculateAverageMarks;
+import sample.model.examination.SetStudentPosition;
 import sample.model.examination.ExamModelTable;
 
 import java.net.URL;
@@ -39,6 +40,7 @@ public class EndTermExams implements Initializable {
     public TableColumn<ExamModelTable,Integer> tComputerScience;
     public TableColumn<ExamModelTable,Integer> tForm;
     public TableColumn<ExamModelTable,Integer> tTerm;
+    public TableColumn<ExamModelTable,String> tStream;
     public TableColumn<ExamModelTable,Integer> tDate;
     public TableColumn<ExamModelTable,Integer> tTime;
     public TableView<ExamModelTable> table;
@@ -49,7 +51,7 @@ public class EndTermExams implements Initializable {
     public JFXButton eMarksClear;
     public JFXButton eDelete;
     public JFXButton eEdit;
-    
+
     public JFXTextField eAdmissionNumber;
     public JFXTextField maths;
     public JFXTextField english;
@@ -68,14 +70,15 @@ public class EndTermExams implements Initializable {
     public ChoiceBox SearchForms;
     public TextField searchTextField;
 
-    CalculateAverageMarks calculateAverageMarks=new CalculateAverageMarks();
+    private CalculateAverageMarks calculateAverageMarks=new CalculateAverageMarks();
+    SetStudentPosition setStudentPosition =new SetStudentPosition();
     private EndTermDao endTermDao=new EndTermDao();
-    private ObservableList tableList= FXCollections.observableArrayList();
+    ObservableList tableList=FXCollections.observableArrayList();
     private String name="",second="";
     private int endTermId=0;
     private StudentDao stDao=new StudentDao();
     private CatMarks catMarks=new CatMarks();
-    int form=0,term=0;
+    int form=0,term=0; String stream="";
 
 
     @Override
@@ -83,6 +86,7 @@ public class EndTermExams implements Initializable {
         ForButtonVisibility(true);
         loadTable();
         catMarks.fillChoiceBox(SearchForms);
+        SearchForms.setValue("All");
     }
 
     //this is used to search for End Term Marks with admission Number
@@ -134,7 +138,13 @@ public class EndTermExams implements Initializable {
     //this method is used to delete End Term Marks
     public void delete(ActionEvent actionEvent) {
         try {
-            Alert alert=new Alert(Alert.AlertType.CONFIRMATION);
+
+            ResultSet rs7= stDao.searchTable(Integer.parseInt(eAdmissionNumber.getText()));
+                while(rs7.next()){
+                    stream=rs7.getString("stream");
+                }
+
+                Alert alert=new Alert(Alert.AlertType.CONFIRMATION);
             alert.setContentText(Content("DELETE"));
             alert.setHeaderText(null);
             Optional<ButtonType> answer=alert.showAndWait();
@@ -142,7 +152,9 @@ public class EndTermExams implements Initializable {
             if (answer.get()==ButtonType.OK) {
                 endTermDao.DeleteEndTermMarks(endTermId);
                 loadTable();
-                calculateAverageMarks.AddCatAndEndTermMark(form,Integer.parseInt(eAdmissionNumber.getText()),term);
+                calculateAverageMarks.AddCatAndEndTermMark(form,Integer.parseInt(eAdmissionNumber.getText()),term,stream);
+                setStudentPosition.setStreamPosition(form,term,stream);
+
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -152,6 +164,19 @@ public class EndTermExams implements Initializable {
     public void Clear(ActionEvent actionEvent) {
         ForButtonVisibility(false);
         eUpdate.setVisible(false);
+        biology.setText(null);
+        history.setText(null);
+        chemistry.setText(null);
+        english.setText(null);
+        kiswahili.setText(null);
+        physics.setText(null);
+        cre.setText(null);
+        maths.setText(null);
+        agriculture.setText(null);
+        eAdmissionNumber.setText(null);
+        business.setText(null);
+        geography.setText(null);
+        computerStudies.setText(null);
     }
 
     public void cancel(ActionEvent actionEvent) {
@@ -167,6 +192,7 @@ public class EndTermExams implements Initializable {
                 name=rs.getString("first_name");
                 second=rs.getString("second_name");
                 form=rs.getInt("form");
+                stream=rs.getString("stream");
             }
             LocalTime now=LocalTime.now(); //gets current time
             LocalDate today=LocalDate.now(); //gets current date
@@ -181,8 +207,12 @@ public class EndTermExams implements Initializable {
                         Integer.parseInt(kiswahili.getText()), Integer.parseInt(biology.getText()), Integer.parseInt(physics.getText()), Integer.parseInt(chemistry.getText()),
                         Integer.parseInt(history.getText()), Integer.parseInt(geography.getText()), Integer.parseInt(cre.getText()),
                         Integer.parseInt(business.getText()), Integer.parseInt(computerStudies.getText()), Integer.parseInt(agriculture.getText()),
-                        form, term,endTermId,now,today);
-                calculateAverageMarks.AddCatAndEndTermMark(form,Integer.parseInt(eAdmissionNumber.getText()),term);
+                        form, term,endTermId,now,today,stream);
+
+                calculateAverageMarks.AddCatAndEndTermMark(form,Integer.parseInt(eAdmissionNumber.getText()),term,stream);
+                setStudentPosition.setStreamPosition(form,term,stream);
+                loadTable();
+
             }
             ForButtonVisibility(true);
             loadTable();
@@ -195,31 +225,48 @@ public class EndTermExams implements Initializable {
     public void AddMarks(ActionEvent actionEvent)
     {
         try {
-            int form = 0,term = 0;
+            int form = 0,term = 0;int form1=0,term1=0;
             ResultSet rs= stDao.searchTable(Integer.parseInt(eAdmissionNumber.getText())); //checking which form and term the student is currently in
-            while(rs.next()){
+            ResultSet rs2=endTermDao.Search(Integer.parseInt(eAdmissionNumber.getText().trim()));
+            while(rs.next() ){
                 term=rs.getInt("term");
                 form=rs.getInt("form");
+                stream=rs.getString("stream");
+            }
+            while(rs2.next()){
+               form1= rs2.getInt("form");
+               term1= rs2.getInt("term");
             }
             LocalTime now=LocalTime.now();
             LocalDate today=LocalDate.now();
 
-            if (!(form==0 || term==0)) {
-                Alert alert=new Alert(Alert.AlertType.CONFIRMATION);
-                alert.setContentText(Content("INSERT"));
-                alert.setHeaderText(null);
-                Optional<ButtonType> answer=alert.showAndWait();
+            if(!(form1==form && term==term1)) {
+                if (!(form == 0 || term == 0)) {
+                    Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+                    alert.setContentText(Content("INSERT"));
+                    alert.setHeaderText(null);
+                    Optional<ButtonType> answer = alert.showAndWait();
 
-                if (answer.get()==ButtonType.OK) {
-                endTermDao.InsertEndTermMarks(Integer.parseInt(eAdmissionNumber.getText()), Integer.parseInt(maths.getText()), Integer.parseInt(english.getText()),
-                        Integer.parseInt(kiswahili.getText()), Integer.parseInt(biology.getText()), Integer.parseInt(physics.getText()), Integer.parseInt(chemistry.getText()),
-                        Integer.parseInt(history.getText()), Integer.parseInt(geography.getText()), Integer.parseInt(cre.getText()),
-                        Integer.parseInt(business.getText()), Integer.parseInt(computerStudies.getText()), Integer.parseInt(agriculture.getText()),
-                        form, term,today,now);
-                    calculateAverageMarks.AddCatAndEndTermMark(form,Integer.parseInt(eAdmissionNumber.getText()),term);
+                    if (answer.get() == ButtonType.OK) {
+                        endTermDao.InsertEndTermMarks(Integer.parseInt(eAdmissionNumber.getText()), Integer.parseInt(maths.getText()), Integer.parseInt(english.getText()),
+                                Integer.parseInt(kiswahili.getText()), Integer.parseInt(biology.getText()), Integer.parseInt(physics.getText()),
+                                Integer.parseInt(chemistry.getText()), Integer.parseInt(history.getText()), Integer.parseInt(geography.getText()),
+                                Integer.parseInt(cre.getText()), Integer.parseInt(business.getText()), Integer.parseInt(computerStudies.getText()),
+                                Integer.parseInt(agriculture.getText()), form, term, today, now, stream);
+
+                        calculateAverageMarks.AddCatAndEndTermMark(form, Integer.parseInt(eAdmissionNumber.getText()), term, stream);
+                        setStudentPosition.setStreamPosition(form, term, stream);
+                        loadTable();
+
+                    }
+                } else {
+                    CheckStudentExist(eAdmissionNumber);
                 }
             }else{
-                CheckStudentExist(eAdmissionNumber);
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setContentText("The Student  with Admission Number "+eAdmissionNumber.getText()+" was already added \n search and edit the students marks");
+                alert.setHeaderText(null);
+                alert.showAndWait();
             }
             ForButtonVisibility(true);
             loadTable();
@@ -272,7 +319,7 @@ public class EndTermExams implements Initializable {
                     rs.getInt("chemistry"),rs.getInt("history"),rs.getInt("geography"),rs.getInt("cre"),
                     rs.getInt("business_studies"),rs.getInt("computer_studies"),
                     rs.getInt("agriculture"),rs.getInt("end_term_id"),
-                    rs.getInt("term"),rs.getInt("form"),rs.getDate("date"),rs.getTime("time")));
+                    rs.getInt("term"),rs.getInt("form"),rs.getDate("date"),rs.getTime("time"),rs.getString("stream")));
         }
 
         tAdmissionNumber.setCellValueFactory(new PropertyValueFactory<>("admissionNumber"));
@@ -292,6 +339,7 @@ public class EndTermExams implements Initializable {
         tCre.setCellValueFactory(new PropertyValueFactory<>("Cre"));
         tAgriculture.setCellValueFactory(new PropertyValueFactory<>("agriculture"));
         tComputerScience.setCellValueFactory(new PropertyValueFactory<>("ComputerStudies"));
+        tStream.setCellValueFactory(new PropertyValueFactory<>("stream"));
 
         table.setItems(tableList);
     }
@@ -330,8 +378,7 @@ public class EndTermExams implements Initializable {
         return details;
     }
 
-
-    //this method is used to inform the user that the admission number entered does not exist in the database records  called when the stud
+    //this method is used to inform the user that the admission number entered does not exist in the database records
     static void CheckStudentExist(JFXTextField eAdmissionNumber) {
         Alert alert=new Alert(Alert.AlertType.INFORMATION);
         alert.setHeaderText(null);

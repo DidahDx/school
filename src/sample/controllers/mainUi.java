@@ -25,17 +25,41 @@ import java.util.ResourceBundle;
 public class mainUi implements Initializable {
 
     public String userId;
+    public String role;
     @FXML public MaterialDesignIconView threeDots;
     @FXML public  Label loggedIn;
     @FXML public FontAwesomeIconView user;
+    public JFXButton dashboard;
+    public JFXButton admission;
+    public JFXButton examination;
+    public JFXButton finance;
+    public JFXButton adminPanel;
     @FXML private BorderPane borderPane;
     @FXML private AnchorPane AnchorPane;
     @FXML private Label showSideMenuName;
- Controller controller=new Controller();
+    private Controller controller=new Controller();
 
- public mainUi() {
+
+    public mainUi() {
      userId= login.id;
- }
+     role=login.role;
+    }
+
+    //this loads the dashboard to center of the borderPane(mainUi.fxml) when the programs initial runs mainUi.fxml
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        loggedIn.setText(userId);
+        user.setStyleClass("user-circle");
+
+        showSideMenuName.setText(("dashboard").toUpperCase());
+        try {
+            loadUiTabs("dashboard");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        AccessRights(role);
+    }
 
     //this loads the dashboard user interface to center of the borderPane of the main user interface(mainUi.fxml)
     public void dashboard(ActionEvent actionEvent) {
@@ -92,19 +116,6 @@ public class mainUi implements Initializable {
 
     }
 
-    //this loads the dashboard to center of the borderPane(mainUi.fxml) when the programs initial runs mainUi.fxml
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
-           loggedIn.setText(userId);
-           user.setStyleClass("user-circle");
-
-        showSideMenuName.setText(("dashboard").toUpperCase());
-        try {
-            loadUiTabs("dashboard");
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
 
     //handles logOut
     @FXML
@@ -113,9 +124,14 @@ public class mainUi implements Initializable {
 
     }
 
+    //this method is used to display a popUp when user icon is pressed
     public void initPopup(){
         JFXButton log_out=new JFXButton("Log Out");
         JFXButton profile=new JFXButton("Profile");
+
+        profile.setOnAction(e->{
+            controller.changeUi("userProfile");
+        });
 
              log_out.setOnAction(event -> {
 
@@ -129,4 +145,46 @@ public class mainUi implements Initializable {
        popup.show(user);
 
     }
+
+    //this method is used to give Each role its rightfull access
+    public void AccessRights(String role){
+
+        if(role.matches("admin")){
+
+        }else if(role.matches("financeAdmin"))
+        {
+            examination.setVisible(false);
+            admission.setVisible(false);
+            finance.setLayoutY(47.0);
+            adminPanel.setVisible(false);
+        }
+        else if(role.matches("examAdmin")){
+            admission.setVisible(false);
+            finance.setVisible(false);
+            adminPanel.setVisible(false);
+            examination.setLayoutY(47.0);
+
+        }else if(role.matches("admissionAdmin")){
+            finance.setVisible(false);
+            adminPanel.setVisible(false);
+            examination.setVisible(false);
+        }else if (role==null || role.isEmpty()){
+            examination.setVisible(false);
+            admission.setVisible(false);
+            finance.setVisible(false);
+            adminPanel.setVisible(false);
+        }
+    }
+
+    //this loads the admin user interface to center of the borderPane of the main user interface(mainUi.fxml)
+    public void admin(ActionEvent actionEvent) {
+
+        try {
+            loadUiTabs("adminPanel");
+            showSideMenuName.setText(("Administrative Panel").toUpperCase());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
 }

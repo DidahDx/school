@@ -1,111 +1,121 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="BookmarkManager">
-    <bookmark url="file://$PROJECT_DIR$/resources/fxml/examDetails.fxml" description="&lt;TabPane prefHeight=&quot;581.0&quot; prefWidth=&quot;600.0&quot; styl..." line="15" />
-  </component>
   <component name="ChangeListManager">
     <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="school project">
-      <change afterPath="$PROJECT_DIR$/out/production/school/sample/dataAccessObject/DBConnector.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/school/sample/dataAccessObject/admission/GuardianDao.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/school/sample/dataAccessObject/admission/StudentDao.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/school/sample/dataAccessObject/connectionProperties.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/school/sample/dataAccessObject/databaseTester.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/fxml/StreamPopulation.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/fxml/feesPayment.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sample/controllers/admission/StreamPopulation.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/cssdialects.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/cssdialects.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/school/css/admission.css" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/school/css/admission.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/school/css/login.css" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/school/css/login.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/school/css/main.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/school/css/mainUi.css" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/school/css/mainUi.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/school/css/signUp.css" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/school/css/tableView.css" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/school/css/tableView.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/school/css/universal.css" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/school/css/universal.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/school/fxml/ChangePassword.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/school/fxml/ChangePassword.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/school/fxml/AverageMarks.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/school/fxml/AverageMarks.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/school/fxml/ChangePassword.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/school/fxml/DormStatistics.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/school/fxml/DormStatistics.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/school/fxml/EndTermExams.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/school/fxml/EndTermExams.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/school/fxml/SignUp.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/school/fxml/SignUp.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/school/fxml/admission.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/school/fxml/admission.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/school/fxml/admissionsForm.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/school/fxml/admissionsForm.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/school/fxml/dashboard.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/school/fxml/dashboard.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/school/fxml/catMarks.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/school/fxml/catMarks.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/school/fxml/examDetails.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/school/fxml/examDetails.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/school/fxml/examination.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/school/fxml/examination.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/school/fxml/feeDetails.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/school/fxml/feeDetails.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/school/fxml/feesPayment.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/school/fxml/feesPayment.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/school/fxml/finance.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/school/fxml/finance.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/school/fxml/forgotPassword.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/school/fxml/forgotPassword.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/school/fxml/guardianDetails.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/school/fxml/guardianDetails.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/school/fxml/login.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/school/fxml/login.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/school/fxml/mainUi.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/school/fxml/mainUi.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/school/fxml/schoolPopulation.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/school/fxml/splashScreen.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/school/fxml/splashScreen.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/school/fxml/studentDetails.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/school/fxml/studentDetails.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/school/images/Graduation.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/school/images/School_Garden.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/school/images/Sigiria.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/school/images/ea.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/school/images/falling_money.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/school/images/logo2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/school/images/logo3.png" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/school/sample/Controller.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/school/sample/Controller.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/school/sample/Validation$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/school/sample/Validation$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/school/sample/controllers/ChangePassword.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/school/sample/controllers/admission/GuardianDetails.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/school/sample/controllers/admission/GuardianDetails.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/school/sample/controllers/admission/SchoolPopulation.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/school/sample/controllers/admission/admission.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/school/sample/controllers/admission/admission.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/school/sample/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/school/sample/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/school/sample/controllers/admission/DormStatistics.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/school/sample/controllers/admission/DormStatistics.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/school/sample/controllers/admission/admissionsForm.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/school/sample/controllers/admission/admissionsForm.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/school/sample/controllers/admission/studentDetails.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/school/sample/controllers/admission/studentDetails.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/school/sample/controllers/dashboard.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/school/sample/controllers/dashboard.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/school/sample/controllers/examination/AverageMarks.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/school/sample/controllers/examination/AverageMarks.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/school/sample/controllers/examination/CatMarks.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/school/sample/controllers/examination/CatMarks.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/school/sample/controllers/examination/EndTermExams.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/school/sample/controllers/examination/EndTermExams.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/school/sample/controllers/examination/ExamDetails.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/school/sample/controllers/examination/ExamDetails.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/school/sample/controllers/examination/Examination.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/school/sample/controllers/examination/Examination.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/school/sample/controllers/finance/Finance.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/school/sample/controllers/finance/Finance.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/school/sample/controllers/forgotPassword.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/school/sample/controllers/login.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/school/sample/controllers/finance/FeeDetails.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/school/sample/controllers/finance/FeeDetails.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/school/sample/controllers/finance/FeesPayment.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/school/sample/controllers/finance/FeesPayment.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/school/sample/controllers/mainUi.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/school/sample/controllers/mainUi.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/school/sample/controllers/signUp.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/school/sample/controllers/splashScreen.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/school/sample/controllers/splashScreen.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/school/sample/database/DBConnector.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/school/sample/database/DataAccessObject.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/school/sample/database/connectionProperties.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/school/sample/database/databaseTester.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/school/sample/model/MyPrinter.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/school/sample/model/MyPrinter.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/school/sample/model/admission/StudentModelTable.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/school/sample/model/admission/StudentModelTable.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/school/sample/controllers/user/ChangePassword.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/school/sample/controllers/user/forgotPassword.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/school/sample/controllers/user/forgotPassword.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/school/sample/controllers/user/login.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/school/sample/controllers/user/login.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/school/sample/controllers/user/signUp.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/school/sample/controllers/user/signUp.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/school/sample/dataAccessObject/DBConnector.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/school/sample/dataAccessObject/DBConnector.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/school/sample/dataAccessObject/admission/GuardianDao.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/school/sample/dataAccessObject/admission/GuardianDao.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/school/sample/dataAccessObject/admission/StudentDao.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/school/sample/dataAccessObject/admission/StudentDao.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/school/sample/dataAccessObject/databaseTester.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/school/sample/dataAccessObject/databaseTester.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/school/sample/dataAccessObject/examination/AverageMarksDao.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/school/sample/dataAccessObject/examination/AverageMarksDao.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/school/sample/dataAccessObject/examination/CatMarkDao.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/school/sample/dataAccessObject/examination/CatMarkDao.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/school/sample/dataAccessObject/examination/EndTermDao.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/school/sample/dataAccessObject/examination/EndTermDao.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/school/sample/dataAccessObject/finance/FeeDao.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/school/sample/dataAccessObject/finance/FeeDao.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/school/sample/model/SendEmail.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/school/sample/model/SendEmail.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/school/sample/model/admission/schoolDetailsGenerator.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/school/sample/model/admission/schoolDetailsGenerator.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/school/sample/validation.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/school/sample/validation.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/css/admission.css" beforeDir="false" afterPath="$PROJECT_DIR$/resources/css/admission.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/css/login.css" beforeDir="false" afterPath="$PROJECT_DIR$/resources/css/login.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/css/main.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/css/mainUi.css" beforeDir="false" afterPath="$PROJECT_DIR$/resources/css/mainUi.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/css/signUp.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/school/sample/model/examination/AverageModelTable.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/school/sample/model/examination/AverageModelTable.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/school/sample/model/examination/CalculateAverageMarks.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/school/sample/model/examination/CalculateAverageMarks.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/school/sample/model/examination/ExamModelTable.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/school/sample/model/examination/ExamModelTable.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/school/sample/model/finance/FinanceModelTable.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/school/sample/model/finance/FinanceModelTable.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/css/tableView.css" beforeDir="false" afterPath="$PROJECT_DIR$/resources/css/tableView.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/css/universal.css" beforeDir="false" afterPath="$PROJECT_DIR$/resources/css/universal.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/fxml/ChangePassword.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/resources/fxml/ChangePassword.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/fxml/AverageMarks.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/resources/fxml/AverageMarks.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/fxml/ChangePassword.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/fxml/DormStatistics.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/resources/fxml/DormStatistics.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/fxml/EndTermExams.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/resources/fxml/EndTermExams.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/fxml/SignUp.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/resources/fxml/SignUp.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/fxml/admission.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/resources/fxml/admission.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/fxml/admissionsForm.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/resources/fxml/admissionsForm.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/fxml/dashboard.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/resources/fxml/dashboard.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/fxml/catMarks.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/resources/fxml/catMarks.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/fxml/examDetails.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/resources/fxml/examDetails.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/fxml/examination.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/resources/fxml/examination.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/fxml/feeDetails.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/resources/fxml/feeDetails.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/fxml/feesPayment.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/resources/fxml/feesPayment.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/fxml/finance.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/resources/fxml/finance.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/fxml/forgotPassword.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/resources/fxml/forgotPassword.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/fxml/guardianDetails.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/resources/fxml/guardianDetails.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/fxml/login.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/resources/fxml/login.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/fxml/mainUi.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/resources/fxml/mainUi.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/fxml/schoolPopulation.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/fxml/splashScreen.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/resources/fxml/splashScreen.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/fxml/studentDetails.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/resources/fxml/studentDetails.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/school.iml" beforeDir="false" afterPath="$PROJECT_DIR$/school.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/images/Graduation.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/images/School_Garden.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/images/Sigiria.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/images/ea.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/images/falling_money.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/images/logo2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/images/logo3.png" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/sample/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/Controller.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/Validation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/Validation.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/controllers/ChangePassword.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/controllers/user/ChangePassword.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/controllers/admission/GuardianDetails.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/controllers/admission/GuardianDetails.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/controllers/admission/SchoolPopulation.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/controllers/admission/admission.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/controllers/admission/admission.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/Validation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/model/Validation.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/controllers/admission/DormStatistics.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/controllers/admission/DormStatistics.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/sample/controllers/admission/admissionsForm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/controllers/admission/admissionsForm.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/sample/controllers/admission/studentDetails.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/controllers/admission/studentDetails.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/controllers/dashboard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/controllers/dashboard.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/controllers/examination/AverageMarks.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/controllers/examination/AverageMarks.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/controllers/examination/CatMarks.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/controllers/examination/CatMarks.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/controllers/examination/EndTermExams.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/controllers/examination/EndTermExams.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/controllers/examination/ExamDetails.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/controllers/examination/ExamDetails.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/sample/controllers/examination/Examination.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/controllers/examination/Examination.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/controllers/finance/Finance.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/controllers/finance/Finance.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/controllers/forgotPassword.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/controllers/user/forgotPassword.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/controllers/login.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/controllers/user/login.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/controllers/finance/FeeDetails.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/controllers/finance/FeeDetails.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/controllers/finance/FeesPayment.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/controllers/finance/FeesPayment.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/sample/controllers/mainUi.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/controllers/mainUi.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/controllers/signUp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/controllers/user/signUp.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/sample/controllers/splashScreen.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/controllers/splashScreen.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/controllers/user/ChangePassword.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/controllers/user/forgotPassword.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/controllers/user/forgotPassword.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/controllers/user/login.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/controllers/user/login.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/controllers/user/signUp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/controllers/user/signUp.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/sample/dataAccessObject/DBConnector.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/dataAccessObject/DBConnector.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/sample/dataAccessObject/admission/GuardianDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/dataAccessObject/admission/GuardianDao.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/sample/dataAccessObject/admission/StudentDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/dataAccessObject/admission/StudentDao.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/sample/dataAccessObject/connectionProperties.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/dataAccessObject/connectionProperties.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/sample/dataAccessObject/databaseTester.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/dataAccessObject/databaseTester.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/model/MyPrinter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/model/MyPrinter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/dataAccessObject/examination/AverageMarksDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/dataAccessObject/examination/AverageMarksDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/dataAccessObject/examination/CatMarkDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/dataAccessObject/examination/CatMarkDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/dataAccessObject/examination/EndTermDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/dataAccessObject/examination/EndTermDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/dataAccessObject/finance/FeeDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/dataAccessObject/finance/FeeDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/model/SendEmail.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/model/SendEmail.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/sample/model/admission/SchoolDetailsGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/model/admission/SchoolDetailsGenerator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/model/admission/StudentModelTable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/model/admission/StudentModelTable.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/model/examination/AverageModelTable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/model/examination/AverageModelTable.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/model/examination/ExamModelTable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/model/examination/ExamModelTable.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/model/examination/SetStudentPosition.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/model/examination/SetStudentPosition.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/model/finance/FinanceModelTable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/model/finance/FinanceModelTable.java" afterDir="false" />
     </list>
     <ignored path="JavaFxApplication.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -186,53 +196,31 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/sample/dataAccessObject/databaseTester.java">
+        <entry file="file://$PROJECT_DIR$/src/sample/controllers/admission/admissionsForm.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="277">
-              <caret line="56" selection-start-line="56" selection-end-line="56" />
+            <state relative-caret-position="218">
+              <caret line="209" column="31" lean-forward="true" selection-start-line="209" selection-start-column="31" selection-end-line="209" selection-end-column="31" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/sample/controllers/examination/AverageMarks.java">
+        <entry file="file://$PROJECT_DIR$/src/sample/model/SendEmail.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-7">
-              <caret line="47" column="46" lean-forward="true" selection-start-line="47" selection-start-column="46" selection-end-line="47" selection-end-column="46" />
+            <state relative-caret-position="340">
+              <caret line="42" column="36" lean-forward="true" selection-start-line="42" selection-start-column="36" selection-end-line="42" selection-end-column="36" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
             </state>
           </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/sample/model/examination/CalculateAverageMarks.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="343">
-              <caret line="104" column="55" selection-start-line="104" selection-start-column="55" selection-end-line="104" selection-end-column="55" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/resources/fxml/AverageMarks.fxml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="408">
-              <caret line="67" column="68" selection-start-line="67" selection-start-column="68" selection-end-line="67" selection-end-column="68" />
-            </state>
-          </provider>
-          <provider editor-type-id="JavaFX-Scene-Builder" />
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/sample/dataAccessObject/examination/AverageMarksDao.java">
+        <entry file="file://$PROJECT_DIR$/src/sample/controllers/user/UserProfile.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="317">
-              <caret line="121" column="20" selection-start-line="121" selection-start-column="20" selection-end-line="121" selection-end-column="94" />
+            <state relative-caret-position="119">
+              <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -275,57 +263,57 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/sample/controllers/admission/admission.java" />
-        <option value="$PROJECT_DIR$/resources/fxml/schoolStatistics.fxml" />
+        <option value="$PROJECT_DIR$/src/sample/Dialog.java" />
+        <option value="$PROJECT_DIR$/resources/fxml/examDetails.fxml" />
+        <option value="$PROJECT_DIR$/src/sample/controllers/examination/ExamDetails.java" />
+        <option value="$PROJECT_DIR$/src/sample/Controller.java" />
+        <option value="$PROJECT_DIR$/resources/fxml/feesPayment.fxml" />
+        <option value="$PROJECT_DIR$/src/sample/controllers/finance/FeesPayment.java" />
+        <option value="$PROJECT_DIR$/resources/fxml/feeDetails.fxml" />
+        <option value="$PROJECT_DIR$/src/sample/model/finance/FinanceModelTable.java" />
+        <option value="$PROJECT_DIR$/resources/fxml/AverageMarks.fxml" />
+        <option value="$PROJECT_DIR$/resources/fxml/catMarks.fxml" />
+        <option value="$PROJECT_DIR$/src/sample/model/examination/ExamModelTable.java" />
+        <option value="$PROJECT_DIR$/src/sample/controllers/examination/CatMarks.java" />
+        <option value="$PROJECT_DIR$/resources/fxml/EndTermExams.fxml" />
+        <option value="$PROJECT_DIR$/src/sample/controllers/examination/EndTermExams.java" />
+        <option value="$PROJECT_DIR$/src/sample/controllers/examination/AverageMarks.java" />
+        <option value="$PROJECT_DIR$/src/sample/model/examination/AverageModelTable.java" />
+        <option value="$PROJECT_DIR$/src/sample/controllers/finance/FeeDetails.java" />
+        <option value="$PROJECT_DIR$/src/sample/dataAccessObject/finance/FeeDao.java" />
+        <option value="$PROJECT_DIR$/src/sample/model/examination/GradingSubjects.java" />
+        <option value="$PROJECT_DIR$/resources/fxml/reportCard.fxml" />
+        <option value="$PROJECT_DIR$/resources/fxml/forgotPassword.fxml" />
+        <option value="$PROJECT_DIR$/src/sample/model/user/GenerateRandomPassword.java" />
+        <option value="$PROJECT_DIR$/src/sample/controllers/user/forgotPassword.java" />
+        <option value="$PROJECT_DIR$/src/sample/model/MyPrinter.java" />
+        <option value="$PROJECT_DIR$/src/sample/Validation.java" />
+        <option value="$PROJECT_DIR$/resources/fxml/mainUi.fxml" />
+        <option value="$PROJECT_DIR$/src/sample/model/user/UserModelTable.java" />
+        <option value="$PROJECT_DIR$/src/sample/controllers/user/UserProfile.java" />
         <option value="$PROJECT_DIR$/resources/fxml/DormStatistics.fxml" />
         <option value="$PROJECT_DIR$/src/sample/controllers/admission/DormStatistics.java" />
-        <option value="$PROJECT_DIR$/src/sample/controllers/login.java" />
-        <option value="$PROJECT_DIR$/resources/fxml/SignUp.fxml" />
-        <option value="$PROJECT_DIR$/src/sample/Controller.java" />
-        <option value="$PROJECT_DIR$/src/sample/controllers/signUp.java" />
-        <option value="$PROJECT_DIR$/resources/fxml/studentDetails.fxml" />
-        <option value="$PROJECT_DIR$/resources/fxml/mainUi.fxml" />
-        <option value="$PROJECT_DIR$/resources/css/mainUi.css" />
-        <option value="$PROJECT_DIR$/resources/fxml/ChangePassword.fxml" />
-        <option value="$PROJECT_DIR$/resources/fxml/guardianDetails.fxml" />
+        <option value="$PROJECT_DIR$/resources/fxml/userProfile.fxml" />
+        <option value="$PROJECT_DIR$/resources/fxml/adminPanel.fxml" />
+        <option value="$PROJECT_DIR$/src/sample/dataAccessObject/user/UserDao.java" />
         <option value="$PROJECT_DIR$/resources/fxml/examination.fxml" />
-        <option value="$PROJECT_DIR$/src/sample/model/finance/CalculateFees.java" />
-        <option value="$PROJECT_DIR$/resources/css/tabPane.css" />
-        <option value="$PROJECT_DIR$/src/sample/controllers/examination/ExamDetails.java" />
-        <option value="$PROJECT_DIR$/src/sample/model/finance/FinanceModelTable.java" />
-        <option value="$PROJECT_DIR$/src/sample/dataAccessObject/finance/FeeDao.java" />
-        <option value="$PROJECT_DIR$/src/sample/controllers/finance/FeeDetails.java" />
-        <option value="$PROJECT_DIR$/resources/fxml/StreamPopulation.fxml" />
-        <option value="$PROJECT_DIR$/src/sample/dataAccessObject/admission/SchoolStatisticsDao.java" />
-        <option value="$PROJECT_DIR$/src/sample/controllers/admission/GuardianDetails.java" />
-        <option value="$PROJECT_DIR$/src/sample/controllers/examination/CatExam.java" />
-        <option value="$PROJECT_DIR$/resources/fxml/catExam.fxml" />
-        <option value="$PROJECT_DIR$/resources/fxml/feeDetails.fxml" />
-        <option value="$PROJECT_DIR$/src/sample/model/admission/StudentModelTable.java" />
-        <option value="$PROJECT_DIR$/src/sample/model/examination/ExamModelTable.java" />
+        <option value="$PROJECT_DIR$/resources/fxml/finance.fxml" />
         <option value="$PROJECT_DIR$/src/sample/Main.java" />
-        <option value="$PROJECT_DIR$/resources/css/tableView.css" />
-        <option value="$PROJECT_DIR$/src/sample/controllers/admission/StreamPopulation.java" />
-        <option value="$PROJECT_DIR$/src/sample/Validation.java" />
-        <option value="$PROJECT_DIR$/resources/fxml/catMarks.fxml" />
-        <option value="$PROJECT_DIR$/src/sample/controllers/admission/studentDetails.java" />
-        <option value="$PROJECT_DIR$/src/sample/controllers/dashboard.java" />
+        <option value="$PROJECT_DIR$/src/sample/controllers/examination/ReportCard.java" />
+        <option value="$PROJECT_DIR$/src/sample/model/Authentication.java" />
+        <option value="$PROJECT_DIR$/src/sample/model/Validation.java" />
+        <option value="$PROJECT_DIR$/resources/fxml/SignUp.fxml" />
         <option value="$PROJECT_DIR$/src/sample/controllers/mainUi.java" />
-        <option value="$PROJECT_DIR$/resources/fxml/dashboard.fxml" />
+        <option value="$PROJECT_DIR$/src/sample/controllers/user/signUp.java" />
         <option value="$PROJECT_DIR$/src/sample/controllers/user/login.java" />
-        <option value="$PROJECT_DIR$/resources/fxml/EndTermExams.fxml" />
-        <option value="$PROJECT_DIR$/resources/fxml/AverageMarks.fxml" />
-        <option value="$PROJECT_DIR$/src/sample/model/SendEmail.java" />
-        <option value="$PROJECT_DIR$/src/sample/dataAccessObject/examination/CatMarkDao.java" />
-        <option value="$PROJECT_DIR$/src/sample/dataAccessObject/examination/EndTermDao.java" />
-        <option value="$PROJECT_DIR$/src/sample/controllers/examination/CatMarks.java" />
-        <option value="$PROJECT_DIR$/src/sample/controllers/examination/EndTermExams.java" />
-        <option value="$PROJECT_DIR$/src/sample/dataAccessObject/examination/AverageMarksDao.java" />
-        <option value="$PROJECT_DIR$/src/sample/model/examination/AverageModelTable.java" />
-        <option value="$PROJECT_DIR$/src/sample/controllers/examination/AverageMarks.java" />
-        <option value="$PROJECT_DIR$/src/sample/model/examination/CalculateAverageMarks.java" />
-        <option value="$PROJECT_DIR$/resources/fxml/examDetails.fxml" />
+        <option value="$PROJECT_DIR$/src/sample/controllers/user/AdminPanel.java" />
+        <option value="$PROJECT_DIR$/src/sample/dataAccessObject/admission/StudentDao.java" />
         <option value="$PROJECT_DIR$/src/sample/dataAccessObject/databaseTester.java" />
+        <option value="$PROJECT_DIR$/src/sample/model/admission/ChangeTermAndYear.java" />
+        <option value="$PROJECT_DIR$/resources/fxml/admissionsForm.fxml" />
+        <option value="$PROJECT_DIR$/resources/fxml/login.fxml" />
+        <option value="$PROJECT_DIR$/src/sample/controllers/admission/admissionsForm.java" />
+        <option value="$PROJECT_DIR$/src/sample/model/SendEmail.java" />
       </list>
     </option>
   </component>
@@ -339,7 +327,7 @@
     <option name="skipTests" value="true" />
   </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
-  <component name="ProjectFrameBounds">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="-8" />
     <option name="y" value="-8" />
     <option name="width" value="1382" />
@@ -354,7 +342,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
       <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
@@ -366,7 +353,7 @@
             <path>
               <item name="school" type="b2602c69:ProjectViewProjectNode" />
               <item name="school" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="externalLibrary" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="school" type="b2602c69:ProjectViewProjectNode" />
@@ -379,10 +366,26 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="sample" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="school" type="b2602c69:ProjectViewProjectNode" />
+              <item name="school" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="sample" type="462c0819:PsiDirectoryNode" />
+              <item name="controllers" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="school" type="b2602c69:ProjectViewProjectNode" />
+              <item name="school" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="sample" type="462c0819:PsiDirectoryNode" />
+              <item name="controllers" type="462c0819:PsiDirectoryNode" />
+              <item name="user" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -401,7 +404,7 @@
     <property name="Repository.Attach.Sources" value="false" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1549225715250" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1549769836949" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="Groovy JUnit" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.Groovy JUnit" value="groovy.util.GroovyTestCase" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.includeInheritedMembers" value="true" />
@@ -463,7 +466,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.databaseTester">
+  <component name="RunManager" selected="Application.Main">
     <configuration default="true" type="DartUnitRunConfigurationType" factoryName="DartUnit">
       <option name="VMOptions" />
       <option name="arguments" />
@@ -488,7 +491,7 @@
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="sample.*" />
+          <option name="PATTERN" value="sample.model.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -532,7 +535,7 @@
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="sample.*" />
+          <option name="PATTERN" value="sample.model.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -546,7 +549,7 @@
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="sample.*" />
+          <option name="PATTERN" value="sample.model.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -596,8 +599,8 @@
       <item itemvalue="Application.databaseTester" />
       <item itemvalue="Application.testenum" />
       <item itemvalue="Application.testPopup" />
-      <item itemvalue="Java Scratch.MoveDemo" />
       <item itemvalue="Application.SendEmail" />
+      <item itemvalue="Java Scratch.MoveDemo" />
     </list>
     <recent_temporary>
       <list>
@@ -739,7 +742,10 @@
       <workItem from="1549005887886" duration="5387000" />
       <workItem from="1549024309159" duration="10452000" />
       <workItem from="1549044866237" duration="9134000" />
-      <workItem from="1549083872174" duration="68442000" />
+      <workItem from="1549083872174" duration="73373000" />
+      <workItem from="1549231431000" duration="132073000" />
+      <workItem from="1549610266331" duration="903000" />
+      <workItem from="1549616526011" duration="24056000" />
     </task>
     <task id="LOCAL-00001" summary="school project">
       <created>1545928679703</created>
@@ -752,7 +758,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="665473000" />
+    <option name="totallyTimeSpent" value="827436000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -764,8 +770,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="784" extended-state="0" />
-    <editor active="true" />
+    <frame x="-8" y="-8" width="1382" height="784" extended-state="6" />
     <layout>
       <window_info id="Image Layers" order="0" />
       <window_info id="UI Designer" order="1" />
@@ -773,13 +778,13 @@
       <window_info id="Designer" order="3" />
       <window_info id="Structure" order="4" sideWeight="0.43010753" side_tool="true" weight="0.33055976" />
       <window_info id="Favorites" order="5" sideWeight="0.43164364" side_tool="true" weight="0.2934947" />
-      <window_info content_ui="combo" id="Project" order="6" sideWeight="0.5683564" weight="0.1913767" />
+      <window_info active="true" content_ui="combo" id="Project" order="6" sideWeight="0.5683564" visible="true" weight="0.18986385" />
       <window_info id="Learn" order="7" weight="0.32980332" />
       <window_info anchor="bottom" id="Duplicate detector" order="0" weight="0.32872504" />
       <window_info anchor="bottom" id="Terminal" order="1" weight="0.32718894" />
       <window_info anchor="bottom" id="Message" order="2" />
       <window_info anchor="bottom" id="Find" order="3" weight="0.32718894" />
-      <window_info anchor="bottom" id="Run" order="4" sideWeight="0.4977307" weight="0.29185867" />
+      <window_info anchor="bottom" id="Run" order="4" sideWeight="0.7140696" visible="true" weight="0.29953918" />
       <window_info anchor="bottom" id="Debug" order="5" weight="0.3655914" />
       <window_info anchor="bottom" id="Cvs" order="6" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="7" weight="0.4" />
@@ -789,48 +794,7 @@
       <window_info anchor="bottom" id="Problems" order="11" />
       <window_info anchor="bottom" id="Changes" order="12" />
       <window_info anchor="bottom" id="Profiler" order="13" />
-      <window_info anchor="bottom" id="Event Log" order="14" sideWeight="0.50226927" side_tool="true" weight="0.29800308" />
-      <window_info anchor="bottom" id="Messages" order="15" sideWeight="0.49924356" weight="0.32411674" />
-      <window_info anchor="bottom" id="Docker" order="16" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Database Changes" order="17" show_stripe_button="false" weight="0.32872504" />
-      <window_info anchor="bottom" id="Database Console" order="18" weight="0.32872504" />
-      <window_info anchor="right" id="Capture Analysis" order="0" />
-      <window_info anchor="right" id="Palette&#9;" order="1" />
-      <window_info anchor="right" id="Theme Preview" order="2" />
-      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="3" type="SLIDING" weight="0.4" />
-      <window_info anchor="right" id="Ant Build" order="4" weight="0.24962178" />
-      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="5" weight="0.24962178" />
-      <window_info anchor="right" id="JetGradle" order="6" />
-      <window_info anchor="right" id="Palette" order="7" />
-      <window_info anchor="right" id="Maven Projects" order="8" weight="0.32954547" />
-      <window_info anchor="right" id="Coverage" order="9" side_tool="true" weight="0.34039333" />
-      <window_info anchor="right" id="Maven" order="10" weight="0.32980332" />
-      <window_info anchor="right" id="Database" order="11" weight="0.16111952" />
-    </layout>
-    <layout-to-restore>
-      <window_info id="Image Layers" order="0" />
-      <window_info id="UI Designer" order="1" />
-      <window_info id="Capture Tool" order="2" />
-      <window_info id="Designer" order="3" />
-      <window_info id="Structure" order="4" sideWeight="0.43010753" side_tool="true" weight="0.33055976" />
-      <window_info id="Favorites" order="5" sideWeight="0.43164364" side_tool="true" weight="0.2934947" />
-      <window_info active="true" content_ui="combo" id="Project" order="6" sideWeight="0.5683564" visible="true" weight="0.1913767" />
-      <window_info id="Learn" order="7" weight="0.32980332" />
-      <window_info anchor="bottom" id="Duplicate detector" order="0" weight="0.32872504" />
-      <window_info anchor="bottom" id="Terminal" order="1" weight="0.32718894" />
-      <window_info anchor="bottom" id="Message" order="2" />
-      <window_info anchor="bottom" id="Find" order="3" weight="0.32718894" />
-      <window_info anchor="bottom" id="Run" order="4" sideWeight="0.4977307" weight="0.29185867" />
-      <window_info anchor="bottom" id="Debug" order="5" weight="0.3655914" />
-      <window_info anchor="bottom" id="Cvs" order="6" weight="0.25" />
-      <window_info anchor="bottom" id="Inspection" order="7" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="8" weight="0.32872504" />
-      <window_info anchor="bottom" id="Application Servers" order="9" />
-      <window_info anchor="bottom" id="Version Control" order="10" weight="0.34101382" />
-      <window_info anchor="bottom" id="Problems" order="11" />
-      <window_info anchor="bottom" id="Changes" order="12" />
-      <window_info anchor="bottom" id="Profiler" order="13" />
-      <window_info anchor="bottom" id="Event Log" order="14" sideWeight="0.50226927" side_tool="true" weight="0.29800308" />
+      <window_info anchor="bottom" id="Event Log" order="14" sideWeight="0.2859304" side_tool="true" weight="0.29953918" />
       <window_info anchor="bottom" id="Messages" order="15" sideWeight="0.49924356" weight="0.32411674" />
       <window_info anchor="bottom" id="Docker" order="16" show_stripe_button="false" />
       <window_info anchor="bottom" id="Database Changes" order="17" show_stripe_button="false" weight="0.32872504" />
@@ -847,7 +811,8 @@
       <window_info anchor="right" id="Coverage" order="9" side_tool="true" weight="0.34039333" />
       <window_info anchor="right" id="Database" order="10" weight="0.16111952" />
       <window_info anchor="right" id="Maven" order="11" weight="0.32980332" />
-    </layout-to-restore>
+      <window_info anchor="right" x="0" y="0" width="295" height="584" id="Documentation" order="12" side_tool="true" weight="0.49016643" />
+    </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
@@ -969,7 +934,7 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/sample/controllers/admission/admissionsForm.java</url>
-          <line>183</line>
+          <line>172</line>
           <properties />
           <option name="timeStamp" value="3" />
         </line-breakpoint>
@@ -993,7 +958,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/sample/controllers/finance/FeeDetails.java</url>
-          <line>162</line>
+          <line>164</line>
           <properties />
           <option name="timeStamp" value="11" />
         </line-breakpoint>
@@ -1004,16 +969,52 @@
           <option name="timeStamp" value="17" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/sample/model/examination/CalculateAverageMarks.java</url>
-          <line>83</line>
+          <url>file://$PROJECT_DIR$/src/sample/dataAccessObject/databaseTester.java</url>
+          <line>71</line>
           <properties />
-          <option name="timeStamp" value="21" />
+          <option name="timeStamp" value="32" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/sample/dataAccessObject/databaseTester.java</url>
-          <line>55</line>
+          <url>file://$PROJECT_DIR$/src/sample/controllers/examination/AverageMarks.java</url>
+          <line>103</line>
           <properties />
-          <option name="timeStamp" value="22" />
+          <option name="timeStamp" value="33" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/sample/model/examination/GradingSubjects.java</url>
+          <line>13</line>
+          <properties />
+          <option name="timeStamp" value="34" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/sample/model/user/GenerateRandomPassword.java</url>
+          <line>14</line>
+          <properties />
+          <option name="timeStamp" value="35" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/sample/dataAccessObject/finance/FeeDao.java</url>
+          <line>42</line>
+          <properties />
+          <option name="timeStamp" value="36" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/sample/controllers/user/login.java</url>
+          <line>67</line>
+          <properties />
+          <option name="timeStamp" value="37" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/sample/controllers/user/login.java</url>
+          <line>73</line>
+          <properties />
+          <option name="timeStamp" value="38" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/sample/controllers/user/login.java</url>
+          <line>62</line>
+          <properties />
+          <option name="timeStamp" value="40" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
@@ -1039,187 +1040,270 @@
     </expressions>
     <expressions id="evaluateExpression">
       <expression>
-        <expression-string>checkIfRecordsExist(form,admissionNumber,term)</expression-string>
+        <expression-string>role</expression-string>
         <language-id>JAVA</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>Maths1+Maths</expression-string>
+        <expression-string>letters.length</expression-string>
         <language-id>JAVA</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>averageMarksDao.InsertAverageMarks(admissionNumber,Maths1,English1,Kiswahili1, Biology1,Physics1,Chemistry1,History1,Geography1,Cre1,BusinessStudies1,ComputerStudies1,agriculture1,form,term,today,now)</expression-string>
+        <expression-string>(subject&lt;= 100)</expression-string>
         <language-id>JAVA</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>averageMarksDao.InsertAverageMarks(admissionNumber,Maths+Maths1,English+English1,Kiswahili+Kiswahili1, Biology+Biology1,Physics+Physics1,Chemistry+Chemistry1,History+History1,Geography+Geography1,Cre+Cre1,BusinessStudies+BusinessStudies1,ComputerStudies+ComputerStudies1,agriculture+agriculture1,form,term,today,now)</expression-string>
+        <expression-string>(subject&lt;= 80)</expression-string>
         <language-id>JAVA</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>averageMarksDao.InsertAverageMarks(admissionNumber,Maths+Maths1,English+English1,Kiswahili+Kiswahili1,
-                        Biology+Biology1,Physics+Physics1,Chemistry+Chemistry1,History+History1,
-                       Geography+Geography1,Cre+Cre1,BusinessStudies+BusinessStudies1,ComputerStudies+ComputerStudies1,agriculture+agriculture1,form,term,today,now)</expression-string>
+        <expression-string>(100 &lt;= subject) &amp;&amp; (subject&lt;= 80)</expression-string>
         <language-id>JAVA</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>searchTextField.getText().matches(&quot;(?=.*[a-z])(?=.*[A-Z]).{6,20}&quot;)</expression-string>
+        <expression-string>tBiology.setCellValueFactory(new PropertyValueFactory&lt;&gt;(&quot;strea&quot;))</expression-string>
         <language-id>JAVA</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>searchTextField.getText().matches(&quot;(?=.*[a-z])(?=.*[A-Z])&quot;)</expression-string>
+        <expression-string>tBiology.setCellValueFactory(new PropertyValueFactory&lt;&gt;(&quot;stream&quot;))</expression-string>
         <language-id>JAVA</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>searchTextField.getText().matches(&quot;&quot;)</expression-string>
+        <expression-string>tBiology.setCellValueFactory(new PropertyValueFactory&lt;&gt;(&quot;Biology&quot;))</expression-string>
         <language-id>JAVA</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>searchTextField.getText()</expression-string>
+        <expression-string>total1</expression-string>
         <language-id>JAVA</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/sample/dataAccessObject/admission/GuardianDao.java">
+    <entry file="file://$PROJECT_DIR$/src/sample/controllers/finance/FeesPayment.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-900">
-          <caret line="10" column="13" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
+        <state relative-caret-position="76">
+          <caret line="91" lean-forward="true" selection-start-line="91" selection-end-line="91" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/fxml/feeDetails.fxml">
+    <entry file="jar://$PROJECT_DIR$/externalLibrary/otherLib/mysql-connector-java-5.1.29-bin.jar!/com/mysql/jdbc/ResultSetImpl.class">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="354">
-          <caret line="101" column="28" selection-start-line="101" selection-start-column="28" selection-end-line="101" selection-end-column="28" />
+        <state relative-caret-position="129">
+          <caret line="361" column="97" selection-start-line="361" selection-start-column="97" selection-end-line="361" selection-end-column="97" />
         </state>
       </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_192/javafx-src.zip!/javafx/fxml/FXMLLoader.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="129">
+          <caret line="1772" selection-start-line="1772" selection-end-line="1772" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/fxml/ChangePassword.fxml" />
+    <entry file="file://$PROJECT_DIR$/resources/fxml/mainUi.fxml">
       <provider editor-type-id="JavaFX-Scene-Builder" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/Controller.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-906">
-          <caret line="34" selection-start-line="34" selection-end-line="34" />
+        <state relative-caret-position="285">
+          <caret line="64" column="31" selection-start-line="64" selection-start-column="31" selection-end-line="64" selection-end-column="31" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/fxml/studentDetails.fxml">
+    <entry file="file://$PROJECT_DIR$/src/sample/controllers/examination/CatMarks.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="278">
-          <caret line="27" column="82" selection-start-line="27" selection-start-column="82" selection-end-line="27" selection-end-column="82" />
-        </state>
-      </provider>
-      <provider editor-type-id="JavaFX-Scene-Builder" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/model/admission/StudentModelTable.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="9" column="29" selection-start-line="9" selection-start-column="29" selection-end-line="9" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/model/finance/FinanceModelTable.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="216">
-          <caret line="24" column="22" selection-start-line="24" selection-start-column="13" selection-end-line="24" selection-end-column="22" />
+        <state relative-caret-position="-3451">
+          <caret line="126" selection-start-line="126" selection-end-line="126" />
           <folding>
-            <element signature="e#951#952#0" expanded="true" />
-            <element signature="e#983#984#0" expanded="true" />
-            <element signature="e#1030#1031#0" expanded="true" />
-            <element signature="e#1072#1073#0" expanded="true" />
-            <element signature="e#1100#1101#0" expanded="true" />
-            <element signature="e#1127#1128#0" expanded="true" />
-            <element signature="e#1164#1165#0" expanded="true" />
-            <element signature="e#1196#1197#0" expanded="true" />
+            <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sample/model/user/UserModelTable.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="15" column="23" selection-start-line="15" selection-start-column="15" selection-end-line="15" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/fxml/DormStatistics.fxml">
+      <provider editor-type-id="JavaFX-Scene-Builder" />
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="32" column="41" selection-start-line="32" selection-start-column="41" selection-end-line="32" selection-end-column="41" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sample/controllers/admission/DormStatistics.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="16" column="16" selection-start-line="16" selection-start-column="11" selection-end-line="16" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sample/controllers/admission/admission.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="391">
+          <caret line="38" selection-start-line="38" selection-end-line="38" />
+          <folding>
+            <element signature="e#1150#1151#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/fxml/adminPanel.fxml">
+      <provider editor-type-id="JavaFX-Scene-Builder" />
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="465">
+          <caret line="46" column="110" selection-start-line="46" selection-start-column="110" selection-end-line="46" selection-end-column="110" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/fxml/userProfile.fxml">
+      <provider selected="true" editor-type-id="JavaFX-Scene-Builder" />
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="1037">
+          <caret line="61" selection-start-line="61" selection-end-line="61" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/fxml/finance.fxml">
+      <provider selected="true" editor-type-id="JavaFX-Scene-Builder" />
+      <provider editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/fxml/examination.fxml">
+      <provider selected="true" editor-type-id="JavaFX-Scene-Builder" />
+      <provider editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sample/dataAccessObject/DBConnector.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="27" selection-start-line="27" selection-end-line="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sample/dataAccessObject/user/UserDao.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-5">
+          <caret line="11" selection-start-line="11" selection-end-line="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sample/controllers/examination/ReportCard.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="175">
+          <caret line="112" column="38" selection-start-line="112" selection-start-column="38" selection-end-line="112" selection-end-column="38" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sample/model/Authentication.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="1" lean-forward="true" selection-start-line="1" selection-end-line="1" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/sample/Main.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="255">
-          <caret line="16" column="32" selection-start-line="16" selection-start-column="32" selection-end-line="16" selection-end-column="32" />
+          <caret line="16" column="31" selection-start-line="16" selection-start-column="31" selection-end-line="16" selection-end-column="31" />
           <folding>
             <element signature="e#290#291#0" expanded="true" />
-            <element signature="e#334#335#0" expanded="true" />
+            <element signature="e#338#339#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/css/tableView.css">
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_192/src.zip!/java/util/List.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="232">
-          <caret line="58" column="22" selection-start-line="58" selection-start-column="22" selection-end-line="58" selection-end-column="22" />
+        <state relative-caret-position="204">
+          <caret line="487" column="9" lean-forward="true" selection-start-line="487" selection-start-column="9" selection-end-line="487" selection-end-column="9" />
         </state>
       </provider>
     </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_192/javafx-src.zip!/javafx/scene/control/cell/PropertyValueFactory.java">
+    <entry file="jar://$PROJECT_DIR$/externalLibrary/otherLib/jfoenix-8.0.7.jar!/com/jfoenix/controls/JFXTextField.class">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="429">
-          <caret line="110" column="13" lean-forward="true" selection-start-line="110" selection-start-column="13" selection-end-line="110" selection-end-column="13" />
+        <state relative-caret-position="208">
+          <caret line="30" column="88" selection-start-line="30" selection-start-column="88" selection-end-line="30" selection-end-column="88" />
         </state>
       </provider>
     </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_192/javafx-src.zip!/javafx/scene/control/TableColumn.java">
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_192/javafx-src.zip!/javafx/application/Platform.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="314">
-          <caret line="373" column="36" selection-start-line="373" selection-start-column="36" selection-end-line="373" selection-end-column="36" />
+        <state relative-caret-position="569">
+          <caret line="196" lean-forward="true" selection-start-line="196" selection-end-line="196" />
         </state>
       </provider>
     </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_192/javafx-src.zip!/com/sun/glass/ui/win/WinApplication.java">
+    <entry file="file://$PROJECT_DIR$/resources/fxml/SignUp.fxml">
+      <provider editor-type-id="JavaFX-Scene-Builder" />
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="129">
-          <caret line="128" column="24" selection-start-line="128" selection-start-column="24" selection-end-line="128" selection-end-column="24" />
+        <state relative-caret-position="154">
+          <caret line="34" column="28" lean-forward="true" selection-start-line="34" selection-start-column="28" selection-end-line="34" selection-end-column="28" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/Validation.java">
+    <entry file="file://$PROJECT_DIR$/src/sample/Controller.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="15" column="42" selection-start-line="15" selection-start-column="42" selection-end-line="15" selection-end-column="42" />
+        <state relative-caret-position="143">
+          <caret line="88" selection-start-line="88" selection-end-line="88" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/controllers/admission/GuardianDetails.java">
+    <entry file="file://$PROJECT_DIR$/src/sample/controllers/user/signUp.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2008">
-          <caret line="192" column="34" lean-forward="true" selection-start-line="192" selection-start-column="34" selection-end-line="192" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/dataAccessObject/DBConnector.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="19" column="46" lean-forward="true" selection-start-line="19" selection-start-column="46" selection-end-line="19" selection-end-column="46" />
+        <state relative-caret-position="-1569">
+          <caret line="33" selection-start-line="33" selection-end-line="33" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#4345#4346#0" expanded="true" />
+            <element signature="e#4405#4406#0" expanded="true" />
+            <element signature="e#4454#4455#0" expanded="true" />
+            <element signature="e#4514#4515#0" expanded="true" />
+            <element signature="e#4775#4776#0" expanded="true" />
+            <element signature="e#4839#4840#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="jar://C:/Program Files/Java/jdk1.8.0_192/src.zip!/java/lang/String.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="2010" column="27" lean-forward="true" selection-start-line="2010" selection-start-column="27" selection-end-line="2010" selection-end-column="27" />
+        <state relative-caret-position="17">
+          <caret line="2112" column="56" selection-start-line="2112" selection-end-line="2113" />
+          <folding>
+            <element signature="e#62860#62861#0" expanded="true" />
+            <element signature="e#62916#62917#0" expanded="true" />
+            <element signature="e#82616#82617#0" expanded="true" />
+            <element signature="e#82667#82668#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_192/javafx-src.zip!/javafx/fxml/Initializable.java">
+    <entry file="file://$PROJECT_DIR$/src/sample/controllers/admission/studentDetails.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="527">
-          <caret line="55" lean-forward="true" selection-start-line="55" selection-end-line="55" />
+        <state relative-caret-position="143">
+          <caret line="230" selection-start-line="230" selection-end-line="230" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/controllers/admission/StreamPopulation.java">
+    <entry file="file://$PROJECT_DIR$/src/sample/controllers/user/AdminPanel.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1441">
-          <caret line="123" column="101" selection-start-line="123" selection-start-column="12" selection-end-line="123" selection-end-column="101" />
+        <state relative-caret-position="1686">
+          <caret line="122" column="24" selection-start-line="122" selection-start-column="24" selection-end-line="122" selection-end-column="24" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -1228,109 +1312,92 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/sample/controllers/mainUi.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="138">
-          <caret line="36" column="13" selection-start-line="36" selection-start-column="13" selection-end-line="36" selection-end-column="13" />
+        <state relative-caret-position="-1675">
+          <caret line="61" column="5" lean-forward="true" selection-start-line="61" selection-start-column="5" selection-end-line="61" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sample/dataAccessObject/databaseTester.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="416">
+          <caret line="75" column="73" selection-start-line="75" selection-start-column="30" selection-end-line="75" selection-end-column="73" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sample/model/Validation.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="569">
+          <caret line="149" column="1" lean-forward="true" selection-start-line="149" selection-start-column="1" selection-end-line="149" selection-end-column="1" />
           <folding>
-            <element signature="e#1144#1145#0" expanded="true" />
-            <element signature="e#1170#1171#0" expanded="true" />
+            <element signature="method#validate#0;class#Validation#0" />
+            <element signature="method#validateLetters#0;class#Validation#0" />
+            <element signature="method#validateAlphaNumericValues#0;class#Validation#0" />
+            <element signature="method#validatePassword#0;class#Validation#0" />
+            <element signature="method#validateEmail#0;class#Validation#0" />
+            <element signature="method#validatePhoneNumber#0;class#Validation#0" />
+            <element signature="method#changeDatePickerFormat#0;class#Validation#0" />
+            <element signature="method#pastDates#0;class#Validation#0" />
+            <element signature="method#changeDateFormat#0;class#Validation#0" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/dataAccessObject/admission/SchoolStatisticsDao.java">
+    <entry file="file://$PROJECT_DIR$/src/sample/model/admission/ChangeTermAndYear.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="242">
-          <caret line="82" column="27" selection-start-line="82" selection-start-column="27" selection-end-line="82" selection-end-column="50" />
+        <state relative-caret-position="433">
+          <caret line="30" selection-start-line="30" selection-end-line="30" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_192/javafx-src.zip!/javafx/scene/chart/CategoryAxis.java">
+    <entry file="file://$PROJECT_DIR$/resources/fxml/admissionsForm.fxml">
+      <provider editor-type-id="JavaFX-Scene-Builder" />
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="66" column="19" selection-start-line="66" selection-start-column="19" selection-end-line="66" selection-end-column="19" />
+        <state relative-caret-position="216">
+          <caret line="90" lean-forward="true" selection-start-line="90" selection-end-line="90" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/fxml/dashboard.fxml">
-      <provider editor-type-id="text-editor">
-        <state relative-caret-position="264">
-          <caret line="25" column="55" selection-start-line="25" selection-start-column="55" selection-end-line="25" selection-end-column="55" />
+    <entry file="file://$PROJECT_DIR$/resources/fxml/login.fxml">
+      <provider editor-type-id="JavaFX-Scene-Builder" />
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="192">
+          <caret line="18" column="112" selection-start-line="18" selection-start-column="112" selection-end-line="18" selection-end-column="112" />
         </state>
       </provider>
-      <provider selected="true" editor-type-id="JavaFX-Scene-Builder" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/controllers/dashboard.java">
+    <entry file="file://$PROJECT_DIR$/src/sample/dataAccessObject/admission/StudentDao.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="17" column="24" selection-start-line="17" selection-start-column="24" selection-end-line="17" selection-end-column="24" />
+        <state relative-caret-position="422">
+          <caret line="170" column="20" selection-start-line="170" selection-start-column="20" selection-end-line="170" selection-end-column="20" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/sample/controllers/user/login.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="137">
-          <caret line="106" column="52" selection-start-line="106" selection-start-column="52" selection-end-line="106" selection-end-column="52" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/controllers/user/signUp.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-383">
-          <caret line="19" column="13" selection-start-line="19" selection-start-column="13" selection-end-line="19" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/controllers/admission/studentDetails.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="229">
-          <caret line="332" column="4" selection-start-line="332" selection-start-column="4" selection-end-line="346" selection-end-column="5" />
+        <state relative-caret-position="348">
+          <caret line="126" column="20" selection-start-line="126" selection-start-column="20" selection-end-line="126" selection-end-column="20" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#4097#4098#0" expanded="true" />
+            <element signature="e#4170#4171#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/fxml/catMarks.fxml">
+    <entry file="file://$PROJECT_DIR$/src/sample/controllers/admission/admissionsForm.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="129" column="57" selection-start-line="129" selection-start-column="54" selection-end-line="129" selection-end-column="57" />
-        </state>
-      </provider>
-      <provider editor-type-id="JavaFX-Scene-Builder" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/fxml/EndTermExams.fxml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="286">
-          <caret line="201" column="51" lean-forward="true" selection-start-line="201" selection-start-column="51" selection-end-line="201" selection-end-column="51" />
-        </state>
-      </provider>
-      <provider editor-type-id="JavaFX-Scene-Builder" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/controllers/examination/ExamDetails.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="8" lean-forward="true" selection-start-line="8" selection-end-line="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_192/javafx-src.zip!/javafx/collections/FXCollections.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="72" column="40" lean-forward="true" selection-start-line="72" selection-start-column="40" selection-end-line="72" selection-end-column="40" />
-          <folding>
-            <element signature="e#11614#11615#0" expanded="true" />
-            <element signature="e#11668#11669#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="218">
+          <caret line="209" column="31" lean-forward="true" selection-start-line="209" selection-start-column="31" selection-end-line="209" selection-end-column="31" />
         </state>
       </provider>
     </entry>
     <entry file="jar://$PROJECT_DIR$/lib/javax.mail-1.6.2.jar!/javax/mail/Session.class">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="208">
-          <caret line="62" column="32" selection-start-line="62" selection-start-column="32" selection-end-line="62" selection-end-column="32" />
+        <state relative-caret-position="143">
+          <caret line="62" column="25" lean-forward="true" selection-start-line="62" selection-start-column="25" selection-end-line="62" selection-end-column="25" />
         </state>
       </provider>
     </entry>
@@ -1341,186 +1408,59 @@
         </state>
       </provider>
     </entry>
-    <entry file="jar://$PROJECT_DIR$/lib/javax.mail-1.6.2.jar!/javax/mail/Service.class">
+    <entry file="jar://$PROJECT_DIR$/externalLibrary/controlsfx-8.40.14/controlsfx-samples-8.40.14.jar!/org/controlsfx/samples/duke_wave.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/externalLibrary/controlsfx-8.40.14/controlsfx-samples-8.40.14.jar!/org/controlsfx/samples/exclamation.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/externalLibrary/controlsfx-8.40.14/controlsfx-samples-8.40.14.jar!/org/controlsfx/samples/flowers.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/externalLibrary/controlsfx-8.40.14/controlsfx-8.40.14.jar!/controlsfx_ca.properties">
+      <provider editor-type-id="ResourceBundle" />
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/externalLibrary/controlsfx-8.40.14/controlsfx-samples-8.40.14.jar!/org/controlsfx/samples/controlsfx-logo.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/externalLibrary/controlsfx-8.40.14/controlsfx-samples-8.40.14.jar!/org/controlsfx/samples/ControlsFX.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/externalLibrary/controlsfx-8.40.14/controlsfx-samples-8.40.14.jar!/org/controlsfx/samples/ammunationLogo.JPG">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/externalLibrary/controlsfx-8.40.14/controlsfx-samples-8.40.14.jar!/org/controlsfx/samples/bar.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_192/src.zip!/java/util/Hashtable.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="208">
-          <caret line="30" column="29" selection-start-line="30" selection-start-column="29" selection-end-line="30" selection-end-column="29" />
+          <caret line="456" column="26" selection-start-line="456" selection-start-column="26" selection-end-line="456" selection-end-column="26" />
         </state>
       </provider>
     </entry>
-    <entry file="jar://$PROJECT_DIR$/lib/javax.mail-1.6.2.jar!/javax/mail/Message.class">
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_192/src.zip!/java/security/Security.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="74" column="25" selection-start-line="74" selection-start-column="25" selection-end-line="74" selection-end-column="25" />
+        <state relative-caret-position="569">
+          <caret line="403" column="5" lean-forward="true" selection-start-line="403" selection-start-column="5" selection-end-line="403" selection-end-column="5" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/sample/model/SendEmail.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="569">
-          <caret line="69" lean-forward="true" selection-start-line="69" selection-end-line="69" />
+        <state relative-caret-position="340">
+          <caret line="42" column="36" lean-forward="true" selection-start-line="42" selection-start-column="36" selection-end-line="42" selection-end-column="36" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/dataAccessObject/admission/StudentDao.java">
+    <entry file="file://$PROJECT_DIR$/src/sample/controllers/user/UserProfile.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-277">
-          <caret line="91" column="21" selection-start-line="91" selection-start-column="21" selection-end-line="91" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/controllers/admission/admissionsForm.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="243">
-          <caret line="204" column="72" lean-forward="true" selection-start-line="179" selection-start-column="20" selection-end-line="204" selection-end-column="72" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/model/examination/ExamModelTable.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="9" column="87" selection-start-line="8" selection-start-column="24" selection-end-line="9" selection-end-column="87" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1498#1499#0" expanded="true" />
-            <element signature="e#1525#1526#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/controllers/examination/EndTermExams.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="292">
-          <caret line="216" column="119" selection-start-line="216" selection-start-column="119" selection-end-line="216" selection-end-column="119" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#5265#5266#0" expanded="true" />
-            <element signature="e#5306#5307#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_192/javafx-src.zip!/javafx/scene/control/TextInputControl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="129">
-          <caret line="347" column="35" selection-start-line="347" selection-start-column="35" selection-end-line="347" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_192/javafx-src.zip!/javafx/fxml/FXMLLoader.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="121">
-          <caret line="1657" selection-start-line="1657" selection-end-line="1657" />
-          <folding>
-            <element signature="e#66921#66922#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/model/finance/CalculateFees.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="129">
-          <caret line="37" selection-start-line="37" selection-end-line="37" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/controllers/examination/CatMarks.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="171">
-          <caret line="238" selection-start-line="238" selection-end-line="238" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/dataAccessObject/examination/EndTermDao.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="331">
-          <caret line="106" column="50" selection-start-line="106" selection-start-column="21" selection-end-line="106" selection-end-column="50" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/model/examination/AverageModelTable.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="61">
-          <caret line="20" column="16" selection-start-line="20" selection-start-column="8" selection-end-line="20" selection-end-column="16" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1501#1502#0" expanded="true" />
-            <element signature="e#1535#1536#0" expanded="true" />
-            <element signature="e#1827#1828#0" expanded="true" />
-            <element signature="e#1862#1863#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/dataAccessObject/examination/CatMarkDao.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="331">
-          <caret line="106" column="38" selection-start-line="106" selection-start-column="38" selection-end-line="106" selection-end-column="38" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/fxml/examDetails.fxml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="394">
-          <caret line="29" column="12" selection-start-line="29" selection-start-column="12" selection-end-line="29" selection-end-column="12" />
-        </state>
-      </provider>
-      <provider editor-type-id="JavaFX-Scene-Builder" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/fxml/AverageMarks.fxml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="408">
-          <caret line="67" column="68" selection-start-line="67" selection-start-column="68" selection-end-line="67" selection-end-column="68" />
-        </state>
-      </provider>
-      <provider editor-type-id="JavaFX-Scene-Builder" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/controllers/examination/AverageMarks.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-7">
-          <caret line="47" column="46" lean-forward="true" selection-start-line="47" selection-start-column="46" selection-end-line="47" selection-end-column="46" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/dataAccessObject/databaseTester.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="277">
-          <caret line="56" selection-start-line="56" selection-end-line="56" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/model/examination/CalculateAverageMarks.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="343">
-          <caret line="104" column="55" selection-start-line="104" selection-start-column="55" selection-end-line="104" selection-end-column="55" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/dataAccessObject/examination/AverageMarksDao.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="317">
-          <caret line="121" column="20" selection-start-line="121" selection-start-column="20" selection-end-line="121" selection-end-column="94" />
+        <state relative-caret-position="119">
+          <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

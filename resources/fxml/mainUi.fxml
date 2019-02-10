@@ -37,30 +37,36 @@
     <left>
         <AnchorPane prefHeight="685.0" prefWidth="213.0" styleClass="vBoxLeft" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
             <AnchorPane layoutX="-1.0" prefHeight="522.0" prefWidth="43.0" style="-fx-background-color: #494B59;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0" />
-            <JFXButton alignment="BASELINE_LEFT" graphicTextGap="35.0" mnemonicParsing="false" onAction="#dashboard" prefHeight="47.0" prefWidth="229.0" ripplerFill="#a4a1a1" styleClass="glyph-icon" text="Dashboard" AnchorPane.topAnchor="0.0">
+
+            <JFXButton fx:id="dashboard" alignment="BASELINE_LEFT" graphicTextGap="35.0" onAction="#dashboard" prefHeight="47.0" prefWidth="229.0" ripplerFill="#a4a1a1" styleClass="glyph-icon" text="Dashboard" AnchorPane.topAnchor="0.0">
                 <graphic>
                     <FontAwesomeIconView glyphName="ALIGN_JUSTIFY" size="22.0" strokeType="OUTSIDE" strokeWidth="0.0" />
                 </graphic>
             </JFXButton>
 
-            <JFXButton alignment="BASELINE_LEFT" graphicTextGap="35.0" layoutY="47.0" mnemonicParsing="false" onAction="#admission" prefHeight="47.0" prefWidth="229.0" ripplerFill="#a4a1a1" styleClass="glyph-icon" text="Admission">
+            <JFXButton fx:id="admission" alignment="BASELINE_LEFT" graphicTextGap="35.0" layoutY="47.0" onAction="#admission" prefHeight="47.0" prefWidth="229.0" ripplerFill="#a4a1a1" styleClass="glyph-icon" text="Admission">
                 <graphic>
                     <FontAwesomeIconView glyphName="USERS" size="22.0" strokeType="OUTSIDE" strokeWidth="0.0" />
                 </graphic>
             </JFXButton>
 
 
-            <JFXButton alignment="BASELINE_LEFT" graphicTextGap="35.0" layoutY="139.0" mnemonicParsing="false" onAction="#exam" prefHeight="47.0" prefWidth="229.0" ripplerFill="#a4a1a1" styleClass="glyph-icon" text="Examination">
+            <JFXButton fx:id="examination" alignment="BASELINE_LEFT" graphicTextGap="35.0" layoutY="139.0" onAction="#exam" prefHeight="47.0" prefWidth="229.0" ripplerFill="#a4a1a1" styleClass="glyph-icon" text="Examination">
                 <graphic>
                     <FontAwesomeIconView glyphName="BOOK" size="22.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="glyph-icon" />
                 </graphic>
             </JFXButton>
 
-            <JFXButton alignment="BASELINE_LEFT" graphicTextGap="45.0" layoutY="94.0" mnemonicParsing="false" onAction="#finance" prefHeight="47.0" prefWidth="229.0" ripplerFill="#a4a1a1" styleClass="glyph-icon" text="Finance">
+            <JFXButton fx:id="finance" alignment="BASELINE_LEFT" graphicTextGap="45.0" layoutY="94.0" mnemonicParsing="false" onAction="#finance" prefHeight="47.0" prefWidth="229.0" ripplerFill="#a4a1a1" styleClass="glyph-icon" text="Finance">
                 <graphic>
                     <FontAwesomeIconView glyphName="DOLLAR" size="24.0" strokeType="OUTSIDE" strokeWidth="0.0" />
                 </graphic>
             </JFXButton>
+         <JFXButton fx:id="adminPanel" alignment="BASELINE_LEFT" graphicTextGap="35.0" layoutY="186.0" onAction="#admin" prefHeight="47.0" prefWidth="229.0" ripplerFill="#a4a1a1" styleClass="glyph-icon" text="Admin Panel">
+            <graphic>
+               <FontAwesomeIconView glyphName="GEARS" size="22.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="glyph-icon" />
+            </graphic>
+         </JFXButton>
             <effect>
                 <DropShadow />
             </effect>

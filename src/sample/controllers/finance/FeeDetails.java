@@ -29,7 +29,7 @@ public class FeeDetails implements Initializable {
     public TableColumn<FinanceModelTable,Double> feeExpected;
     public TableColumn<FinanceModelTable,Double> FeePaid;
     public TableColumn<FinanceModelTable,LocalDate> DateOfPayment;
-    public TableColumn<FinanceModelTable,Double> receipt;
+    public TableColumn<FinanceModelTable,String> bankTransactionId;
     public TableColumn<FinanceModelTable,Double> feeBalance;
     public TableColumn<FinanceModelTable,Time> TimeOfPayment;
     public TableColumn<FinanceModelTable,Integer> Term;
@@ -44,6 +44,7 @@ public class FeeDetails implements Initializable {
     public ChoiceBox<String> form;
     public TableColumn<FinanceModelTable,Integer> financeId;
     public TableColumn<FinanceModelTable,Integer> tForm;
+    public TableColumn<FinanceModelTable,String> bankName;
 
 
     private ObservableList<FinanceModelTable> oblist= FXCollections.observableArrayList();
@@ -74,14 +75,14 @@ public class FeeDetails implements Initializable {
     public void fillTable(ResultSet rs) throws SQLException {
         oblist.removeAll(oblist);
         while(rs.next()){
-            oblist.add(new FinanceModelTable(rs.getInt("admission_number"),rs.getString("receipt_number"),rs.getDouble("fee_expected")
+            oblist.add(new FinanceModelTable(rs.getInt("admission_number"),rs.getString("bank_transaction_id"),rs.getDouble("fee_expected")
             ,rs.getDouble("fee_paid"),rs.getDouble("balance"),
                     rs.getInt("term"),rs.getTime("time_of_payment"),rs.getDate("date_of_payment"),rs.getInt("finance_id")
-                    ,rs.getInt("form")));
+                    ,rs.getInt("form"),rs.getString("bank_name")));
         }
 
         admission.setCellValueFactory(new PropertyValueFactory<>("admissionNumber"));
-        receipt.setCellValueFactory(new PropertyValueFactory<>("bankTransactionId"));
+        bankTransactionId.setCellValueFactory(new PropertyValueFactory<>("bankTransactionId"));
         feeExpected.setCellValueFactory(new PropertyValueFactory<>("feesExpected"));
         FeePaid.setCellValueFactory(new PropertyValueFactory<>("feesPaid"));
         feeBalance.setCellValueFactory(new PropertyValueFactory<>("feeBalance"));
@@ -90,6 +91,7 @@ public class FeeDetails implements Initializable {
         DateOfPayment.setCellValueFactory(new PropertyValueFactory<>("dateOfPayment"));
         tForm.setCellValueFactory(new PropertyValueFactory<>("form"));
         financeId.setCellValueFactory(new PropertyValueFactory<>("financeId"));
+        bankName.setCellValueFactory(new PropertyValueFactory<>("bankName"));
 
 
          FeeTable.setItems(oblist);
@@ -162,11 +164,12 @@ public class FeeDetails implements Initializable {
         try {
         if (form.getValue()=="All"){
             rs=feeDao.loadTable();
+            fillTable(rs);
         }else {
             rs=feeDao.searchForm(Integer.parseInt(form.getValue()));
+            fillTable(rs);
         }
 
-        fillTable(rs);
         } catch (SQLException e) {
             e.printStackTrace();
         }

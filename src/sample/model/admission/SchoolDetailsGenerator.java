@@ -47,8 +47,10 @@ private StudentDao dataAccessObject =new StudentDao();
         String dorm = null;
         int randomDorm=random.nextInt(2);
 
-        if(gender.matches("male")){
+        if(gender.matches("male"))  //dorms for boys
+        {
             switch(randomDorm) {
+
                 case 0:
                     dorm = "Elgon";
                     break;
@@ -57,7 +59,8 @@ private StudentDao dataAccessObject =new StudentDao();
                     break;
             }
 
-        }else if (gender.matches("female")){
+        }else if (gender.matches("female")) //dorm for girls
+        {
             switch(randomDorm) {
 
                 case 0:

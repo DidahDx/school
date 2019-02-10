@@ -14,8 +14,10 @@
 
 <AnchorPane fx:id="anchorPane" maxHeight="407.0" maxWidth="683.0" minHeight="407.0" minWidth="610.0" prefHeight="407.0" prefWidth="610.0" styleClass="containerBody" stylesheets="@../css/login.css" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controllers.user.login">
      <JFXTextField fx:id="emailTextField" focusColor="#ffb60d" labelFloat="true" layoutX="200.0" layoutY="159.0" prefHeight="33.0" prefWidth="204.0" promptText="UserName" styleClass="promptText" unFocusColor="WHITE" />
-       <JFXPasswordField fx:id="passwordField" focusColor="#ffb60d" labelFloat="true" layoutX="200.0" layoutY="237.0" prefHeight="33.0" prefWidth="204.0" promptText="Password" styleClass="promptText" unFocusColor="WHITE" />
-    <JFXTextField fx:id="showPasswordField" focusColor="#ffb60d" labelFloat="true" layoutX="200.0" layoutY="237.0" onKeyReleased="#setPassword" prefHeight="33.0" prefWidth="204.0" promptText="Password" styleClass="promptText" unFocusColor="WHITE" />
+       <JFXPasswordField fx:id="passwordField" focusColor="#ffb60d" labelFloat="true" layoutX="200.0" layoutY="237.0" prefHeight="33.0"
+                         prefWidth="204.0" promptText="Password" styleClass="promptText" unFocusColor="WHITE" />
+    <JFXTextField fx:id="showPasswordField" focusColor="#ffb60d" labelFloat="true" layoutX="200.0" onKeyReleased="#setPassword"
+                  layoutY="237.0"  prefHeight="33.0" prefWidth="204.0" promptText="Password" styleClass="promptText" unFocusColor="WHITE" />
 
       <JFXButton buttonType="RAISED" layoutX="200.0" layoutY="296.0" mnemonicParsing="false" onAction="#handleLogin" text="Login" />
 

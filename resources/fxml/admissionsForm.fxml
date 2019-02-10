@@ -88,11 +88,6 @@
                <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
            </padding></TextArea>
    </AnchorPane>
-   <JFXComboBox fx:id="term" layoutX="267.0" layoutY="581.0" prefHeight="31.0" prefWidth="131.0" />
-   <Label layoutX="265.0" layoutY="561.0" style="-fx-text-fill: black;" text="Select Term">
-      <graphic>
-         <RequiredFieldValidator fx:id="selectFormValidator1" message="invalid" />
-      </graphic>
-   </Label>
+
 
 </AnchorPane>

@@ -27,19 +27,20 @@ public class FeeDao {
 
     //this method is used to add paid fees to the database
     public void AddFee(int admission, double feeExpected, double feePaid, LocalDate dateOfPayment, double balance,
-                       String receiptNumber, int term, LocalTime timeOfPayment,int form) throws SQLException {
+                       String bankTransactionId, int term, LocalTime timeOfPayment,int form,String BankName) throws SQLException {
         String sql="INSERT INTO finance(admission_number,fee_expected,fee_paid,date_of_payment" +
-                ",balance,receipt_number,term,time_of_payment,form) VALUES(?,?,?,?,?,?,?,?,?)";
+                ",balance,bank_transaction_id,term,time_of_payment,form,bank_name) VALUES(?,?,?,?,?,?,?,?,?,?)";
         PreparedStatement ps=connection.prepareStatement(sql);
         ps.setInt(1,admission);
         ps.setDouble(2,feeExpected);
         ps.setDouble(3,feePaid);
         ps.setDate(4, Date.valueOf(dateOfPayment));
         ps.setDouble(5,balance);
-        ps.setString(6,receiptNumber);
+        ps.setString(6,bankTransactionId);
         ps.setInt(7,term);
         ps.setTime(8, Time.valueOf(timeOfPayment));
         ps.setInt(9,form);
+        ps.setString(10,BankName);
 
         ps.executeUpdate();
     }
@@ -47,9 +48,9 @@ public class FeeDao {
     //this method is used to Update
     @Deprecated
     public void UpdateFee(int admission, double feeExpected, double feePaid, LocalDate dateOfPayment, double balance,
-                       String receiptNumber, int term, LocalTime timeOfPayment,int financeId) throws SQLException {
+                       String bankTransactionId, int term, LocalTime timeOfPayment,int financeId,String BankName) throws SQLException {
         String sql="UPDATE finance SET admission_number=?,fee_expected=?,fee_paid=?,date_of_payment=?" +
-                ",balance=?,receipt_number=?,term=?,time_of_payment=? where finance_id=?";
+                ",balance=?,bank_transaction_id=?,term=?,time_of_payment=?,bank_name=? where finance_id=?";
         PreparedStatement ps=connection.prepareStatement(sql);
         ps.setInt(1,admission);
         ps.setDouble(2,feeExpected);
@@ -57,9 +58,10 @@ public class FeeDao {
         ps.setDouble(3,feePaid);
         ps.setDouble(5,balance);
         ps.setInt(7,term);
-        ps.setString(6,receiptNumber);
+        ps.setString(6,bankTransactionId);
         ps.setTime(8, Time.valueOf(timeOfPayment));
-        ps.setInt(9,financeId);
+        ps.setString(9,BankName);
+        ps.setInt(10,financeId);
         ps.executeUpdate();
     }
 
@@ -86,7 +88,7 @@ public class FeeDao {
     //this method is used to search the finance table using form number
     public ResultSet searchForm(int form) throws SQLException {
         String sql="SELECT finance.admission_number,finance.fee_expected,finance.fee_paid,finance.date_of_payment" +
-        ",finance.balance,finance.receipt_number,finance.term,finance.time_of_payment,finance.form,finance.finance_id,finance.form" +
+        ",finance.balance,finance.bank_transaction_id,finance.bank_name,finance.term,finance.time_of_payment,finance.form,finance.finance_id,finance.form" +
                 " from finance inner join " +
                 "students_details on finance.admission_number=students_details.admission_number WHERE" +
                 " students_details.form=? ";

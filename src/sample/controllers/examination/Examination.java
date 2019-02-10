@@ -25,4 +25,8 @@ public class Examination implements Initializable {
     con.changeUi("examDetails");
 
     }
+
+    public void ReportCard(ActionEvent actionEvent) {
+        con.changeUi("reportCard");
+    }
 }

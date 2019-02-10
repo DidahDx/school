@@ -39,6 +39,7 @@ public class AverageMarks implements Initializable {
     public TableColumn<AverageModelTable,Integer> tTotal;
     public TableColumn<AverageModelTable,Integer> tStreamPosition;
     public TableColumn<AverageModelTable,Integer> tOverallPosition;
+    public TableColumn<AverageModelTable,String> tStream;
     public TableView<AverageModelTable> table;
 
 
@@ -105,7 +106,8 @@ public class AverageMarks implements Initializable {
                     rs.getInt("chemistry"),rs.getInt("history"),rs.getInt("geography"),rs.getInt("cre"),
                     rs.getInt("business_studies"),rs.getInt("computer_studies"),rs.getInt("agriculture"),rs.getInt("average_marks_id"),
                     rs.getInt("term"),rs.getInt("form"),rs.getDate("date"),rs.getTime("time")
-                    ,rs.getInt("total"),rs.getInt("stream_position"),rs.getInt("position")));
+                    ,rs.getInt("total"),rs.getInt("stream_position"),rs.getInt("overall_position"),
+                    rs.getString("stream")));
         }
 
         tBiology.setCellValueFactory(new PropertyValueFactory<>("Biology"));
@@ -128,6 +130,7 @@ public class AverageMarks implements Initializable {
         tTotal.setCellValueFactory(new PropertyValueFactory<>("total"));
         tStreamPosition.setCellValueFactory(new PropertyValueFactory<>("streamPosition"));
         tOverallPosition.setCellValueFactory(new PropertyValueFactory<>("Position"));
+        tStream.setCellValueFactory(new PropertyValueFactory<>("stream"));
 
         table.setItems(listTable);
     }

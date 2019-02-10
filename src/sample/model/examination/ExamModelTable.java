@@ -8,12 +8,12 @@ public class ExamModelTable {
 
     int admissionNumber,Maths,English,Kiswahili,Biology,Physics,
             Chemistry,History,Geography,Cre,BusinessStudies,ComputerStudies,agriculture,endTermId,averageMarksId,CatId,term,form;
-    Date date; Time time;
+    Date date; Time time; String stream;
 
 
     public ExamModelTable(int admissionNumber, int Maths, int English, int Kiswahili, int Biology, int Physics,
                           int Chemistry, int History, int Geography , int Cre, int BusinessStudies,
-                          int ComputerStudies, int agriculture, int endTermId, int term, int form, Date date, Time time){
+                          int ComputerStudies, int agriculture, int endTermId, int term, int form, Date date, Time time, String stream){
 
         this.admissionNumber=admissionNumber;
         this.Maths=Maths;
@@ -35,6 +35,15 @@ public class ExamModelTable {
        this.form=form;
        this.date=date;
        this.time=time;
+       this.stream=stream;
+    }
+
+    public String getStream() {
+        return stream;
+    }
+
+    public void setStream(String stream) {
+        this.stream = stream;
     }
 
     public Date getDate() {

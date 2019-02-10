@@ -13,10 +13,10 @@ public class CatMarkDao {
     //this is used to save cat marks into the database
     public void InsertCatMarks(int admissionNumber, int Maths, int English, int Kiswahili, int Biology, int Physics,
                                int Chemistry, int History, int Geography , int Cre, int BusinessStudies,
-                               int ComputerStudies, int agriculture, int form, int term, LocalDate date, LocalTime time) throws SQLException {
+                               int ComputerStudies, int agriculture, int form, int term, LocalDate date, LocalTime time,String stream) throws SQLException {
 
         String sql="INSERT INTO cat_marks(admission_number,maths,english,kiswahili,biology,chemistry,physics,cre,history," +
-                "geography,agriculture,business_studies,computer_studies,term,form,date,time) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+                "geography,agriculture,business_studies,computer_studies,term,form,date,time,stream) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
         PreparedStatement ps=connection.prepareStatement(sql);
         ps.setInt(1,admissionNumber);
         ps.setInt(3,English);
@@ -35,6 +35,7 @@ public class CatMarkDao {
         ps.setInt(15,form);
         ps.setTime(17, Time.valueOf(time));
         ps.setDate(16, Date.valueOf(date));
+        ps.setString(18,stream);
         ps.executeUpdate();
     }
 
@@ -42,10 +43,10 @@ public class CatMarkDao {
     //this is used to Update the cat marks into the database
     public void UpdateCatMarks(int admissionNumber, int Maths, int English, int Kiswahili, int Biology, int Physics,
                                int Chemistry, int History, int Geography , int Cre, int BusinessStudies,
-                               int ComputerStudies, int agriculture, int form, int term,int catId,LocalTime time,LocalDate edate) throws SQLException {
+                               int ComputerStudies, int agriculture, int form, int term,int catId,LocalTime time,LocalDate edate,String stream) throws SQLException {
 
         String sql="UPDATE cat_marks SET admission_number=?,maths=?,english=?,kiswahili=?,biology=?,chemistry=?,physics=?,cre=?" +
-                ",history=?,geography=?,agriculture=?,business_studies=?,computer_studies=?,term=?,form=?,time=?,date=? WHERE  cat_id=?";
+                ",history=?,geography=?,agriculture=?,business_studies=?,computer_studies=?,term=?,form=?,time=?,date=?,stream=? WHERE  cat_id=?";
         PreparedStatement ps=connection.prepareStatement(sql);
         ps.setInt(2,Maths);
         ps.setInt(1,admissionNumber);
@@ -62,7 +63,8 @@ public class CatMarkDao {
         ps.setInt(13,ComputerStudies);
         ps.setInt(14,term);
         ps.setInt(15,form);
-        ps.setInt(18,catId);
+        ps.setString(18,stream);
+        ps.setInt(19,catId);
         ps.setTime(16, Time.valueOf(time));
         ps.setDate(17, Date.valueOf(edate));
         ps.executeUpdate();
@@ -78,10 +80,12 @@ public class CatMarkDao {
 
     //this is used to read all the cat marks from the database
     public ResultSet ReadCatMaks() throws SQLException {
+
         String sql="SELECT * FROM cat_marks";
         PreparedStatement pS=connection.prepareStatement(sql);
+        ResultSet rs=pS.executeQuery();
 
-       return pS.executeQuery();
+        return rs;
     }
 
     //this used to search the database for cat marks with admission number

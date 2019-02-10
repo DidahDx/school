@@ -20,7 +20,7 @@ class connectionProperties {
         databaseUrl=rb.getString("databaseUrl");                       //GETS DATABASE URL FROM THE FILE
     }
 
-    //these are getters to return the userName ,password and databaseUrl
+    //these are getters to return the tUserName ,password and databaseUrl
     public String getUser(){
         return user;
     }

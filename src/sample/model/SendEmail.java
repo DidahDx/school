@@ -1,11 +1,9 @@
 package sample.model;
 
 import javax.mail.Message;
-import javax.mail.MessagingException;
 import javax.mail.Session;
-
 import javax.mail.Transport;
-import javax.mail.internet.*;
+import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 import java.util.Date;
 import java.util.Properties;
@@ -24,7 +22,7 @@ public class SendEmail {
         String message=tMessage;
 
 
-            String to = "projectuoe@gmail.com,"+ tReceiver;
+            String to = tReceiver;
             String[] recipientList = to.split(",");
             InternetAddress[] recipientAddress = new InternetAddress[recipientList.length];
             int counter = 0;
@@ -54,7 +52,7 @@ public class SendEmail {
         ms.setSentDate(new Date());
         ms.setText(message);  //email message
 
-            Transport transport=mailSession.getTransport("smtp"); //this is the which we send the message through
+            Transport transport=mailSession.getTransport("smtp"); //this is what we send the message through
             transport.connect(host,user,password);  //used to for authentication of user and password
             transport.sendMessage(ms,ms.getAllRecipients());
             transport.close();

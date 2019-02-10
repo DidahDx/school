@@ -26,7 +26,7 @@ public class DBConnector {
             alert.setHeaderText(null);
             alert.setContentText("Check connection and try again");
             alert.showAndWait();
-
+             e.printStackTrace();
             System.out.println("connection failed");
         }
 

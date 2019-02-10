@@ -23,20 +23,15 @@
             </image>
         </ImageView>
         <HBox alignment="CENTER" prefHeight="240.0" styleClass="hBox" stylesheets="@../css/admission.css">
-            <JFXButton alignment="CENTER" buttonType="RAISED" contentDisplay="TOP" graphicTextGap="5.0" layoutX="568.0" layoutY="66.0" onAction="#examDetails" prefHeight="128.0" prefWidth="241.0" style="-fx-background-color: #AB6130;" text="Edit and View Exam Marks">
+            <JFXButton alignment="CENTER" buttonType="RAISED" contentDisplay="TOP" graphicTextGap="5.0" layoutX="568.0" layoutY="66.0" onAction="#examDetails" prefHeight="128.0" prefWidth="241.0" style="-fx-background-color: #AB6130;" text=" Exam Marks">
                 <graphic>
                     <FontAwesomeIconView glyphName="SEARCH" size="24.0" strokeType="OUTSIDE" strokeWidth="0.0" />
                 </graphic>
             </JFXButton>
-            <JFXButton alignment="CENTER" buttonType="RAISED" contentDisplay="TOP" graphicTextGap="5.0" prefHeight="128.0" prefWidth="241.0" style="-fx-background-color: #14C8D9;" stylesheets="@../css/admission.css" text="Report Card">
+            <JFXButton alignment="CENTER" buttonType="RAISED" contentDisplay="TOP" graphicTextGap="5.0" onAction="#ReportCard" prefHeight="128.0" prefWidth="241.0" style="-fx-background-color: #14C8D9;" stylesheets="@../css/admission.css" text="Report Card">
             <graphic>
                <MaterialIconView glyphName="LIBRARY_BOOKS" size="23.0" strokeType="OUTSIDE" strokeWidth="0.0" />
             </graphic>
-            </JFXButton>
-            <JFXButton alignment="CENTER" buttonType="RAISED" contentDisplay="TOP" graphicTextGap="5.0" layoutX="688.0" layoutY="66.0" prefHeight="128.0" prefWidth="241.0" style="-fx-background-color: #4500A6;" text="View Exam Statistics">
-                <graphic>
-                    <FontAwesomeIconView glyphName="BAR_CHART" size="24.0" strokeType="OUTSIDE" strokeWidth="0.0" />
-                </graphic>
             </JFXButton>
             <VBox.margin>
                 <Insets bottom="50.0" top="35.0" />

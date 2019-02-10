@@ -14,9 +14,8 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import sample.Controller;
-import sample.Validation;
+import sample.model.Validation;
 import sample.dataAccessObject.admission.StudentDao;
-import sample.model.MyPrinter;
 import sample.model.admission.StudentModelTable;
 
 import java.net.URL;

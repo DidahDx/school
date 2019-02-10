@@ -11,6 +11,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import sample.dataAccessObject.admission.StudentDao;
 import sample.dataAccessObject.examination.CatMarkDao;
 import sample.model.examination.CalculateAverageMarks;
+import sample.model.examination.SetStudentPosition;
 import sample.model.examination.ExamModelTable;
 
 import java.net.URL;
@@ -41,6 +42,7 @@ public class CatMarks implements Initializable {
     public TableColumn<ExamModelTable,Integer> tTerm;
     public TableColumn<ExamModelTable,Integer> tDate;
     public TableColumn<ExamModelTable,Integer> tTime;
+    public TableColumn<ExamModelTable,String> tStream;
     public TableView<ExamModelTable> table;
 
     public JFXButton eAddMarks;
@@ -69,12 +71,13 @@ public class CatMarks implements Initializable {
     public Label NameDisplayed;
 
     CalculateAverageMarks calculateAverageMarks=new CalculateAverageMarks();
+    SetStudentPosition setStudentPosition =new SetStudentPosition();
     private CatMarkDao catMarkDao=new CatMarkDao();
     private StudentDao sDao=new StudentDao();
     private ObservableList tableList= FXCollections.observableArrayList();
     private ObservableList listForm= FXCollections.observableArrayList();
     private int catId=0;
-    private String name="",second="";
+    private String name="",second="",stream="";
     int form=0,term=0;
 
     @Override
@@ -178,6 +181,19 @@ public class CatMarks implements Initializable {
     public void Clear(ActionEvent actionEvent) {
         ForButtonVisibility(false);
         eUpdate.setVisible(false);
+        biology.setText(null);
+        chemistry.setText(null);
+        business.setText(null);
+        kiswahili.setText(null);
+        cre.setText(null);
+        maths.setText(null);
+        english.setText(null);
+        agriculture.setText(null);
+        history.setText(null);
+        physics.setText(null);
+        computerStudies.setText(null);
+        geography.setText(null);
+        eAdmissionNumber.setText(null);
     }
 
     //this is used to update the cat marks
@@ -189,6 +205,7 @@ public class CatMarks implements Initializable {
             form=rs.getInt("form");
             name=rs.getString("first_name");
             second=rs.getString("second_name");
+            stream=rs.getString("stream");
         }
           LocalTime now=LocalTime.now();
           LocalDate today=LocalDate.now();
@@ -203,8 +220,12 @@ public class CatMarks implements Initializable {
                     Integer.parseInt(kiswahili.getText()), Integer.parseInt(biology.getText()), Integer.parseInt(physics.getText()), Integer.parseInt(chemistry.getText()),
                     Integer.parseInt(history.getText()), Integer.parseInt(geography.getText()), Integer.parseInt(cre.getText()),
                     Integer.parseInt(business.getText()), Integer.parseInt(computerStudies.getText()), Integer.parseInt(agriculture.getText()),
-                    form, term,catId,now,today);
-            calculateAverageMarks.AddCatAndEndTermMark(form,Integer.parseInt(eAdmissionNumber.getText()),term);
+                    form, term,catId,now,today,stream);
+
+            calculateAverageMarks.AddCatAndEndTermMark(form,Integer.parseInt(eAdmissionNumber.getText()),term,stream);
+            setStudentPosition.setStreamPosition(form,term,stream);
+            loadTable();
+
         }
         ForButtonVisibility(true);
         loadTable();
@@ -216,32 +237,49 @@ public class CatMarks implements Initializable {
     //this is used to add the cat marks to the database
     public void AddMarks(ActionEvent actionEvent) {
         try {
-            int form = 0,term = 0;
-           ResultSet rs= sDao.searchTable(Integer.parseInt(eAdmissionNumber.getText()));
-           while(rs.next()){
-               form=rs.getInt("form");
-               term=rs.getInt("term");
-           }
-            LocalDate today=LocalDate.now();
-            LocalTime now=LocalTime.now();
+            int form = 0, term = 0, form1 = 0, term1 = 0;
+            ResultSet rs = sDao.searchTable(Integer.parseInt(eAdmissionNumber.getText()));
+            ResultSet rs2 = catMarkDao.Search(Integer.parseInt(eAdmissionNumber.getText()));
+            while (rs.next()) {
+                form = rs.getInt("form");
+                term = rs.getInt("term");
+                stream = rs.getString("stream");
+            }
+            while (rs2.next()) {
+                form1 = rs2.getInt("form");
+                term1 = rs2.getInt("term");
+            }
+            LocalDate today = LocalDate.now();
+            LocalTime now = LocalTime.now();
 
-           if (!(form==0 || term==0)) {
-               Alert alert=new Alert(Alert.AlertType.CONFIRMATION);
-               alert.setHeaderText(null);
-               alert.setContentText(Content("Insert"));
-               Optional<ButtonType> answer=alert.showAndWait();
+            if (!(form == form1 && term == term1)) {
 
-               if (answer.get()==ButtonType.OK) {
-               catMarkDao.InsertCatMarks(Integer.parseInt(eAdmissionNumber.getText()), Integer.parseInt(maths.getText()), Integer.parseInt(english.getText()),
-                       Integer.parseInt(kiswahili.getText()), Integer.parseInt(biology.getText()), Integer.parseInt(physics.getText()), Integer.parseInt(chemistry.getText()),
-                       Integer.parseInt(history.getText()), Integer.parseInt(geography.getText()), Integer.parseInt(cre.getText()),
-                       Integer.parseInt(business.getText()), Integer.parseInt(computerStudies.getText()), Integer.parseInt(agriculture.getText()),
-                       form, term,today,now);
-                   calculateAverageMarks.AddCatAndEndTermMark(form,Integer.parseInt(eAdmissionNumber.getText()),term);
-               }
-           }else{
-               EndTermExams.CheckStudentExist(eAdmissionNumber);
-           }
+            if (!(form == 0 || term == 0)) {
+                Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+                alert.setHeaderText(null);
+                alert.setContentText(Content("Insert"));
+                Optional<ButtonType> answer = alert.showAndWait();
+
+                if (answer.get() == ButtonType.OK) {
+                    catMarkDao.InsertCatMarks(Integer.parseInt(eAdmissionNumber.getText()), Integer.parseInt(maths.getText()), Integer.parseInt(english.getText()),
+                            Integer.parseInt(kiswahili.getText()), Integer.parseInt(biology.getText()), Integer.parseInt(physics.getText()), Integer.parseInt(chemistry.getText()),
+                            Integer.parseInt(history.getText()), Integer.parseInt(geography.getText()), Integer.parseInt(cre.getText()),
+                            Integer.parseInt(business.getText()), Integer.parseInt(computerStudies.getText()), Integer.parseInt(agriculture.getText()),
+                            form, term, today, now, stream);
+
+                    calculateAverageMarks.AddCatAndEndTermMark(form, Integer.parseInt(eAdmissionNumber.getText()), term, stream);
+                    setStudentPosition.setStreamPosition(form, term, stream);
+                    loadTable();
+                }
+            } else {
+                EndTermExams.CheckStudentExist(eAdmissionNumber);
+            }
+        }else{
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setHeaderText(null);
+                alert.setContentText(" The Student  with Admission Number "+eAdmissionNumber.getText()+" was already added \n search and edit the students marks");
+                alert.showAndWait();
+            }
             ForButtonVisibility(true);
            loadTable();
         } catch (SQLException e) {
@@ -252,6 +290,11 @@ public class CatMarks implements Initializable {
     //this is used to delete the cat marks from the database
     public void delete(ActionEvent actionEvent) {
         try {
+                ResultSet rs5= sDao.searchTable(Integer.parseInt(eAdmissionNumber.getText()));
+                while(rs5.next()) {
+                    stream = rs5.getString("stream");
+                }
+
             Alert alert=new Alert(Alert.AlertType.CONFIRMATION);
             alert.setHeaderText(null);
             alert.setContentText(Content("DELETE"));
@@ -260,7 +303,8 @@ public class CatMarks implements Initializable {
             if (answer.get()==ButtonType.OK) {
                 catMarkDao.DeleteCatMarks(catId);
                 loadTable();
-                calculateAverageMarks.AddCatAndEndTermMark(form,Integer.parseInt(eAdmissionNumber.getText()),term);
+                calculateAverageMarks.AddCatAndEndTermMark(form,Integer.parseInt(eAdmissionNumber.getText()),term,stream);
+                setStudentPosition.setStreamPosition(form,term,stream);
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -283,7 +327,7 @@ public class CatMarks implements Initializable {
                     rs.getInt("english"),rs.getInt("kiswahili"),rs.getInt("biology"),rs.getInt("physics"),
                     rs.getInt("chemistry"),rs.getInt("history"),rs.getInt("geography"),rs.getInt("cre"),
                     rs.getInt("business_studies"),rs.getInt("computer_studies"),rs.getInt("agriculture"),rs.getInt("cat_id"),
-                    rs.getInt("term"),rs.getInt("form"),rs.getDate("date"),rs.getTime("time")));
+                    rs.getInt("term"),rs.getInt("form"),rs.getDate("date"),rs.getTime("time"),rs.getString("stream")));
         }
 
         tAdmissionNumber.setCellValueFactory(new PropertyValueFactory<>("admissionNumber"));
@@ -303,6 +347,7 @@ public class CatMarks implements Initializable {
         tForm.setCellValueFactory(new PropertyValueFactory<>("form"));
         tDate.setCellValueFactory(new PropertyValueFactory<>("date"));
         tTime.setCellValueFactory(new PropertyValueFactory<>("time"));
+        tStream.setCellValueFactory(new PropertyValueFactory<>("stream"));
 
         table.setItems(tableList);
     }

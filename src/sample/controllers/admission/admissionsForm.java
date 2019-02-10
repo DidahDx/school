@@ -13,21 +13,20 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
-import javafx.stage.Modality;
-import javafx.stage.Stage;
 import sample.Controller;
 import sample.dataAccessObject.admission.GuardianDao;
 import sample.dataAccessObject.admission.StudentDao;
-import sample.Validation;
+import sample.model.Validation;
 import sample.model.MyPrinter;
+import sample.model.SendEmail;
 import sample.model.admission.SchoolDetailsGenerator;
 
 import java.net.URL;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.Collections;
-import java.util.Date;
 import java.util.ResourceBundle;
 
 public class admissionsForm implements Initializable {
@@ -49,7 +48,6 @@ public class admissionsForm implements Initializable {
     public JFXRadioButton DayScholar;
     public AnchorPane printArea;
     public Label labelDOB;
-    public JFXComboBox term;
     @FXML private ComboBox<String> County;
 
     private StudentDao dao=new StudentDao();
@@ -62,7 +60,9 @@ public class admissionsForm implements Initializable {
     private LocalTime now=LocalTime.now();
     private int admissionNumber = 0;
     private GuardianDao gDao=new GuardianDao();
-private Validation validation=new Validation();
+    private Validation validation=new Validation();
+    private SendEmail sEmail=new SendEmail();
+    int term=0;
 
     //Called to initialize a controller after its root element has been completely processed.
     @Override
@@ -73,7 +73,6 @@ private Validation validation=new Validation();
        loadComboBox(this.County);
         FormComboBox(this.Form);
       setLastAdmissionNumber();
-      TermComboBox(term);
 
     }
 
@@ -102,16 +101,6 @@ private Validation validation=new Validation();
 
         String[] a={"1","2","3","4"};
         Collections.addAll(list_of_forms,a);
-        Form.getItems().addAll(list_of_forms);
-        Form.setEditable(false);
-    }
-
-    //This method is used to AddNewGuardian items to the Form ComboBox
-    public void TermComboBox(ComboBox Form){
-        list_of_forms.removeAll( list_of_forms );
-
-        String[] b={"1","2","3"};
-        Collections.addAll(list_of_forms,b);
         Form.getItems().addAll(list_of_forms);
         Form.setEditable(false);
     }
@@ -152,7 +141,7 @@ private Validation validation=new Validation();
         String gender = null;
         String studentType=null;
         String Dorm=null;
-
+        setTerm();
         if(male.isSelected()){
             gender="male";
         }else if(female.isSelected()){
@@ -199,7 +188,7 @@ private Validation validation=new Validation();
                     " \n Date Of Admission:\t\t" + validation.changeDateFormat(dateOfAdmission.getValue()) +
                     "\n Student Type:\t\t\t" + studentType +
                     "\n Form:\t\t\t\t\t" + Form.getValue() +
-                            "\n Term:\t\t\t\t\t"+ term.getValue() +
+                            "\n Term:\t\t\t\t\t"+ term +
                             "\n Dorm:\t\t\t\t\t" + Dorm +
                     "\n Stream:\t\t\t\t\t" + schoolDetailsGenerator.getStream() +
                     "\n Time :\t\t\t\t\t"+ now.minusNanos(now.getNano())
@@ -212,12 +201,13 @@ private Validation validation=new Validation();
           dao.SaveStudentsNames(studentFirstName.getText().trim(), studentMiddleName.getText().trim(), studentLastName.getText().trim(),
             County.getValue(),gender, dateOfBirth.getValue(),
            admissionNumber,dateOfAdmission.getValue(),studentType, Integer.parseInt(Form.getValue()),
-                  Dorm,now.minusNanos(now.getNano()),schoolDetailsGenerator.getStream(),Integer.parseInt(term.getValue().toString()));
+                  Dorm,now.minusNanos(now.getNano()),schoolDetailsGenerator.getStream(),term);
 
           gDao.AddGuardianDetails(guardianFirstName.getText().trim(), guardianLastName.getText().trim(),
             guardianEmail.getText().trim(), Integer.parseInt(phoneNumber.getText().trim()),
             admissionNumber);
                setLastAdmissionNumber();
+               sEmail.sendEmailMessage("Admission Details Slip",studentDetails.getText(), guardianEmail.getText().trim());
         }
 
         }
@@ -241,5 +231,16 @@ private Validation validation=new Validation();
     // this method prints the student details
     public void printDetails(ActionEvent actionEvent) {
         new MyPrinter().Print(studentDetails);
+    }
+
+    private void setTerm(){
+        try {
+            ResultSet rs=dao.getTerm();
+            while (rs.next()){
+                term=rs.getInt("current_term");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 }

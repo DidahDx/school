@@ -1,32 +1,32 @@
 package sample.controllers.user;
 
-import animatefx.animation.*;
+import animatefx.animation.FadeInRight;
 import com.jfoenix.controls.JFXPasswordField;
 import com.jfoenix.controls.JFXTextField;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Alert;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import sample.Controller;
-import sample.dataAccessObject.DBConnector;
-import sample.Validation;
+import sample.dataAccessObject.user.UserDao;
+import sample.model.Validation;
 
 import java.net.URL;
-import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.ResourceBundle;
+
+/**
+ * THIS CLASS IS USED TO LOGIN A USER WITH THE RIGHT CREDENTIALS
+ * */
 
 public class login implements Initializable {
 
-    public AnchorPane slashPane;
     @FXML
    public AnchorPane anchorPane;
     @FXML
@@ -40,11 +40,10 @@ public class login implements Initializable {
     @FXML
     JFXTextField showPasswordField;
 
-    public static String id;
+    public static String id,role;
     private Controller con = new Controller();
     private Validation valid =new Validation();
-//    RequiredFieldValidator requiredFieldValidator=new RequiredFieldValidator();
-//    MaterialDesignIconView icon = new MaterialDesignIconView(MaterialDesignIcon.CLOSE_CIRCLE);
+    private UserDao userDao=new UserDao();
 
     //it initial hides the TextField, used to show the Password after the login finishes to load
     @Override
@@ -52,47 +51,41 @@ public class login implements Initializable {
 
          new FadeInRight(anchorPane).play();
         showPasswordField.setVisible(false);
-//        emailTextField.getValidators().clear(requiredFieldValidator);
-//        requiredFieldValidator.setMessage("");
-//        requiredFieldValidator.setIcon(icon);
-
     }
 
-//handles login by checking the database for correct userName and password if it is true or false
+//handles login by checking the database for correct tUserName and password if it is true or false
     public void handleLogin(ActionEvent actionEvent) {
 
-        if(valid.validate(emailTextField.getText().trim()) && valid.validatePassword(passwordField.getText().trim())) {
-
-            Connection connect= DBConnector.getConnection();
+        ResultSet rs;
+        if(valid.validate(emailTextField.getText().trim()) && valid.validatePassword(passwordField.getText().trim()))
+        {
             try {
-                Statement statement=connect.createStatement();
-                String sql="select user_name,password from users_details where user_name='"
-                        +emailTextField.getText().trim()+"' and password='"+
-                        passwordField.getText().trim()+"' ;";
-                ResultSet results =statement.executeQuery(sql);
+               rs=userDao.login(emailTextField.getText().trim(),passwordField.getText().trim());
 
-                if (results.next()){
+                if (rs.next())
+                {
                     id=emailTextField.getText();
-                    con.changeUi("mainUi");
-                    errorLabel.setText(" ");
-                    con.close(anchorPane);
+                    role=rs.getString("role");
+
+                    if(!role.isEmpty() && !role.matches("block")) {
+                        con.changeUi("mainUi");
+                        errorLabel.setText(" ");
+                        con.close(anchorPane);
+                    }else{
+                        errorLabel.setText("Account is Blocked");
+                        errorLabel.setStyle("-fx-text-fill:red;");
+                    }
+
                 }else {
                     errorLabel.setText("Wrong username or password");
                     errorLabel.setStyle("-fx-text-fill:red;");
                 }
-
             } catch (SQLException e) {
                 e.printStackTrace();
             }
-
         }else{
-
-            Alert alert= new Alert(Alert.AlertType.WARNING);
-            alert.setTitle("Warning");
-            alert.setHeaderText(null);
-            alert.setContentText("please sign up");
-            alert.showAndWait();
-
+            errorLabel.setText("Wrong username or password");
+            errorLabel.setStyle("-fx-text-fill:red;");
         }
     }
 
@@ -140,6 +133,4 @@ public class login implements Initializable {
 
         con.Minimise(anchorPane);
     }
-
-
 }

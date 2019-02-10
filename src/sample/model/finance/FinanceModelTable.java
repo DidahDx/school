@@ -5,7 +5,7 @@ import java.sql.Time;
 
 public class FinanceModelTable {
     int admissionNumber, term;
-    String bankTransactionId;
+    String bankTransactionId,bankName;
     double feesPaid, feeBalance, feesExpected;
     Time timeOfPayment;
     Date dateOfPayment;
@@ -13,7 +13,7 @@ public class FinanceModelTable {
 
 
     public FinanceModelTable(int  admissionNumber, String bankTransactionId, double feesExpected, double feesPaid,
-                             double feeBalance, int term, Time timeOfPayment, Date dateOfPayment, int financeId, int form) {
+                             double feeBalance, int term, Time timeOfPayment, Date dateOfPayment, int financeId, int form, String bankName) {
         this.admissionNumber = admissionNumber;
         this.feeBalance = feeBalance;
         this.feesExpected = feesExpected;
@@ -24,8 +24,16 @@ public class FinanceModelTable {
         this.timeOfPayment=timeOfPayment;
         this.financeId=financeId;
         this.form=form;
+        this.bankName=bankName;
     }
 
+    public String getBankName() {
+        return bankName;
+    }
+
+    public void setBankName(String bankName) {
+        this.bankName = bankName;
+    }
 
     public int getFinanceId() {
         return financeId;

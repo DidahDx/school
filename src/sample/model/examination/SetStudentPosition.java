@@ -1,10 +1,14 @@
 package sample.model.examination;
 
-import sample.dataAccessObject.admission.StudentDao;
 import sample.dataAccessObject.examination.AverageMarksDao;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+
+/**
+ * THIS CLASS IS USED TO SET THE STREAM AND OVERALL POSITION OF STUDENT
+ * AND SETS THE TIE POSITION
+ * */
 
 public class SetStudentPosition {
 
@@ -85,6 +89,7 @@ public class SetStudentPosition {
     }
 
 
+    //this method is used to set tie position for for Each form
     public void setOverallPositionTie(int form, int term){
         try {
           int averageId1,total,total1; int OverallPosition,OverallPosition1;

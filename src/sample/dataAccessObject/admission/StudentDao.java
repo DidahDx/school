@@ -154,13 +154,24 @@ public class StudentDao {
         }
 
     }
-    
-    //this method is used to get
-    public ResultSet SchoolStatistics(){
-        ResultSet rs = null;
 
+    //this method is used to get admission number for a particular stream and form
+   public ResultSet getAlladmissionNumber(int form ,String stream) throws SQLException {
+
+        ResultSet rs = null;
+        String sql="SELECT admission_number FROM students_details where form=? and stream=?";
+        PreparedStatement ps=connection.prepareStatement(sql);
+       ps.setString(2,stream);
+       ps.setInt(1,form);
+        rs=ps.executeQuery();
 
         return rs;
-    }
+   }
+
+   public ResultSet getTerm() throws SQLException {
+        String sql="SELECT * FROM current_school_details";
+        PreparedStatement ps1=connection.prepareStatement(sql);
+      return ps1.executeQuery();
+   }
 
 }

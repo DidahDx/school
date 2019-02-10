@@ -3,8 +3,6 @@
 <?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXTextField?>
 <?import de.jensd.fx.glyphs.materialdesignicons.MaterialDesignIconView?>
-<?import javafx.scene.control.ChoiceBox?>
-<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -18,12 +16,6 @@
         </font>
     </Text>
     <JFXTextField fx:id="admissionNumber" labelFloat="true" layoutX="44.0" layoutY="70.0" prefHeight="28.0" prefWidth="224.0" promptText="Admission Number" styleClass="textField" />
-    <Label layoutX="44.0" layoutY="129.0" text="choose bank ">
-        <font>
-            <Font name="Arial" size="14.0" />
-        </font>
-    </Label>
-    <ChoiceBox fx:id="bank" layoutX="44.0" layoutY="154.0" prefHeight="28.0" prefWidth="224.0" />
     <JFXTextField fx:id="BankTransactionId" labelFloat="true" layoutX="44.0" layoutY="220.0" prefHeight="28.0" prefWidth="224.0" promptText="Bank Transaction id" />
     <JFXTextField fx:id="Amount" labelFloat="true" layoutX="44.0" layoutY="301.0" prefHeight="28.0" prefWidth="224.0" promptText="Amount" />
     <JFXButton buttonType="RAISED" layoutX="137.0" layoutY="382.0" onAction="#submitPayment" prefHeight="35.0" prefWidth="131.0" text="submit Payment" />
@@ -34,5 +26,6 @@
       <graphic>
          <MaterialDesignIconView fill="#4a4242" glyphName="PRINTER" size="18.0" strokeType="OUTSIDE" strokeWidth="0.0" />
       </graphic></JFXButton>
+   <JFXTextField fx:id="bankName" labelFloat="true" layoutX="37.0" layoutY="153.0" prefHeight="28.0" prefWidth="231.0" promptText="Bank Name" />
 
 </AnchorPane>

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="534.0" prefWidth="784.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controllers.user.AdminPanel">
+   <children>
+      <TableView fx:id="table" layoutX="64.0" layoutY="55.0" onMouseClicked="#selected" prefHeight="449.0" prefWidth="205.0">
+        <columns>
+          <TableColumn fx:id="tUserName" prefWidth="75.0" text="User Name" />
+        </columns>
+         <columnResizePolicy>
+            <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+         </columnResizePolicy>
+      </TableView>
+      <JFXTextField fx:id="userId" labelFloat="true" layoutX="363.0" layoutY="63.0" prefHeight="33.0" prefWidth="205.0" promptText="User Id" />
+      <JFXTextField fx:id="FirstName" labelFloat="true" layoutX="363.0" layoutY="141.0" prefHeight="33.0" prefWidth="205.0" promptText="First Name" />
+      <JFXTextField fx:id="SecondName" labelFloat="true" layoutX="363.0" layoutY="228.0" prefHeight="33.0" prefWidth="205.0" promptText="Second Name" />
+      <JFXTextField fx:id="phoneNumber" labelFloat="true" layoutX="363.0" layoutY="309.0" prefHeight="33.0" prefWidth="205.0" promptText="Phone Number" />
+      <JFXTextField fx:id="email" labelFloat="true" layoutX="363.0" layoutY="395.0" prefHeight="33.0" prefWidth="205.0" promptText="Email" />
+      <ComboBox fx:id="gender" layoutX="629.0" layoutY="106.0" prefHeight="25.0" prefWidth="120.0" />
+      <Label layoutX="642.0" layoutY="88.0" text="Gender" />
+      <Label layoutX="642.0" layoutY="189.0" text="Set User Privilege" />
+      <ComboBox fx:id="privilege" layoutX="623.0" layoutY="216.0" prefHeight="25.0" prefWidth="152.0" />
+      <JFXButton buttonType="RAISED" layoutX="676.0" layoutY="470.0" mnemonicParsing="false" onAction="#submit" text="Update" />
+      <Label layoutX="299.0" layoutY="14.0" text="Users Privileges">
+         <font>
+            <Font name="Arial Bold" size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="595.0" layoutY="35.0" text="user Name:">
+         <font>
+            <Font name="Arial" size="14.0" />
+         </font>
+      </Label>
+      <Label fx:id="userName" layoutX="685.0" layoutY="35.0">
+         <font>
+            <Font name="Arial Bold" size="14.0" />
+         </font>
+      </Label>
+      <JFXButton buttonType="RAISED" layoutX="569.0" layoutY="470.0" mnemonicParsing="false" onAction="#deleteUser" text="Delete" />
+   </children>
+</AnchorPane>

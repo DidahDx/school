@@ -19,13 +19,13 @@ public class AverageModelTable {
     int total;
     int streamPosition;
     int Position;
-    Date date; Time time;
+    Date date; Time time; String stream;
 
 
     public AverageModelTable(int admissionNumber, int Maths, int English, int Kiswahili, int Biology, int Physics,
-                          int Chemistry, int History, int Geography , int Cre, int BusinessStudies,
-                          int ComputerStudies, int agriculture, int averageMarksId, int term, int form, Date date,
-                             Time time,int total,int streamPosition,int Position){
+                             int Chemistry, int History, int Geography , int Cre, int BusinessStudies,
+                             int ComputerStudies, int agriculture, int averageMarksId, int term, int form, Date date,
+                             Time time, int total, int streamPosition, int Position, String stream){
 
         this.admissionNumber=admissionNumber;
         this.Maths=Maths;
@@ -48,6 +48,15 @@ public class AverageModelTable {
         this.total=total;
         this.streamPosition=streamPosition;
         this.Position=Position;
+        this.stream=stream;
+    }
+
+    public String getStream() {
+        return stream;
+    }
+
+    public void setStream(String stream) {
+        this.stream = stream;
     }
 
     public int getTotal() {

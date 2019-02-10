@@ -205,6 +205,7 @@
                                 <TableColumn fx:id="tComputerScience" prefWidth="120.0" text="Computer Studies" />
                                 <TableColumn fx:id="tForm"  prefWidth="50.0" text="Form" />
                                 <TableColumn fx:id="tTerm"  prefWidth="50.0" text="Term" />
+                                <TableColumn fx:id="tStream" prefWidth="50" text="Stream"/>
                                 <TableColumn fx:id="tDate"  prefWidth="50.0" text="Date" />
                                 <TableColumn fx:id="tTime"  prefWidth="50.0" text="Time" />
                             </columns>

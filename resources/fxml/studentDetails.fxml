@@ -121,7 +121,7 @@
                     </effect>
                     <Image url="@../images/students.jpg" />
                 </ImageView>
-                <Label fx:id="NameDisplayed" layoutX="129.0" layoutY="94.0" text="label" textFill="WHITE">
+                <Label fx:id="NameDisplayed" layoutX="129.0" layoutY="94.0" text="" textFill="WHITE">
                     <font>
                         <Font name="Calibri Bold" size="24.0" />
                     </font>

@@ -49,7 +49,8 @@
                     <TableColumn fx:id="DateOfPayment" prefWidth="130.0" text="Date Of Payment" />
                     <TableColumn fx:id="tForm" prefWidth="30.0" text="Form" />
                     <TableColumn fx:id="Term" prefWidth="30.0" text="Term" />
-                    <TableColumn fx:id="receipt" prefWidth="130.0" text="Receipt Number" />
+                    <TableColumn fx:id="bankName" prefWidth="30.0" text="Bank Name" />
+                    <TableColumn fx:id="bankTransactionId" prefWidth="130.0" text="Bank Transaction ID" />
                 </columns>
             <columnResizePolicy>
                <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />

@@ -1,4 +1,4 @@
-package sample;
+package sample.model;
 
 import com.jfoenix.controls.JFXDatePicker;
 import javafx.util.StringConverter;
@@ -11,10 +11,6 @@ import java.util.Date;
 /**
  * THIS CLASS USED FOR VALIDATING USER INPUTS
  * AND IT RETURNS A TRUE OR FALSE AFTER VALIDATING
- *  TODO:make validations for number inputs
- *
- *  TODO:MAKE ALPHABETIC VALIDATION INPUTS
- *
  *
  * */
 public class Validation {
@@ -35,6 +31,29 @@ public class Validation {
         return check;
     }
 
+    public boolean validateLetters(String nValues){
+        boolean check=false;
+        if(!nValues.isEmpty() && nValues.matches("^[a-zA-Z]{3,20}$")){
+            check=true;
+        }
+
+        return check;
+    }
+
+
+    public boolean validateAlphaNumericValues(String nValues){
+
+        // checks if the textField is empty
+        if(!(nValues.isEmpty()) && (nValues.matches("^[a-zA-Z0-9]{3,20}$")))
+        {
+            /* checks the textField has only letters and numbers and a minimum of 4 and maximum of 15 characters*/
+            check=true;
+        }
+        else{
+            check=false;
+        }
+        return check;
+    }
 
     //This method is used to validates the Password
     public boolean validatePassword(String nValues){
@@ -49,21 +68,6 @@ public class Validation {
             checkPassword=false;
         }
         return checkPassword;
-    }
-
-    //This method is used to validates the UserName
-    public boolean validateUserName(String nValues){
-
-        /* checks if the textField is empty*/
-        if(!(nValues.isEmpty()) && (nValues.matches("^[a-zA-Z0-9]{4,15}$")))
-        {
-            // checks the textField has only letters and numbers and a minimum of 4 and maximum of 15 characters
-            checkUserName=true;
-        }
-        else{
-            checkUserName=false;
-        }
-        return checkUserName;
     }
 
     //This method is used to validates the Email
@@ -131,7 +135,7 @@ public class Validation {
         LocalDate today=LocalDate.now();
         LocalDate date=jfxDatePicker.getValue();
 
-        if(!(date==null || date.isAfter(today))){
+        if(!(date==null || date.isAfter(today.minusYears(11)))){
            check=true;
        }
         return check;

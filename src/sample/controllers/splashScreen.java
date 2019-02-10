@@ -34,7 +34,7 @@ public class splashScreen implements Initializable {
         FadeTransition fadeOut=new FadeTransition(Duration.seconds(4),slashPane);
         fadeOut.setFromValue(1);
         fadeOut.setToValue(0.3);
-        fadeOut.setCycleCount(2);
+        fadeOut.setCycleCount(1);
 
         fadeIn.setOnFinished(e ->{
             fadeOut.play();

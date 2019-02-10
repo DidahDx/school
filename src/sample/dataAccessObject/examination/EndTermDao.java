@@ -13,10 +13,11 @@ public class EndTermDao {
     //this method is used to save End Term marks into the database
     public void InsertEndTermMarks(int admissionNumber, int Maths, int English, int Kiswahili, int Biology, int Physics,
                                    int Chemistry, int History, int Geography , int Cre, int BusinessStudies,
-                                   int ComputerStudies, int agriculture, int form, int term, LocalDate date, LocalTime time) throws SQLException {
+                                   int ComputerStudies, int agriculture, int form, int term, LocalDate date, LocalTime time,String stream) throws SQLException {
+
 
         String sql="INSERT INTO end_term_marks(admission_number,maths,english,kiswahili,biology,chemistry,physics,cre,history," +
-                "geography,agriculture,business_studies,computer_studies,term,form,date,time) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+                "geography,agriculture,business_studies,computer_studies,term,form,date,time,stream) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
         PreparedStatement ps=connection.prepareStatement(sql);
         ps.setInt(1,admissionNumber);
         ps.setInt(2,Maths);
@@ -35,16 +36,20 @@ public class EndTermDao {
         ps.setDate(16, Date.valueOf(date));
         ps.setInt(15,form);
         ps.setTime(17, Time.valueOf(time));
+        ps.setString(18,stream);
         ps.executeUpdate();
+
     }
 
     //this method is used to Update the End term marks into the database
     public void UpdateEndTermMarks(int admissionNumber, int Maths, int English, int Kiswahili, int Biology, int Physics,
                                int Chemistry, int History, int Geography , int Cre, int BusinessStudies,
-                               int ComputerStudies, int agriculture, int form, int term,int endTermId,LocalTime time,LocalDate date) throws SQLException {
+                               int ComputerStudies, int agriculture, int form, int term,int endTermId,LocalTime time,LocalDate date,String stream) throws SQLException {
+
 
         String sql="UPDATE end_term_marks SET admission_number=?,maths=?,english=?,kiswahili=?,biology=?,chemistry=?,physics=?,cre=?" +
-                ",history=?,geography=?,agriculture=?,business_studies=?,computer_studies=?,term=?,form=? ,time=?,date=? WHERE  end_term_id=?";
+                ",history=?,geography=?,agriculture=?,business_studies=?,computer_studies=?,term=?,form=? ,time=?,date=?,stream=? " +
+                "WHERE  end_term_id=?";
         PreparedStatement ps=connection.prepareStatement(sql);
         ps.setInt(2,Maths);
         ps.setInt(1,admissionNumber);
@@ -60,12 +65,14 @@ public class EndTermDao {
         ps.setInt(11,agriculture);
         ps.setInt(13,ComputerStudies);
         ps.setInt(15,form);
-        ps.setInt(18,endTermId);
+        ps.setInt(19,endTermId);
         ps.setInt(14,term);
         ps.setDate(17, Date.valueOf(date));
         ps.setTime(16, Time.valueOf(time));
+        ps.setString(18,stream);
 
         ps.executeUpdate();
+
     }
 
     //this method is used to delete the End Term Marks from the database
@@ -78,10 +85,12 @@ public class EndTermDao {
 
     //this method is used to read all the End Term Marks from the database
     public ResultSet ReadEndTermMarks() throws SQLException {
+
         String sql="SELECT * FROM end_term_marks";
         PreparedStatement pS=connection.prepareStatement(sql);
+        ResultSet rs=pS.executeQuery();
 
-        return pS.executeQuery();
+        return rs;
     }
 
     //this method used to search the database for End Term marks with admission number

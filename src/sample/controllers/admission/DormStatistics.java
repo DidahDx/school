@@ -4,6 +4,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.Initializable;
 import javafx.scene.chart.PieChart;
+import javafx.scene.control.Label;
 import sample.dataAccessObject.admission.SchoolStatisticsDao;
 
 import java.net.URL;
@@ -13,6 +14,7 @@ import java.util.ResourceBundle;
 
 public class DormStatistics implements Initializable {
     public PieChart pieChart;
+    public Label eSetGender;
 
     SchoolStatisticsDao schoolStatisticsDao =new SchoolStatisticsDao();
     ObservableList<PieChart.Data> pieData= FXCollections.observableArrayList();
@@ -21,7 +23,7 @@ public class DormStatistics implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
 
         loadPieChart();
-        pieChart.setData(pieData);
+//        pieChart.setData(pieData);
     }
 
     public void loadPieChart(){

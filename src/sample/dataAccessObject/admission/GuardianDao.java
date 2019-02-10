@@ -14,7 +14,6 @@ public class GuardianDao {
     //this method save guardian details to the database
     public void AddGuardianDetails(String GuardianFirstName, String GuardianLastName, String GuardianEmail, int phoneNumber, int admissionNumber)
     {
-
         String sql="INSERT INTO guardian_details(guardian_first_name,guardian_last_name,guardian_phone_number,guardian_email,admission_number) VALUES (?,?,?,?,?) ";
         try {
             PreparedStatement ps = connection.prepareStatement(sql);
@@ -34,10 +33,12 @@ public class GuardianDao {
             alert.show();
             e.printStackTrace();
         }
+
     }
 
     //this is used to check if an email address exist
-    public ResultSet checkGuardianEmail(String email){
+    public ResultSet checkGuardianEmail(String email)  {
+
         String sql="select guardian_id from guardian_details where guardian_email=?";
         ResultSet rs = null;
         try {
@@ -47,11 +48,13 @@ public class GuardianDao {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+
         return rs;
     }
 
     //this method is used for updating guardian details
     public void UpdateGuardianDetails(String guardianFirstName, String GuardianLastName, String GuardianEmail, int phoneNumber,int guardianId){
+
         String sql="UPDATE `guardian_details` SET `guardian_first_name`=?, `guardian_last_name`=? ," +
                 " `guardian_phone_number`=?, `guardian_email` =?" +
                 "WHERE `guardian_details`.`guardian_id` = ?;";
