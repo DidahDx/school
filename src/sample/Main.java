@@ -14,7 +14,7 @@ public class Main extends Application {
 
     @Override
     public void start(Stage stage) {
-        control.changeUi("login");
+        control.changeUi("splashScreen");
     }
 
     public static void main(String[] args) {

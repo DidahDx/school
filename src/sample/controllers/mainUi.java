@@ -58,7 +58,8 @@ public class mainUi implements Initializable {
             e.printStackTrace();
         }
 
-        AccessRights(role);
+        /**TODO: Access rights commented to be removed */
+       // AccessRights(role);
     }
 
     //this loads the dashboard user interface to center of the borderPane of the main user interface(mainUi.fxml)
@@ -130,7 +131,7 @@ public class mainUi implements Initializable {
         JFXButton profile=new JFXButton("Profile");
 
         profile.setOnAction(e->{
-            controller.changeUi("userProfile");
+            controller.changeModUi("userProfile");
         });
 
              log_out.setOnAction(event -> {

@@ -17,7 +17,26 @@ public class Validation {
     private boolean check,checkPassword ,checkUserName,checkEmail,checkPhoneNumber;
 
 
-    public boolean validate(String nValues){
+    //^[0-9]+$ for integer
+
+
+    public boolean validateNumbers(String nValues)
+    {
+
+        // checks if the textField is empty
+        if(!(nValues.isEmpty()) && (nValues.matches("^[0-9]$")))
+        {
+            /* checks the textField has only letters and numbers and a minimum of 4 and maximum of 15 characters*/
+            check=true;
+        }
+        else{
+            check=false;
+        }
+        return check;
+    }
+
+    public boolean validate(String nValues)
+    {
 
         // checks if the textField is empty
         if(!(nValues.isEmpty()) && (nValues.matches("^[a-zA-Z0-9]{4,15}$")))
@@ -31,9 +50,10 @@ public class Validation {
         return check;
     }
 
-    public boolean validateLetters(String nValues){
+    public boolean validateLetters(String nValues)
+    {
         boolean check=false;
-        if(!nValues.isEmpty() && nValues.matches("^[a-zA-Z]{3,20}$")){
+        if(!nValues.isEmpty() && nValues.matches("^[a-zA-Z]{2,20}$")){
             check=true;
         }
 
@@ -41,7 +61,8 @@ public class Validation {
     }
 
 
-    public boolean validateAlphaNumericValues(String nValues){
+    public boolean validateAlphaNumericValues(String nValues)
+    {
 
         // checks if the textField is empty
         if(!(nValues.isEmpty()) && (nValues.matches("^[a-zA-Z0-9]{3,20}$")))
@@ -56,7 +77,8 @@ public class Validation {
     }
 
     //This method is used to validates the Password
-    public boolean validatePassword(String nValues){
+    public boolean validatePassword(String nValues)
+    {
 
         // checks if the passwordField is empty
         if(!(nValues.isEmpty()) && (nValues.matches("((?=.*\\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%]).{6,20})")))
@@ -71,10 +93,11 @@ public class Validation {
     }
 
     //This method is used to validates the Email
-    public boolean validateEmail(String nValues){
+    public boolean validateEmail(String nValues)
+    {
 
         /* checks if the textField is empty*/
-        if(!(nValues.isEmpty()) && (nValues.matches("^[a-zA-Z0-9]{15,35}$")))
+        if(!(nValues.isEmpty()) && (nValues.matches("^[A-Z0-9._%+-]+@[A-Z0-9.-]+\\\\.[A-Z]{2,6}$")))
         {
             /* checks the textField has only letters and numbers and a minimum of 4 and maximum of 15 characters*/
             checkEmail=true;
@@ -86,7 +109,8 @@ public class Validation {
     }
 
     //This method is used to validates the PhoneNumber
-    public boolean validatePhoneNumber(String nValues){
+    public boolean validatePhoneNumber(String nValues)
+    {
 
         /* checks if the textField is empty*/
         if(!(nValues.isEmpty()) && (nValues.matches("^[0-9]{10}$")))
@@ -130,7 +154,8 @@ public class Validation {
     }
 
     //This method prevents users from choosing future dates from the JFXDatePicker
-    public boolean pastDates(JFXDatePicker jfxDatePicker){
+    public boolean pastDates(JFXDatePicker jfxDatePicker)
+    {
       boolean check=false;
         LocalDate today=LocalDate.now();
         LocalDate date=jfxDatePicker.getValue();
@@ -142,8 +167,8 @@ public class Validation {
     }
 
     //changes the date format to dd/MM/yyyy
-    public String changeDateFormat(LocalDate date) {
-
+    public String changeDateFormat(LocalDate date)
+    {
         DateTimeFormatter DateFormat =DateTimeFormatter.ofPattern("dd/MM/yyyy");
       return date.format(DateFormat);
     }

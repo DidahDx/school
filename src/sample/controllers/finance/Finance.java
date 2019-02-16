@@ -22,7 +22,7 @@ public class Finance implements Initializable {
 
     //this handles changing the User Interface to feePayment
     public void feePayment(ActionEvent actionEvent) {
-           con.changeUi("feesPayment");
+           con.changeModUi("feesPayment");
     }
 
     //this handles changing the User Interface to feeDetails
@@ -32,6 +32,6 @@ public class Finance implements Initializable {
 
     //this handles changing the User Interface to setFees
     public void setFees(ActionEvent actionEvent) {
-        con.changeUi("setFees");
+        con.changeModUi("setFees");
     }
 }

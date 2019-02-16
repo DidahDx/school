@@ -21,7 +21,7 @@ public class admission implements Initializable {
 
    //changes user interface to admissionForm
     public void studentsAdmission(ActionEvent actionEvent) {
-        control.changeUi("admissionsForm");
+        control.changeModUi("admissionsForm");
     }
 
     //changes user interface to EditStudentDetails

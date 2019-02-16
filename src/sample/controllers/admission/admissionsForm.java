@@ -56,19 +56,18 @@ public class admissionsForm implements Initializable {
     private ObservableList list_of_counties = FXCollections.observableArrayList();
     private ObservableList list_of_forms = FXCollections.observableArrayList();
     private SchoolDetailsGenerator  schoolDetailsGenerator=new SchoolDetailsGenerator();
-    private LocalDate today=LocalDate.now();
-    private LocalTime now=LocalTime.now();
+    private LocalDate today;
+    private LocalTime now;
     private int admissionNumber = 0;
     private GuardianDao gDao=new GuardianDao();
     private Validation validation=new Validation();
     private SendEmail sEmail=new SendEmail();
-    int term=0;
+    int term=0;String dateToday;
 
     //Called to initialize a controller after its root element has been completely processed.
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        dateOfAdmission.setValue(today);
-        valid.changeDatePickerFormat(dateOfAdmission);
+
         valid.changeDatePickerFormat(dateOfBirth);
        loadComboBox(this.County);
         FormComboBox(this.Form);
@@ -109,7 +108,7 @@ public class admissionsForm implements Initializable {
     //This method sets the color the label after the text is validated and returns a true or false
     private boolean checkTextField(TextField text){
         boolean check;
-        if(valid.validate(text.getText().trim())) {
+        if(valid.validateLetters(text.getText().trim())) {
             check=true;
             text.setStyle("-fx-prompt-text-fill:#FFB60D; ");
         }else{
@@ -142,6 +141,9 @@ public class admissionsForm implements Initializable {
         String studentType=null;
         String Dorm=null;
         setTerm();
+        today=LocalDate.now();   now=LocalTime.now();
+        dateToday= validation.changeDateFormat(today);
+
         if(male.isSelected()){
             gender="male";
         }else if(female.isSelected()){
@@ -185,7 +187,7 @@ public class admissionsForm implements Initializable {
 
                     "\n\n \t\t\t School Details "+
                     "\n========================================"+
-                    " \n Date Of Admission:\t\t" + validation.changeDateFormat(dateOfAdmission.getValue()) +
+                    " \n Date Of Admission:\t\t" + dateToday +
                     "\n Student Type:\t\t\t" + studentType +
                     "\n Form:\t\t\t\t\t" + Form.getValue() +
                             "\n Term:\t\t\t\t\t"+ term +
@@ -195,12 +197,13 @@ public class admissionsForm implements Initializable {
 
         );
 
+
         if(checkTextField(studentFirstName) && checkTextField(studentLastName))
         {
 
           dao.SaveStudentsNames(studentFirstName.getText().trim(), studentMiddleName.getText().trim(), studentLastName.getText().trim(),
             County.getValue(),gender, dateOfBirth.getValue(),
-           admissionNumber,dateOfAdmission.getValue(),studentType, Integer.parseInt(Form.getValue()),
+           admissionNumber,today,studentType, Integer.parseInt(Form.getValue()),
                   Dorm,now.minusNanos(now.getNano()),schoolDetailsGenerator.getStream(),term);
 
           gDao.AddGuardianDetails(guardianFirstName.getText().trim(), guardianLastName.getText().trim(),
@@ -210,7 +213,7 @@ public class admissionsForm implements Initializable {
                sEmail.sendEmailMessage("Admission Details Slip",studentDetails.getText(), guardianEmail.getText().trim());
         }
 
-        }
+    }
 
         //this show a text hint on hover
     public void showHint(MouseEvent mouseEvent) { tooltip.setText("The last admission number given to a student");

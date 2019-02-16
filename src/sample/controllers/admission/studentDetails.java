@@ -289,8 +289,8 @@ public class studentDetails implements Initializable {
         if (button.get()==ButtonType.OK){
 
                 dao.UpdateStudentDetails(Integer.parseInt(eAdmissionNumber.getText()),eFirstName.getText().trim(),
-                        eSecondName.getText().trim(),eLastName.getText().trim(),eCounty.getValue(),eGender.getValue()
-                ,eDateOfBirth.getValue(),eDateOfAdmission.getValue(),eStudentType.getValue(),Integer.parseInt(eForm.getValue()),
+                        eSecondName.getText().trim(),eLastName.getText().trim(),eCounty.getValue(),eGender.getValue(),
+                        eDateOfBirth.getValue(),eDateOfAdmission.getValue(),eStudentType.getValue(),Integer.parseInt(eForm.getValue()),
                         eDorm.getValue(),eTimeOfAdmission.getValue(),eStream.getValue(),
                         Integer.parseInt(eTerm.getValue().toString()));
 

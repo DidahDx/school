@@ -9,12 +9,12 @@ import javafx.fxml.Initializable;
 
  import javafx.scene.control.*;
  import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.input.KeyEvent;
-import javafx.scene.layout.AnchorPane;
+ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import sample.dataAccessObject.admission.GuardianDao;
 import sample.dataAccessObject.admission.StudentDao;
-import sample.model.admission.GuardianModelTable;
+ import sample.model.Validation;
+ import sample.model.admission.GuardianModelTable;
 
 import java.net.URL;
 import java.sql.ResultSet;
@@ -53,7 +53,8 @@ public class GuardianDetails implements Initializable {
     private StudentDao dao=new StudentDao();
     private GuardianDao gDao=new GuardianDao();
     private ObservableList forms=FXCollections.observableArrayList();
-   private studentDetails student=new studentDetails();
+    private studentDetails student=new studentDetails();
+    private Validation validate=new Validation();
     int guardianId=0;  String emailHolder="";
 
     @Override
@@ -61,7 +62,7 @@ public class GuardianDetails implements Initializable {
         student.fillForm(forms,SearchForms); //fill the choiceBox with the options
         loadTable(); //initial fills the table
         eStudentName.setEditable(false);
-         ForButtonVisibilty(true);
+         forButtonVisibility(true);
     }
 
     //this method is used to search for guardians using students admission number
@@ -171,9 +172,9 @@ public class GuardianDetails implements Initializable {
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setHeaderText(null);
         alert.setContentText(Content("ADDED"));
+        if(validate.validatePhoneNumber(ePhoneNumber.getText().trim())){
 
-
-        if( !(emailHolder.matches(eEmail.getText().trim()))){
+            if( !(emailHolder.matches(eEmail.getText().trim()))){
             Optional<ButtonType> answer = alert.showAndWait();
 
             if (answer.get() == ButtonType.OK)
@@ -181,7 +182,8 @@ public class GuardianDetails implements Initializable {
                   gDao.AddGuardianDetails(eGuardianFirstName.getText().trim(), eGuardianLastName.getText().trim(),
                     eEmail.getText().trim(), Integer.parseInt(ePhoneNumber.getText().trim()),
                     Integer.parseInt(eAdmissionNumber.getText()));
-            ForButtonVisibilty(true);
+            forButtonVisibility(true);
+            }
             }
         }
         edit(false);
@@ -190,7 +192,7 @@ public class GuardianDetails implements Initializable {
 
     //this method clear the fields
     public void Clear(){
-        ForButtonVisibilty(false);
+        forButtonVisibility(false);
         eUpdate.setVisible(false);
         edit(true);
         eEmail.setText(null);
@@ -221,7 +223,7 @@ public class GuardianDetails implements Initializable {
         if(answer.get() ==ButtonType.OK){
             gDao.UpdateGuardianDetails(eGuardianFirstName.getText().trim(), eGuardianLastName.getText().trim(),
                     eEmail.getText().trim(), Integer.parseInt(ePhoneNumber.getText().trim()),guardianId);
-       ForButtonVisibilty(true);
+       forButtonVisibility(true);
         }
         edit(false);
         loadTable();
@@ -242,7 +244,7 @@ public class GuardianDetails implements Initializable {
 
    //set the fields editable
     public void editable(ActionEvent actionEvent) {
-        ForButtonVisibilty(false);
+        forButtonVisibility(false);
         eAddGuardian.setVisible(false);
         edit(true);
     }
@@ -266,8 +268,8 @@ public class GuardianDetails implements Initializable {
         loadTable();
     }
 
-    //this method is used to set visiblity
-    public void ForButtonVisibilty(boolean value){
+    //this method is used to set visibility
+    public void forButtonVisibility(boolean value){
         eAddGuardian.setVisible(!value);
         eCancel.setVisible(!value);
         eUpdate.setVisible(!value);
@@ -278,6 +280,6 @@ public class GuardianDetails implements Initializable {
 
 
     public void cancel(ActionEvent actionEvent) {
-        ForButtonVisibilty(true);
+        forButtonVisibility(true);
     }
 }
