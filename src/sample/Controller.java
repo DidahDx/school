@@ -10,6 +10,7 @@ import javafx.scene.control.ButtonType;
 import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
@@ -87,7 +88,7 @@ public class Controller {
 
                 case "login":
                     stage.initStyle(StageStyle.UNDECORATED);
-
+                    stage.initStyle(StageStyle.TRANSPARENT);
                     root1.setOnMousePressed(event -> {
                         x=event.getSceneX();
                         y=event.getSceneY();
@@ -108,17 +109,7 @@ public class Controller {
                  //   stage.initModality(Modality.APPLICATION_MODAL); //blocks events from being delivered to any other application window.
                     break;
 
-                case"feesPayment":
-                    stage.setTitle(("Fee Payment").toUpperCase());
-                    stage.setResizable(false);
-                    stage.setMaximized(false);
-                    break;
 
-                case"setFees":
-                    stage.setTitle(("Set Fees").toUpperCase());
-                    stage.setResizable(false);
-                    stage.setMaximized(false);
-                    break;
 
                 case "studentDetails":
                       stage.setResizable(true);
@@ -161,6 +152,7 @@ public class Controller {
                     break;
             }
 
+
             stage.setScene(scene);
             stage.getIcons().add(image);
           stage.show();
@@ -202,5 +194,43 @@ public class Controller {
     public void Minimise(AnchorPane anchorPane){
         Stage stage= (Stage) anchorPane.getScene().getWindow(); //get the window
         stage.setIconified(true); //minimises the window
+    }
+
+    //this method is used to change a window with the Modality.APPLICATION_MODAL
+    public void changeModUi(String ui){
+        Stage stage1 = new Stage();
+        FXMLLoader loadUi = new FXMLLoader(getClass().getResource("/fxml/" + ui +".fxml"));
+        try {
+            root1= loadUi.load();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        switch (ui) {
+            case "admissionsForm":
+                stage1.setTitle(("Admissions Form").toUpperCase());
+                stage1.setResizable(false);
+                stage1.setMaximized(false);
+                break;
+
+            case"feesPayment":
+                stage.setTitle(("Fee Payment").toUpperCase());
+                stage.setResizable(false);
+                stage.setMaximized(false);
+                break;
+
+            case"setFees":
+                stage.setTitle(("Set Fees").toUpperCase());
+                stage.setResizable(false);
+                stage.setMaximized(false);
+                break;
+        }
+
+        stage1.initModality(Modality.APPLICATION_MODAL); //blocks events from being delivered to any other application window
+        Scene scene= new Scene(root1);
+        stage1.setScene(scene);
+        stage1.getIcons().add(image);
+        stage1.show();
+
     }
 }
