@@ -47,23 +47,21 @@
     <JFXTextField fx:id="guardianEmail" labelFloat="true" layoutX="34.0" layoutY="386.0" promptText="Email address" styleClass="promptText" />
 
     <Label layoutX="247.0" layoutY="452.0" style="-fx-text-fill: black;" text="SCHOOL DETAILS" textFill="#ab3520" />
-    <Label layoutX="27.0" layoutY="493.0" style="-fx-text-fill: black;" text="Date of Admission" />
-    <Label layoutX="466.0" layoutY="483.0" style="-fx-text-fill: black;" text="Select form">
+    <Label layoutX="263.0" layoutY="483.0" style="-fx-text-fill: black;" text="Select form">
         <graphic>
             <RequiredFieldValidator fx:id="selectFormValidator" message="invalid" />
         </graphic></Label>
-    <JFXComboBox fx:id="Form" layoutX="468.0" layoutY="511.0" prefHeight="17.0" prefWidth="94.0" styleClass="choiceBox" />
-    <Label layoutX="266.0" layoutY="493.0" style="-fx-text-fill: black;" text="Select student type" />
+    <JFXComboBox fx:id="Form" layoutX="259.0" layoutY="500.0" prefHeight="17.0" prefWidth="94.0" styleClass="choiceBox" />
+    <Label layoutX="32.0" layoutY="483.0" style="-fx-text-fill: black;" text="Select student type" />
 
-    <JFXRadioButton fx:id="boarder" layoutX="241.0" layoutY="523.0" mnemonicParsing="false" text="Boarder">
+    <JFXRadioButton fx:id="boarder" layoutX="27.0" layoutY="504.0" mnemonicParsing="false" text="Boarder">
         <toggleGroup>
             <ToggleGroup fx:id="Select" />
         </toggleGroup>
     </JFXRadioButton>
-    <JFXRadioButton fx:id="DayScholar" layoutX="322.0" layoutY="523.0" mnemonicParsing="false" text="Dayschollar" toggleGroup="$Select" />
-    <JFXDatePicker fx:id="dateOfAdmission" layoutX="26.0" layoutY="519.0" prefHeight="31.0" prefWidth="192.0" promptText="dd/mm/yyyy" showWeekNumbers="true" />
+    <JFXRadioButton fx:id="DayScholar" layoutX="121.0" layoutY="504.0" mnemonicParsing="false" text="Dayschollar" toggleGroup="$Select" />
 
-    <JFXButton id="button" buttonType="RAISED" layoutX="462.0" layoutY="619.0" mnemonicParsing="false" onAction="#submitStudentDetails" text="submit" />
+    <JFXButton id="button" buttonType="RAISED" layoutX="500.0" layoutY="621.0" mnemonicParsing="false" onAction="#submitStudentDetails" text="submit" />
     <JFXDatePicker fx:id="dateOfBirth" defaultColor="#ffb60d" layoutX="433.0" layoutY="184.0" onAction="#validateBirthDate" prefHeight="31.0" prefWidth="192.0" promptText="dd/mm/yyyy" showWeekNumbers="true" />
     <Label fx:id="labelDOB" layoutX="440.0" layoutY="165.0" text="Date of Birth" />
     <JFXTextField fx:id="lastAdmissionNumber" labelFloat="true" layoutX="27.0" layoutY="582.0" onMouseClicked="#showHint" prefHeight="37.0" prefWidth="207.0" promptText="Enter Last Admission Number" styleClass="promptText">
