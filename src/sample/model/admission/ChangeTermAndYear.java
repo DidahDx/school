@@ -66,18 +66,13 @@ StudentDao stDao=new StudentDao();
                 e.printStackTrace();
             }
         }
-
     }
-
 
     //this method is used to check the current year
     private int CheckYear(){
-        int year;
 
         LocalDate today=LocalDate.now();
-        year=today.getYear();
-
-        return  year;
+        return today.getYear();
     }
 
     //this method is used to set the current year
@@ -105,13 +100,47 @@ StudentDao stDao=new StudentDao();
        }
     }
 
-
-/** TODO: COMPLETE WRITING CHANGE STUDENT FORM*/
     //this method is used to change the students form
-    public void ChangeStudentForm(){
+   private void ChangeStudentForm(){
+      int adminNo=0,form=0;
+      try {
+         ResultSet rs=stDao.getAllStudentDetails();
 
+         while(rs.next()){
+            form=rs.getInt("form");
+            adminNo=rs.getInt("admission_number");
+
+            if (form!=0 && adminNo!=0){
+               form++;
+               stDao.UpdateStudentsForm(form,adminNo);
+            }
+         }
+
+      } catch (SQLException e) {
+         e.printStackTrace();
+      }
+   }
+
+    //this method is used to change the students term
+    public void ChangeStudentTerm(){
+       int adminNo=0,term=0;
+       try {
+          ResultSet rs=stDao.getAllStudentDetails();
+          ResultSet rs1=stDao.getTerm();
+          while (rs1.next()){
+             term=rs1.getInt("current_term"); //gets current term from database
+          }
+
+          while(rs.next()){
+             adminNo=rs.getInt("admission_number");
+
+             if (term!=0 && adminNo!=0){
+                stDao.UpdateStudentsTerm(term,adminNo);
+             }
+          }
+       } catch (SQLException e) {
+          e.printStackTrace();
+       }
     }
-
-    //this method
 
 }
