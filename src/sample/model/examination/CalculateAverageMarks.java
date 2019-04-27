@@ -84,7 +84,7 @@ public class CalculateAverageMarks {
             if (checkIfRecordsExist(form,admissionNumber,term)){
                 averageMarksDao.InsertAverageMarks(admissionNumber,nMath,nEnglish,nKiswahili, nBiology,nPhysics,nChemistry,nHistory,
                       nGeography ,nCre,nBusiness,nComputer,nAgriculture,form,term,today,now,total,stream);
-            }else{
+            }else if(total!=0){
                 averageMarksDao.UpdateAverageMarks(admissionNumber,nMath,nEnglish,nKiswahili, nBiology,nPhysics,nChemistry,nHistory,
                         nGeography ,nCre,nBusiness,nComputer,nAgriculture,form,term,today,now,total,stream);
             }
@@ -122,7 +122,7 @@ public class CalculateAverageMarks {
 
     //this method checks if any records exist in the cat and endTerm tables  in the database
     public boolean checkRecords(int form,int admissionNumber,int term){
-        int sform=0,sform1=0,mTerm=0,mTerm1=0;boolean check=false;
+        int sform = 0,sform1=0,mTerm=0,mTerm1=0; boolean check=false;
         try {
             ResultSet rs=cM.getCurrentStudentMarks(form,term,admissionNumber);
             while(rs.next()){
