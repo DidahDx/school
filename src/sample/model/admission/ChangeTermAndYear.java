@@ -52,6 +52,7 @@ StudentDao stDao=new StudentDao();
                  //updates term to currentTerm
                 try {
                     stDao.setTerm(currentTerm);
+                    ChangeStudentTerm();
                 }
                 catch (SQLException e) {
                     e.printStackTrace();
@@ -62,6 +63,7 @@ StudentDao stDao=new StudentDao();
                 //updates term to currentTerm
             try {
                 stDao.setTerm(currentTerm);
+                ChangeStudentTerm();
             } catch (SQLException e) {
                 e.printStackTrace();
             }
