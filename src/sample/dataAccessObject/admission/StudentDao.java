@@ -2,7 +2,6 @@ package sample.dataAccessObject.admission;
 
 import javafx.scene.control.Alert;
 import sample.dataAccessObject.DBConnector;
-
 import java.sql.*;
 import java.time.LocalDate;
 import java.time.LocalTime;
@@ -72,7 +71,7 @@ public class StudentDao {
     }
 
     //this method queries the database for all the student details
-    public ResultSet loadStudentTable() throws SQLException {
+    public ResultSet getAllStudentDetails() throws SQLException {
         Statement myState=connection.createStatement();
         ResultSet rs= myState.executeQuery("SELECT * FROM students_details ");
         return rs;
@@ -86,6 +85,15 @@ public class StudentDao {
        preparedStatement.setInt(1, form);
         ResultSet rs= preparedStatement.executeQuery();
         return rs;
+    }
+
+    //this method queries the database for all the students details for a specific stream
+    public ResultSet loadsStream(int form,String stream) throws SQLException {
+        String sql="SELECT * FROM students_details WHERE form=? AND stream=?";
+        PreparedStatement ps=connection.prepareStatement(sql);
+        ps.setInt(1,form);
+        ps.setString(2,stream);
+        return ps.executeQuery();
     }
 
   //used for searching the database with admission number
@@ -168,10 +176,53 @@ public class StudentDao {
         return rs;
    }
 
+   //this method is used get the  term
    public ResultSet getTerm() throws SQLException {
-        String sql="SELECT * FROM current_school_details";
+        String sql="SELECT current_term FROM current_school_details";
         PreparedStatement ps1=connection.prepareStatement(sql);
       return ps1.executeQuery();
+   }
+
+   //this method is used to update the term
+    public void setTerm(int term) throws SQLException {
+        String sql="UPDATE current_school_details SET current_term=? WHERE id=1 ";
+        PreparedStatement ps=connection.prepareStatement(sql);
+        ps.setInt(1,term);
+        ps.executeUpdate();
+    }
+
+
+    //this method is used to get the year
+    public ResultSet getYear() throws SQLException{
+        String sql="SELECT current_year FROM  current_school_details";
+        PreparedStatement ps=connection.prepareStatement(sql);
+        return ps.executeQuery();
+    }
+
+    //this method is used to set the year
+   public void setYear(int year) throws SQLException {
+       String sql="UPDATE current_school_details SET current_year=? WHERE id=1";
+       PreparedStatement ps=connection.prepareStatement(sql);
+       ps.setInt(1,year);
+       ps.executeUpdate();
+   }
+
+   //this method is used to update the students forms
+   public void UpdateStudentsForm(int form,int admissionNumber) throws SQLException{
+       String sql="UPDATE students_details SET form=? WHERE admission_number=?";
+       PreparedStatement ps=connection.prepareStatement(sql);
+       ps.setInt(1,form);
+       ps.setInt(2,admissionNumber);
+       ps.executeUpdate();
+   }
+
+   //this method is used to update the students term
+   public void UpdateStudentsTerm(int term ,int admissionNo) throws SQLException{
+    String sql="UPDATE students_details SET term=? WHERE admission_number=?";
+    PreparedStatement ps=connection.prepareStatement(sql);
+    ps.setInt(1,term);
+    ps.setInt(2,admissionNo);
+    ps.executeUpdate();
    }
 
 }
