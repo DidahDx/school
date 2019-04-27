@@ -1,6 +1,7 @@
 package sample.model.admission;
 
 import sample.dataAccessObject.admission.StudentDao;
+import sun.security.pkcs11.Secmod;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -12,7 +13,7 @@ public class ChangeTermAndYear {
 StudentDao stDao=new StudentDao();
 
     //this method is used to check the current term
-    public int CheckTerm(){
+    private int CheckTerm(){
         int term = 0;
        int month=Calendar.getInstance().get(Calendar.MONTH) +1;
 
@@ -39,7 +40,7 @@ StudentDao stDao=new StudentDao();
         try {
          ResultSet rs= stDao.getTerm();
          while (rs.next()){
-             DBterm=rs.getInt("current_term");
+             DBterm=rs.getInt("current_term"); //getting the term stored in database
          }
         }
         catch (SQLException e) {
@@ -47,7 +48,7 @@ StudentDao stDao=new StudentDao();
         }
 
         if (currentTerm>DBterm){
-            if (!(currentTerm==DBterm)){
+            if (currentTerm!=DBterm){
                  //updates term to currentTerm
                 try {
                     stDao.setTerm(currentTerm);
@@ -70,7 +71,7 @@ StudentDao stDao=new StudentDao();
 
 
     //this method is used to check the current year
-    public int CheckYear(){
+    private int CheckYear(){
         int year;
 
         LocalDate today=LocalDate.now();
@@ -79,10 +80,38 @@ StudentDao stDao=new StudentDao();
         return  year;
     }
 
+    //this method is used to set the current year
+    public void setYear() {
+       int CurrentYear = CheckYear();
+       int DBYear = 0;
+       try {
+          ResultSet rs = stDao.getYear();
+          while (rs.next()) {
+             DBYear = rs.getInt("current_year"); //getting the year in the database
+          }
+       } catch (SQLException e) {
+          e.printStackTrace();
+       }
+
+       if (CurrentYear > DBYear) {
+          if (CurrentYear != DBYear) {
+             try {
+                stDao.setYear(CurrentYear);  //changing year in database to current year
+                ChangeStudentForm();
+             } catch (SQLException e) {
+                e.printStackTrace();
+             }
+          }
+       }
+    }
+
+
 /** TODO: COMPLETE WRITING CHANGE STUDENT FORM*/
     //this method is used to change the students form
     public void ChangeStudentForm(){
 
     }
+
+    //this method
 
 }
