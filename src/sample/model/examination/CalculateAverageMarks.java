@@ -81,7 +81,7 @@ public class CalculateAverageMarks {
                     nGeography +nCre+nBusiness+nComputer+nAgriculture;  //adding total marks
 
             //if the records exist it is updated else it is added to the database
-            if (checkIfRecordsExist(form,admissionNumber,term)){
+            if (checkIfRecordsExist(form,admissionNumber,term) && total!=0){
                 averageMarksDao.InsertAverageMarks(admissionNumber,nMath,nEnglish,nKiswahili, nBiology,nPhysics,nChemistry,nHistory,
                       nGeography ,nCre,nBusiness,nComputer,nAgriculture,form,term,today,now,total,stream);
             }else if(total!=0){
