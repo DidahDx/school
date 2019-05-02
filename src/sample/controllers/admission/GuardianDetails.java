@@ -16,10 +16,12 @@ import sample.dataAccessObject.admission.StudentDao;
  import sample.model.Validation;
  import sample.model.admission.GuardianModelTable;
 
-import java.net.URL;
+ import javax.xml.soap.Text;
+ import java.net.URL;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.Optional;
+ import java.util.Arrays;
+ import java.util.Optional;
 import java.util.ResourceBundle;
 
 public class GuardianDetails implements Initializable {
@@ -33,14 +35,14 @@ public class GuardianDetails implements Initializable {
     public TableColumn<GuardianModelTable,String> guardianPhoneNumber;
     public TableColumn<GuardianModelTable,String> email;
     public TextField searchTextField;
-    public ChoiceBox SearchForms;
+    public ComboBox SearchForms;
     public AnchorPane AnchorPane;
     public Label NameDisplayed;
     public JFXTextField eAdmissionNumber;
     public JFXTextField eStudentName;
     public JFXTextField eGuardianFirstName;
     public JFXTextField eGuardianLastName;
-    public JFXTextField ePhoneNumber;
+    public JFXTextField  ePhoneNumber;
     public JFXTextField eEmail;
     public JFXButton eGuardianClear;
     public JFXButton eAddGuardian;
@@ -48,6 +50,7 @@ public class GuardianDetails implements Initializable {
     public JFXButton eCancel;
     public JFXButton eDelete;
     public JFXButton eEdit;
+    public ComboBox stream;
 
     private ObservableList<GuardianModelTable> oblist= FXCollections.observableArrayList();
     private StudentDao dao=new StudentDao();
@@ -59,10 +62,24 @@ public class GuardianDetails implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        student.fillForm(forms,SearchForms); //fill the choiceBox with the options
+        fillForm(forms,SearchForms); //fill the choiceBox with the options
         loadTable(); //initial fills the table
         eStudentName.setEditable(false);
          forButtonVisibility(true);
+         student.fillStream(stream);
+         eEmail.setText(" ");
+
+    }
+
+    //this loads the choiceBox with the form numbers 1,2,3,4 and All
+    public void fillForm(ObservableList<String> forms, ComboBox SearchForms){
+        forms.removeAll(forms);
+
+        String f []={"1","2","3","4","All"};
+        forms.addAll(Arrays.asList(f));
+
+        SearchForms.getItems().addAll(forms);
+        SearchForms.setValue(f[4]);
     }
 
     //this method is used to search for guardians using students admission number
@@ -131,20 +148,23 @@ public class GuardianDetails implements Initializable {
     //this method loads the guardians for a particular form
     public void loadForms(ActionEvent actionEvent) {
         ResultSet rs;
-     if(!(SearchForms.getValue().toString()== "All")) {
-         try {
-             rs = gDao.loadGuardianForms(Integer.parseInt(SearchForms.getValue().toString()));
-             fillTable(rs);
-         } catch (SQLException e) {
-             e.printStackTrace();
-         }
-     } else{
-         try {
-             rs=gDao.loadGuardianTable();
-             fillTable(rs);
-            } catch (SQLException e) {
-             e.printStackTrace();
-           }
+        try {
+             if(!(SearchForms.getValue().toString()== "All")) {
+                 rs = gDao.loadGuardianForms(Integer.parseInt(SearchForms.getValue().toString()));
+             }
+             else{
+                 rs=gDao.loadGuardianTable();
+             }
+
+             if (!(SearchForms.getValue().toString()== "All") &&
+                     (stream.getValue().toString().matches("EAST")||(stream.getValue().toString().matches("WEST") ))){
+                 rs=gDao.loadGuardianStream(Integer.parseInt(SearchForms.getValue().toString()),stream.getValue().toString());
+             }
+
+            fillTable(rs);
+
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
     }
 
@@ -172,21 +192,41 @@ public class GuardianDetails implements Initializable {
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setHeaderText(null);
         alert.setContentText(Content("ADDED"));
-        if(validate.validatePhoneNumber(ePhoneNumber.getText().trim())){
 
-            if( !(emailHolder.matches(eEmail.getText().trim()))){
-            Optional<ButtonType> answer = alert.showAndWait();
+        if(CheckAllFields()){
+           if((validate.validatePhoneNumber(ePhoneNumber.getText().trim()) || ePhoneNumber.getText().isEmpty())){
 
-            if (answer.get() == ButtonType.OK)
-            {
-                  gDao.AddGuardianDetails(eGuardianFirstName.getText().trim(), eGuardianLastName.getText().trim(),
-                    eEmail.getText().trim(), Integer.parseInt(ePhoneNumber.getText().trim()),
-                    Integer.parseInt(eAdmissionNumber.getText()));
-            forButtonVisibility(true);
-            }
-            }
+              if(validate.validateEmail(eEmail.getText().trim()) && !(emailHolder.matches(eEmail.getText().trim()))
+                      && !(eEmail.getText().isEmpty())){
+                 Optional<ButtonType> answer = alert.showAndWait();
+
+                 if (answer.get() == ButtonType.OK)
+                 {
+                    gDao.AddGuardianDetails(eGuardianFirstName.getText().trim(), eGuardianLastName.getText().trim(),
+                            eEmail.getText().trim(), ePhoneNumber.getText().trim(), Integer.parseInt(eAdmissionNumber.getText()));
+                    forButtonVisibility(true);
+                    edit(false);
+                 }
+              }
+              else if(!(emailHolder.matches(eEmail.getText().trim())) || eEmail.getText().isEmpty()){
+                 Optional<ButtonType> answer = alert.showAndWait();
+                 eEmail.setText(" ");
+                 if (answer.get() == ButtonType.OK)
+                  {
+                     gDao.AddGuardianDetails(eGuardianFirstName.getText().trim(), eGuardianLastName.getText().trim(),
+                             eEmail.getText().trim(), ePhoneNumber.getText().trim(), Integer.parseInt(eAdmissionNumber.getText()));
+                      forButtonVisibility(true);
+                     edit(false);
+                  }
+              }
+           }
+        }else{
+           Alert alert1=new Alert(Alert.AlertType.ERROR);
+           alert1.setHeaderText(null);
+           alert1.setContentText("Invalid inputs in red TextFields. Try again");
+           alert1.showAndWait();
         }
-        edit(false);
+
         loadTable();
     }
 
@@ -195,8 +235,8 @@ public class GuardianDetails implements Initializable {
         forButtonVisibility(false);
         eUpdate.setVisible(false);
         edit(true);
-        eEmail.setText(null);
-        ePhoneNumber.setText(null);
+        eEmail.setText("");
+        ePhoneNumber.setText("");
         eGuardianFirstName.setText(null);
         eGuardianLastName.setText(null);
         eAdmissionNumber.setText(null);
@@ -215,18 +255,27 @@ public class GuardianDetails implements Initializable {
 
     //this updates guardian details
     public void update(ActionEvent actionEvent) {
+       if(CheckAllFields()){
     Alert alert=new Alert(Alert.AlertType.CONFIRMATION);
     alert.setHeaderText(null);
     alert.setContentText(Content("UPDATED"));
+
         Optional<ButtonType> answer= alert.showAndWait();
 
-        if(answer.get() ==ButtonType.OK){
+        if(answer.get() ==ButtonType.OK ){
             gDao.UpdateGuardianDetails(eGuardianFirstName.getText().trim(), eGuardianLastName.getText().trim(),
-                    eEmail.getText().trim(), Integer.parseInt(ePhoneNumber.getText().trim()),guardianId);
-       forButtonVisibility(true);
+                    eEmail.getText().trim(), ePhoneNumber.getText().trim(),guardianId);
+              forButtonVisibility(true);
         }
         edit(false);
         loadTable();
+       }else{
+          Alert alert=new Alert(Alert.AlertType.ERROR);
+          alert.setHeaderText(null);
+          alert.setContentText("Invalid inputs in red TextFields. Try again");
+          alert.showAndWait();
+       }
+
     }
 
     //this sets the details to be confirmed
@@ -281,5 +330,92 @@ public class GuardianDetails implements Initializable {
 
     public void cancel(ActionEvent actionEvent) {
         forButtonVisibility(true);
+    }
+
+   /*******************************************************************************************************************
+    *
+    *        Validation methods
+    *
+    ******************************************************************************************************************/
+
+   //used to validate the admission Number
+   private boolean CheckAdmissionNumber(TextField text){
+       boolean check=false;
+     if(validate.validateNumbers(text.getText().trim())){
+        text.setStyle("-fx-prompt-text-fill:#FFB60D; ");
+        check=true;
+     } else{
+        text.setStyle("-fx-prompt-text-fill:red;");
+        check=false;
+     }
+       return check;
+   }
+
+   //used to validate the guardians names
+   private boolean CheckName(TextField text){
+       boolean check=false;
+       if(validate.validateLetters(text.getText().trim())){
+          check=true;
+          text.setStyle("-fx-prompt-text-fill:#FFB60D; ");
+       }else{
+          check=false;
+          text.setStyle("-fx-prompt-text-fill:red;");
+       }
+       return check;
+   }
+
+   //used to validate the phone number
+   private boolean CheckPhoneNumber(TextField text){
+      boolean check=false;
+      if(text.getText().trim().isEmpty()){
+         text.setStyle("-fx-prompt-text-fill:#FFB60D; ");
+         check=true;
+      }
+      else{
+         if(validate.validatePhoneNumber(text.getText().trim())){
+            text.setStyle("-fx-prompt-text-fill:#FFB60D; ");
+            check=true;
+         }else{
+            check=false;
+            text.setStyle("-fx-prompt-text-fill:red;");
+         }
+      }
+
+      return check;
+   }
+
+   //used to validate the Emails
+   private boolean CheckEmail(TextField text){
+      boolean check=false;
+      if(text.getText().trim().isEmpty()){
+         text.setStyle("-fx-prompt-text-fill:#FFB60D; ");
+         check=true;
+      }
+      else{
+         if(validate.validateEmail(text.getText().trim())){
+            text.setStyle("-fx-prompt-text-fill:#FFB60D; ");
+            check=true;
+         }else{
+            check=false;
+            text.setStyle("-fx-prompt-text-fill:red;");
+         }
+      }
+      return check;
+   }
+
+    //used to check the validation of all the fields
+    public boolean CheckAllFields(){
+     boolean check=false;
+        if(CheckAdmissionNumber(eAdmissionNumber) && CheckName(eGuardianFirstName)&& CheckName(eGuardianLastName) &&
+                CheckPhoneNumber(ePhoneNumber) && CheckEmail(eEmail)){
+           check=true;
+        }else
+           check=false;
+
+       CheckName(eGuardianFirstName); CheckName(eGuardianLastName);
+       CheckPhoneNumber(ePhoneNumber); CheckEmail(eEmail);
+       CheckAdmissionNumber(eAdmissionNumber);
+
+       return check;
     }
 }
