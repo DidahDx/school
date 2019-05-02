@@ -189,12 +189,14 @@ public class GuardianDetails implements Initializable {
 
     //this handles adding a guardian details
     public void AddNewGuardian(ActionEvent actionEvent) {
-        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-        alert.setHeaderText(null);
-        alert.setContentText(Content("ADDED"));
 
-        if(CheckAllFields()){
-           if((validate.validatePhoneNumber(ePhoneNumber.getText().trim()) || ePhoneNumber.getText().isEmpty())){
+       if(CheckAllFields()){
+
+          Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+          alert.setHeaderText(null);
+          alert.setContentText(Content("ADDED"));
+
+          if((validate.validatePhoneNumber(ePhoneNumber.getText().trim()) || ePhoneNumber.getText().isEmpty())){
 
               if(validate.validateEmail(eEmail.getText().trim()) && !(emailHolder.matches(eEmail.getText().trim()))
                       && !(eEmail.getText().isEmpty())){
