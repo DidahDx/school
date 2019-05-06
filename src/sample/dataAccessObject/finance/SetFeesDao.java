@@ -16,10 +16,8 @@ import java.sql.SQLException;
 
 public class SetFeesDao {
 
-    private Connection connection=DBConnector.getConnection();
-
     //this method inserts fees to the database
-    public void setFees(int form,double termOne,double termTwo,double termThree) throws SQLException {
+    public void setFees(int form,double termOne,double termTwo,double termThree,Connection connection) throws SQLException {
         String sql="INSERT INTO expected_fees(form,term_one,term_three,term_two) VALUES (?,?,?,?)";
         PreparedStatement ps=connection.prepareStatement(sql);
         ps.setInt(1,form);
@@ -30,7 +28,7 @@ public class SetFeesDao {
     }
 
     //this method inserts fees to the database
-    public void setBoarderFees(int form,double termOne,double termTwo,double termThree) throws SQLException {
+    public void setBoarderFees(int form,double termOne,double termTwo,double termThree,Connection connection) throws SQLException {
         String sql="INSERT INTO expected_fees(form,boarder_term_one,boarder_term_two,boarder_term_three) VALUES (?,?,?,?)";
         PreparedStatement ps=connection.prepareStatement(sql);
         ps.setInt(1,form);
@@ -41,7 +39,7 @@ public class SetFeesDao {
     }
 
     //this method updates the expected fees
-    public void UpdateFees(double term1,double term2,double term3,int form) throws SQLException {
+    public void UpdateFees(double term1,double term2,double term3,int form,Connection connection) throws SQLException {
         String sql="UPDATE expected_fees SET term_one=?,term_two=?,term_three=? where form=?";
         PreparedStatement ps=connection.prepareStatement(sql);
         ps.setDouble(1,term1);
@@ -52,7 +50,7 @@ public class SetFeesDao {
     }
 
     //this method updates the expected fees
-    public void UpdateBoarderFees(double term1,double term2,double term3,int form) throws SQLException {
+    public void UpdateBoarderFees(double term1,double term2,double term3,int form,Connection connection) throws SQLException {
         String sql="UPDATE expected_fees SET boarder_term_one=?,boarder_term_three=?,boarder_term_two=? where form=?";
         PreparedStatement ps=connection.prepareStatement(sql);
         ps.setDouble(1,term1);
@@ -63,7 +61,7 @@ public class SetFeesDao {
     }
 
     //this method reads the values from database
-    public ResultSet ViewFees(int form) throws SQLException{
+    public ResultSet ViewFees(int form,Connection connection) throws SQLException{
         String sql="SELECT * FROM expected_fees where form=?";
         ResultSet rs = null;
         PreparedStatement ps=connection.prepareStatement(sql);

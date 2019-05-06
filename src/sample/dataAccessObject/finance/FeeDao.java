@@ -16,10 +16,9 @@ import java.time.LocalTime;
  *   4.UPDATE
  * */
 public class FeeDao {
-    private Connection connection=DBConnector.getConnection();
 
     //this method is used to get all the data from the finance table
-    public ResultSet loadTable() throws SQLException {
+    public ResultSet loadTable(Connection connection) throws SQLException {
         String sql="SELECT * FROM finance  ORDER BY `finance`.`finance_id` ASC";
         PreparedStatement ps=connection.prepareStatement(sql);
        return ps.executeQuery();
@@ -27,7 +26,7 @@ public class FeeDao {
 
     //this method is used to add paid fees to the database
     public void AddFee(int admission, double feeExpected, double feePaid, LocalDate dateOfPayment, double balance,
-                       String bankTransactionId, int term, LocalTime timeOfPayment,int form,String BankName) throws SQLException {
+                       String bankTransactionId, int term, LocalTime timeOfPayment,int form,String BankName,Connection connection) throws SQLException {
         String sql="INSERT INTO finance(admission_number,fee_expected,fee_paid,date_of_payment" +
                 ",balance,bank_transaction_id,term,time_of_payment,form,bank_name) VALUES(?,?,?,?,?,?,?,?,?,?)";
         PreparedStatement ps=connection.prepareStatement(sql);
@@ -48,7 +47,7 @@ public class FeeDao {
     //this method is used to Update
     @Deprecated
     public void UpdateFee(int admission, double feeExpected, double feePaid, LocalDate dateOfPayment, double balance,
-                       String bankTransactionId, int term, LocalTime timeOfPayment,int financeId,String BankName) throws SQLException {
+                       String bankTransactionId, int term, LocalTime timeOfPayment,int financeId,String BankName,Connection connection) throws SQLException {
         String sql="UPDATE finance SET admission_number=?,fee_expected=?,fee_paid=?,date_of_payment=?" +
                 ",balance=?,bank_transaction_id=?,term=?,time_of_payment=?,bank_name=? where finance_id=?";
         PreparedStatement ps=connection.prepareStatement(sql);
@@ -66,7 +65,7 @@ public class FeeDao {
     }
 
     //this method is used to delete from the finance table
-    public void deleteFees(int financeId) throws SQLException {
+    public void deleteFees(int financeId,Connection connection) throws SQLException {
         String sql="DELETE FROM finance WHERE finance_id=?";
         PreparedStatement ps=connection.prepareStatement(sql);
         ps.setInt(1,financeId);
@@ -78,7 +77,7 @@ public class FeeDao {
     }
 
     //this method is used to search the finance table using admission number
-    public ResultSet search(int admission) throws SQLException {
+    public ResultSet search(int admission,Connection connection) throws SQLException {
         String sql="SELECT * FROM finance where admission_number=? ORDER BY `finance`.`finance_id` ASC";
         PreparedStatement ps=connection.prepareStatement(sql);
         ps.setInt(1,admission);
@@ -86,7 +85,7 @@ public class FeeDao {
     }
 
     //this method is used to search the finance table using form number
-    public ResultSet searchForm(int form) throws SQLException {
+    public ResultSet searchForm(int form,Connection connection) throws SQLException {
         String sql="SELECT finance.admission_number,finance.fee_expected,finance.fee_paid,finance.date_of_payment" +
         ",finance.balance,finance.bank_transaction_id,finance.bank_name,finance.term,finance.time_of_payment,finance.form,finance.finance_id,finance.form" +
                 " from finance inner join " +
@@ -99,7 +98,7 @@ public class FeeDao {
     }
 
     //this method is used to check if any fee is paid for the current term and form from the finance table
-    public ResultSet searchForCheckingFees(int admission,int form,int term) throws SQLException {
+    public ResultSet searchForCheckingFees(int admission,int form,int term,Connection connection) throws SQLException {
         String sql="SELECT * FROM finance where admission_number=? and form=? and term=?";
         PreparedStatement ps=connection.prepareStatement(sql);
         ps.setInt(1,admission);
@@ -109,7 +108,7 @@ public class FeeDao {
     }
 
     //this method is used to get the current balance from the finance table
-    public ResultSet getBalance(int admission) throws SQLException {
+    public ResultSet getBalance(int admission,Connection connection) throws SQLException {
         String sql="SELECT * FROM finance where admission_number=? and" +
                 " finance_id=(select max(finance_id) from finance where admission_number=?)";
         PreparedStatement ps=connection.prepareStatement(sql);

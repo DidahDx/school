@@ -9,6 +9,7 @@ import java.sql.SQLException;
 
 /**
  * Testing Hikari database connection
+ * TODO:How to correctly use it
  * */
 
 public class HikariConnector  {
@@ -26,7 +27,7 @@ public class HikariConnector  {
      hikari.setUsername(connectData.getUser());
      hikari.setPassword(connectData.getPassword());
      try {
-        hikari.setLoginTimeout(300);
+        hikari.setLoginTimeout(900);
      } catch (SQLException e) {
         e.printStackTrace();
         System.out.println("Connection Timeout hikari");

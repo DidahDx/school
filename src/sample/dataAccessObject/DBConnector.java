@@ -1,5 +1,6 @@
 package sample.dataAccessObject;
 
+import com.zaxxer.hikari.HikariDataSource;
 import javafx.scene.control.Alert;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -12,6 +13,8 @@ import java.sql.SQLException;
 public class DBConnector {
 
      private static connectionProperties dataConnect = new connectionProperties();
+
+
 
      //this method is used to connect to the database and returns the connection
     public static Connection getConnection(){
@@ -32,4 +35,7 @@ public class DBConnector {
 
         return connection;
     }
+
+
+
 }

@@ -17,16 +17,14 @@ import java.time.LocalTime;
 
 public class StudentDao {
 
-    private Connection connection= DBConnector.getConnection(); //used to get the connection to the database
-
     //this method is used to insert student names into the database
     public void SaveStudentsNames(String firstName, String secondName, String lastName, String County, String Gender,
                                   LocalDate birthDate, int admissionNumber, LocalDate dateOfAdmission, String StudentType,
-                                  int Form, String Dorm, LocalTime time,String stream,int term){
+                                  int Form, String Dorm, LocalTime time,String stream,int term,Connection connection) throws SQLException {
         PreparedStatement preparedStatement;
        String sql="INSERT INTO students_details(first_name,second_name,last_name,county_of_resident,gender,date_of_birth,admission_number," +
                "date_of_admission,student_type,form,dorm,time_of_admission,stream,term) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?) ";
-        try {
+
             preparedStatement=connection.prepareStatement(sql);
             preparedStatement.setString(1,firstName);
             preparedStatement.setString(2,secondName);
@@ -49,18 +47,11 @@ public class StudentDao {
             alert.setHeaderText(null);
             alert.setContentText("Details entered successfully"); //message
             alert.showAndWait();
-        } catch (SQLException e) {
-            //this alert displays an error message
-            Alert alert=new Alert(Alert.AlertType.ERROR);
-            alert.setHeaderText(null);
-            alert.setContentText("Error entering details"); //the error message
-            alert.showAndWait();
-            e.printStackTrace();
-        }
+
     }
 
     //This method gets the last admission number from database
-    public int getLastAdmissionNumber() throws SQLException {
+    public int getLastAdmissionNumber(Connection connection) throws SQLException {
         int value = 0;
         Statement myState = connection.createStatement();
         ResultSet myResult = myState.executeQuery("select max(admission_number) from students_details ");
@@ -71,14 +62,14 @@ public class StudentDao {
     }
 
     //this method queries the database for all the student details
-    public ResultSet getAllStudentDetails() throws SQLException {
+    public ResultSet getAllStudentDetails(Connection connection) throws SQLException {
         Statement myState=connection.createStatement();
         ResultSet rs= myState.executeQuery("SELECT * FROM students_details ");
         return rs;
      }
 
     //this method queries the database for all the student details for a specific form
-    public ResultSet loadsForms(int form) throws SQLException {
+    public ResultSet loadsForms(int form,Connection connection) throws SQLException {
        String sql="SELECT * FROM students_details WHERE form=? ;";
 
        PreparedStatement preparedStatement=connection.prepareStatement(sql);
@@ -88,7 +79,7 @@ public class StudentDao {
     }
 
     //this method queries the database for all the students details for a specific stream
-    public ResultSet loadsStream(int form,String stream) throws SQLException {
+    public ResultSet loadsStream(int form,String stream,Connection connection) throws SQLException {
         String sql="SELECT * FROM students_details WHERE form=? AND stream=?";
         PreparedStatement ps=connection.prepareStatement(sql);
         ps.setInt(1,form);
@@ -97,7 +88,7 @@ public class StudentDao {
     }
 
   //used for searching the database with admission number
-    public ResultSet searchTable(int admissionNumber) throws SQLException {
+    public ResultSet searchTable(int admissionNumber,Connection connection) throws SQLException {
         String sql="SELECT * FROM students_details where admission_number=?;";
         PreparedStatement preparedStatement = connection.prepareStatement(sql);
         preparedStatement.setInt(1,admissionNumber);
@@ -106,7 +97,7 @@ public class StudentDao {
     }
 
     //this method queries the database for all the guardian detail according to form
-    public ResultSet loadStudentsName(int admissionNumber) throws SQLException{
+    public ResultSet loadStudentsName(int admissionNumber,Connection connection) throws SQLException{
         String sql="SELECT guardian_details.guardian_first_name,guardian_details.guardian_id,guardian_details.guardian_last_name," +
                 "guardian_details.guardian_phone_number,students_details.first_name,students_details.second_name,students_details.last_name," +
                 "guardian_details.guardian_email,guardian_details.admission_number" +
@@ -120,7 +111,7 @@ public class StudentDao {
     }
 
     //this method is used to delete student records from database
-    public void deleteStudentRecord(int admissionNumber) throws SQLException {
+    public void deleteStudentRecord(int admissionNumber,Connection connection) throws SQLException {
         String sql="DELETE students_details , guardian_details  FROM students_details  INNER JOIN guardian_details " +
                 "WHERE students_details.admission_number= guardian_details.admission_number and students_details.admission_number = ?";
         PreparedStatement ps=connection.prepareStatement(sql);
@@ -137,6 +128,7 @@ public class StudentDao {
                 "gender=?,date_of_birth=?,admission_number=?,date_of_admission=?," +
                 "student_type=?,form=?,dorm=?,time_of_admission=?,stream=?,term=? WHERE students_details.admission_number=?";
         PreparedStatement ps= null;
+        Connection connection=DBConnector.getConnection();
         try {
             ps = connection.prepareStatement(sql);
             ps.setString(1,firstName);
@@ -159,12 +151,27 @@ public class StudentDao {
         } catch (SQLException e) {
             e.printStackTrace();
 
+        }finally {
+           if (connection!=null){
+              try {
+                 connection.close();
+              } catch (SQLException e) {
+                 e.printStackTrace();
+              }
+           }
+        }
+        if(ps!=null){
+           try {
+              ps.close();
+           } catch (SQLException e) {
+              e.printStackTrace();
+           }
         }
 
     }
 
     //this method is used to get admission number for a particular stream and form
-   public ResultSet getAlladmissionNumber(int form ,String stream) throws SQLException {
+   public ResultSet getAlladmissionNumber(int form ,String stream,Connection connection) throws SQLException {
 
         ResultSet rs = null;
         String sql="SELECT admission_number FROM students_details where form=? and stream=?";
@@ -177,14 +184,14 @@ public class StudentDao {
    }
 
    //this method is used get the  term
-   public ResultSet getTerm() throws SQLException {
+   public ResultSet getTerm(Connection connection) throws SQLException {
         String sql="SELECT current_term FROM current_school_details";
         PreparedStatement ps1=connection.prepareStatement(sql);
       return ps1.executeQuery();
    }
 
    //this method is used to update the term
-    public void setTerm(int term) throws SQLException {
+    public void setTerm(int term,Connection connection) throws SQLException {
         String sql="UPDATE current_school_details SET current_term=? WHERE id=1 ";
         PreparedStatement ps=connection.prepareStatement(sql);
         ps.setInt(1,term);
@@ -193,14 +200,14 @@ public class StudentDao {
 
 
     //this method is used to get the year
-    public ResultSet getYear() throws SQLException{
+    public ResultSet getYear(Connection connection) throws SQLException{
         String sql="SELECT current_year FROM  current_school_details";
         PreparedStatement ps=connection.prepareStatement(sql);
         return ps.executeQuery();
     }
 
     //this method is used to set the year
-   public void setYear(int year) throws SQLException {
+   public void setYear(int year,Connection connection) throws SQLException {
        String sql="UPDATE current_school_details SET current_year=? WHERE id=1";
        PreparedStatement ps=connection.prepareStatement(sql);
        ps.setInt(1,year);
@@ -208,7 +215,7 @@ public class StudentDao {
    }
 
    //this method is used to update the students forms
-   public void UpdateStudentsForm(int form,int admissionNumber) throws SQLException{
+   public void UpdateStudentsForm(int form,int admissionNumber,Connection connection) throws SQLException{
        String sql="UPDATE students_details SET form=? WHERE admission_number=?";
        PreparedStatement ps=connection.prepareStatement(sql);
        ps.setInt(1,form);
@@ -217,7 +224,7 @@ public class StudentDao {
    }
 
    //this method is used to update the students term
-   public void UpdateStudentsTerm(int term ,int admissionNo) throws SQLException{
+   public void UpdateStudentsTerm(int term ,int admissionNo,Connection connection) throws SQLException{
     String sql="UPDATE students_details SET term=? WHERE admission_number=?";
     PreparedStatement ps=connection.prepareStatement(sql);
     ps.setInt(1,term);

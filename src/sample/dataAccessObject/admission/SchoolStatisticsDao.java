@@ -13,10 +13,10 @@ import java.sql.SQLException;
  * */
 
 public class SchoolStatisticsDao {
-    Connection con=DBConnector.getConnection();
+
 
     //this method is used to get the total number pupils in the school
-    public ResultSet SchoolStatistics() throws SQLException {
+    public ResultSet SchoolStatistics(Connection con) throws SQLException {
         ResultSet rs = null;
         String sql="SELECT COUNT(admission_number) FROM students_details";
         PreparedStatement ps=con.prepareStatement(sql);
@@ -25,7 +25,7 @@ public class SchoolStatisticsDao {
     }
 
     //this method is used to get the total number boys or girls students in the whole school
-    public ResultSet GenderSchoolStatistics(String gender) throws SQLException {
+    public ResultSet GenderSchoolStatistics(String gender,Connection con) throws SQLException {
         ResultSet rs = null;
         String sql="SELECT COUNT(admission_number) FROM students_details WHERE gender=?";
         PreparedStatement ps=con.prepareStatement(sql);
@@ -35,7 +35,7 @@ public class SchoolStatisticsDao {
     }
 
     //this method is used to get the total number students in the whole school for a particular stream
-    public ResultSet StreamSchoolStatistics(String stream) throws SQLException {
+    public ResultSet StreamSchoolStatistics(String stream,Connection con) throws SQLException {
         ResultSet rs = null;
         String sql="SELECT COUNT(admission_number) FROM students_details WHERE stream=?";
         PreparedStatement ps=con.prepareStatement(sql);
@@ -46,7 +46,7 @@ public class SchoolStatisticsDao {
 
 
     //this method is used to get the total number boys or girls students in the whole school for a particular stream
-    public ResultSet StreamGenderSchoolStatistics(String stream,String gender) throws SQLException {
+    public ResultSet StreamGenderSchoolStatistics(String stream,String gender,Connection con) throws SQLException {
         ResultSet rs = null;
         String sql="SELECT COUNT(admission_number) FROM students_details WHERE stream=? and gender=?";
         PreparedStatement ps=con.prepareStatement(sql);
@@ -57,7 +57,7 @@ public class SchoolStatisticsDao {
     }
 
     //this method is used to get the total number pupils in a particular form
-    public ResultSet FormStatistics(int form) throws SQLException {
+    public ResultSet FormStatistics(int form,Connection con) throws SQLException {
         ResultSet rs = null;
         String sql="SELECT COUNT(admission_number) FROM students_details where form=?";
         PreparedStatement ps=con.prepareStatement(sql);
@@ -67,7 +67,7 @@ public class SchoolStatisticsDao {
     }
 
     //this method is used to get the total  number of boys or girls in a particular form
-    public ResultSet GenderFormStatistics(int form,String gender) throws SQLException {
+    public ResultSet GenderFormStatistics(int form,String gender,Connection con) throws SQLException {
         ResultSet rs = null;
         String sql="SELECT COUNT(admission_number) FROM students_details where form=? and gender=?";
         PreparedStatement ps=con.prepareStatement(sql);
@@ -78,7 +78,7 @@ public class SchoolStatisticsDao {
     }
 
     //this method is used to get the total number pupils in a particular stream
-    public ResultSet StreamFormStatistics(int form,String stream) throws SQLException {
+    public ResultSet StreamFormStatistics(int form,String stream,Connection con) throws SQLException {
         ResultSet rs = null;
         String sql="SELECT COUNT(admission_number) FROM students_details where form=? and stream=?";
         PreparedStatement ps=con.prepareStatement(sql);
@@ -89,7 +89,7 @@ public class SchoolStatisticsDao {
     }
 
     //this method is used to get the total number boys or girls in a particular stream
-    public ResultSet StreamGenderFormStatistics(int form,String gender,String stream) throws SQLException {
+    public ResultSet StreamGenderFormStatistics(int form,String gender,String stream,Connection  con) throws SQLException {
         ResultSet rs = null;
         String sql="SELECT COUNT(admission_number) FROM students_details where form=? and gender=? and stream=?";
         PreparedStatement ps=con.prepareStatement(sql);
@@ -98,5 +98,17 @@ public class SchoolStatisticsDao {
         ps.setString(3,stream);
         rs=ps.executeQuery();
         return rs;
+    }
+
+    //used to get the total number boys or girls in a particular dorm
+    public ResultSet getTotalDorm(String gender,String dorm,Connection con) throws SQLException {
+    ResultSet rs=null;
+    String sql="SELECT COUNT(admission_number) FROM students_details where gender=? and dorm=?";
+    PreparedStatement ps=con.prepareStatement(sql);
+    ps.setString(1,gender);
+    ps.setString(2,dorm);
+
+    rs=ps.executeQuery();
+    return rs;
     }
 }

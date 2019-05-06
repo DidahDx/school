@@ -9,10 +9,8 @@ import java.sql.SQLException;
 
 public class UserDao {
 
-    Connection con=DBConnector.getConnection();
-
     //this method is used to login using the tUserName and Password
-    public ResultSet login(String UserName,String Password) throws SQLException {
+    public ResultSet login(String UserName,String Password ,Connection con) throws SQLException {
         String sql="select user_name,password,role from users_details where user_name=? and password=?";
         PreparedStatement ps=con.prepareStatement(sql);
         ps.setString(1,UserName);
@@ -21,7 +19,7 @@ public class UserDao {
     }
 
     //this method is used to create a user in the system
-    public void Create(String firstName,String SecondName,String Email,int Phone,String gender,String password,String  UserName) throws SQLException
+    public void Create(String firstName,String SecondName,String Email,int Phone,String gender,String password,String  UserName,Connection con) throws SQLException
     {
 
         String sql="INSERT INTO users_details(first_name,second_name,email,phone_number,gender,user_name,password)" +
@@ -40,7 +38,7 @@ public class UserDao {
     }
 
     //this method is used to update user details in the system
-    public void Update(String firstName,String SecondName,String Email,int Phone,String gender,String password,String  UserName,int userId) throws SQLException
+    public void Update(String firstName,String SecondName,String Email,int Phone,String gender,String password,String  UserName,int userId,Connection con) throws SQLException
     {
 
         String sql="UPDATE users_details SET first_name=?,second_name=?,email=?,phone_number=?,gender=?,user_name=?,password=?" +
@@ -59,14 +57,14 @@ public class UserDao {
     }
 
     //this method is used to return all the detail of a certain user
-    public ResultSet Read(int userId) throws SQLException{
+    public ResultSet Read(int userId,Connection connection) throws SQLException{
         String sql="SELECT * FROM users_details WHERE user_id=? ";
-        PreparedStatement ps=con.prepareStatement(sql);
+        PreparedStatement ps=connection.prepareStatement(sql);
         ps.setInt(1,userId);
         return ps.executeQuery();
     }
 
-    public ResultSet ReadAll() throws SQLException{
+    public ResultSet ReadAll(Connection con) throws SQLException{
         String sql="SELECT * FROM users_details";
         PreparedStatement ps=con.prepareStatement(sql);
         return ps.executeQuery();
@@ -74,7 +72,7 @@ public class UserDao {
 
 
     //this method is used to return the users email Address
-    public ResultSet ReadEmail(String userName) throws SQLException{
+    public ResultSet ReadEmail(String userName,Connection con) throws SQLException{
         String sql="SELECT email FROM users_details WHERE user_name=? ";
         PreparedStatement ps=con.prepareStatement(sql);
         ps.setString(1,userName);
@@ -82,7 +80,7 @@ public class UserDao {
     }
 
     //this method is used update the password
-    public void UpdatePassword(String password,String userName) throws SQLException {
+    public void UpdatePassword(String password,String userName,Connection con) throws SQLException {
         String sql="UPDATE users_details SET password=?" +
                           " where user_name=?";
         PreparedStatement ps=con.prepareStatement(sql);
@@ -92,7 +90,7 @@ public class UserDao {
     }
 
     //this method is used to set the users privilege
-    public void UpdatePrivilege(String priv,int userId) throws SQLException {
+    public void UpdatePrivilege(String priv,int userId,Connection con) throws SQLException {
         String sql="UPDATE users_details SET role=? where user_id=?";
         PreparedStatement ps=con.prepareStatement(sql);
         ps.setString(1,priv);
@@ -101,7 +99,7 @@ public class UserDao {
     }
 
     //this method is used to delete a user from the database
-    public void Delete(int userId) throws SQLException {
+    public void Delete(int userId,Connection con) throws SQLException {
         String sql="DELETE FROM users_details WHERE  user_id=?";
         PreparedStatement ps=con.prepareStatement(sql);
         ps.setInt(1,userId);
