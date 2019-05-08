@@ -27,7 +27,7 @@ public class Finance implements Initializable {
 
     //this handles changing the User Interface to feeDetails
     public void feeDetails(ActionEvent actionEvent) {
-        con.changeUi("feeDetails");
+        con.changeModUi("feeDetails");
     }
 
     //this handles changing the User Interface to setFees

@@ -14,11 +14,13 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import sample.Controller;
+import sample.dataAccessObject.DBConnector;
 import sample.model.Validation;
 import sample.dataAccessObject.admission.StudentDao;
 import sample.model.admission.StudentModelTable;
 
 import java.net.URL;
+import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDate;
@@ -52,6 +54,7 @@ public class studentDetails implements Initializable {
     public ComboBox<String> eDorm;
     public JFXTimePicker eTimeOfAdmission;
     public ComboBox eTerm;
+    public ComboBox sStream;
 
     @FXML TableView<StudentModelTable> table;
     @FXML TableColumn<StudentModelTable,String> admissionNumber;
@@ -74,6 +77,8 @@ public class studentDetails implements Initializable {
     private ObservableList<String> listTerm=FXCollections.observableArrayList();
 
     private Validation  validate=new Validation();
+    private admissionsForm validateFields=new admissionsForm();
+    private GuardianDetails validateAdmissionNo= new GuardianDetails();
     private int admissionDelete=0;
 
     @Override
@@ -84,6 +89,7 @@ public class studentDetails implements Initializable {
         eAdmissionNumber.setEditable(false);
         validate.changeDatePickerFormat(eDateOfBirth);
         validate.changeDatePickerFormat(eDateOfAdmission);
+        validate.pastDates(eDateOfBirth);
         updateButton.setVisible(false);
         cancelButton.setVisible(false);
         adForm.loadComboBox(this.eCounty);
@@ -92,17 +98,27 @@ public class studentDetails implements Initializable {
         fillGender(eGender);
         fillStudentType(eStudentType);
         fillStream(eStream);
+        fillStream(sStream);
         fillDorm(eDorm);
     }
 
     //this loads all the forms table
     private void loadAllForms(){
         ResultSet rs;
+       Connection connection= DBConnector.getConnection();
         try {
-            rs=dao.loadStudentTable();
+            rs=dao.getAllStudentDetails(connection);
             fillTable(rs);
         } catch (SQLException e) {
             e.printStackTrace();
+        }finally {
+           if (connection!=null){
+              try {
+                 connection.close();
+              } catch (SQLException e) {
+                 e.printStackTrace();
+              }
+           }
         }
     }
 
@@ -158,46 +174,70 @@ public class studentDetails implements Initializable {
     }
 
 
-    //this loads the comboBox with the stream
-    private void fillStream(ComboBox Stream){
+    //this loads the comboBox with the stream/
+    public void fillStream(ComboBox Stream){
         listStream.removeAll(listStream);
 
         String[] stream = {"EAST", "WEST"};
         listStream.addAll(Arrays.asList(stream));
 
         Stream.getItems().addAll(listStream);
+        Stream.setValue(stream[1]);
     }
 
     //handles the searching for students with admission number
     public void search(ActionEvent actionEvent) {
-
+        Connection connection=DBConnector.getConnection();
         ResultSet rs = null;
         try {
 
             if(!(searchTextField.getText().trim().isEmpty())){
-             rs= dao.searchTable(Integer.parseInt(searchTextField.getText().trim()));
+             rs= dao.searchTable(Integer.parseInt(searchTextField.getText().trim()),connection);
             }else {
-               rs= dao.loadStudentTable();
+               rs= dao.getAllStudentDetails(connection);
             }
 
             fillTable(rs);
         } catch (SQLException e) {
             e.printStackTrace();
+        }finally {
+           if (connection!=null){
+              try {
+                 connection.close();
+              } catch (SQLException e) {
+                 e.printStackTrace();
+              }
+           }
         }
     }
 
     //this method is used to load the whole table
     public void loadTable(ActionEvent actionEvent) {
         ResultSet rs;
+        Connection connection=DBConnector.getConnection();
         try {
             if(SearchForms.getValue().toString()== "All"){
-                rs=dao.loadStudentTable();
+                rs=dao.getAllStudentDetails(connection);
             }
-            else{ rs= dao.loadsForms( Integer.parseInt(SearchForms.getValue().toString()));}
+            else { rs= dao.loadsForms( Integer.parseInt(SearchForms.getValue().toString()),connection);}
+
+            if(!SearchForms.getValue().toString().matches("All") &&
+                    (sStream.getValue().toString().matches("EAST") || sStream.getValue().toString().matches("WEST")))
+            {
+                rs=dao.loadsStream(Integer.parseInt(SearchForms.getValue().toString()),sStream.getValue().toString(),connection);
+            }
 
             fillTable(rs);
         } catch (SQLException e) {
             e.printStackTrace();
+        }finally {
+           if (connection!=null){
+              try {
+                 connection.close();
+              } catch (SQLException e) {
+                 e.printStackTrace();
+              }
+           }
         }
     }
 
@@ -237,8 +277,9 @@ public class studentDetails implements Initializable {
         admissionDelete=studentModelTable.getAdmissionNumber();
 
         ResultSet rs;
+        Connection connection=DBConnector.getConnection();
             try {
-             rs=   dao.searchTable(studentModelTable.getAdmissionNumber());
+             rs=   dao.searchTable(studentModelTable.getAdmissionNumber(),connection);
 
              while(rs.next()){
                  eDateOfBirth.setValue(LocalDate.parse(rs.getDate("date_of_birth").toString()));
@@ -254,6 +295,14 @@ public class studentDetails implements Initializable {
              }
             } catch (SQLException e) {
                 e.printStackTrace();
+            }finally {
+               if (connection!=null){
+                  try {
+                     connection.close();
+                  } catch (SQLException e) {
+                     e.printStackTrace();
+                  }
+               }
             }
 
     }
@@ -266,7 +315,6 @@ public class studentDetails implements Initializable {
         eLastName.setEditable(value);
         eTimeOfAdmission.setEditable(value);
         eFirstName.setEditable(value);
-
     }
 
     //this makes the fields editable
@@ -281,25 +329,32 @@ public class studentDetails implements Initializable {
 
     //updates the students details
     public void update(ActionEvent actionEvent) {
-        Alert alert=new Alert(Alert.AlertType.CONFIRMATION);
-        alert.setContentText(Content("UPDATED"));
-        alert.setHeaderText(null);
-        Optional<ButtonType> button= alert.showAndWait();
+       if(CheckAllFields()) {
+          Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+          alert.setContentText(Content("UPDATED"));
+          alert.setHeaderText(null);
+          Optional<ButtonType> button = alert.showAndWait();
 
-        if (button.get()==ButtonType.OK){
+          if (button.get() == ButtonType.OK) {
 
-                dao.UpdateStudentDetails(Integer.parseInt(eAdmissionNumber.getText()),eFirstName.getText().trim(),
-                        eSecondName.getText().trim(),eLastName.getText().trim(),eCounty.getValue(),eGender.getValue(),
-                        eDateOfBirth.getValue(),eDateOfAdmission.getValue(),eStudentType.getValue(),Integer.parseInt(eForm.getValue()),
-                        eDorm.getValue(),eTimeOfAdmission.getValue(),eStream.getValue(),
-                        Integer.parseInt(eTerm.getValue().toString()));
+             dao.UpdateStudentDetails(Integer.parseInt(eAdmissionNumber.getText()), eFirstName.getText().trim(),
+                     eSecondName.getText().trim(), eLastName.getText().trim(), eCounty.getValue(), eGender.getValue(),
+                     eDateOfBirth.getValue(), eDateOfAdmission.getValue(), eStudentType.getValue(), Integer.parseInt(eForm.getValue()),
+                     eDorm.getValue(), eTimeOfAdmission.getValue(), eStream.getValue(),
+                     Integer.parseInt(eTerm.getValue().toString()));
 
-        }
-        updateButton.setVisible(false);
-        cancelButton.setVisible(false);
-        editButton.setVisible(true);
-        delete.setVisible(true);
-        loadAllForms();
+          }
+          updateButton.setVisible(false);
+          cancelButton.setVisible(false);
+          editButton.setVisible(true);
+          delete.setVisible(true);
+          loadAllForms();
+       }else{
+          Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+          alert.setContentText("");
+          alert.setHeaderText(null);
+       }
+
     }
 
     //cancels editing
@@ -312,6 +367,7 @@ public class studentDetails implements Initializable {
 
     //deletes students records
     public void delete(ActionEvent actionEvent) {
+       Connection connection=DBConnector.getConnection();
        try {
            Alert alert=new Alert(Alert.AlertType.CONFIRMATION);
           alert.setTitle("Confiramtion");
@@ -320,11 +376,19 @@ public class studentDetails implements Initializable {
            Optional<ButtonType> answer= alert.showAndWait();
 
            if(answer.get()==ButtonType.OK) {
-               dao.deleteStudentRecord(admissionDelete);
+               dao.deleteStudentRecord(admissionDelete,connection);
            }
 
        }catch (SQLException s){
            s.printStackTrace();
+       }finally {
+          if (connection!=null){
+             try {
+                connection.close();
+             } catch (SQLException e) {
+                e.printStackTrace();
+             }
+          }
        }
       loadAllForms();
     }
@@ -345,4 +409,26 @@ public class studentDetails implements Initializable {
         return details;
     }
 
+   /*******************************************************************************************************************
+    *
+    *        Validation methods
+    *
+    ******************************************************************************************************************/
+
+
+    //this method is used to validate all the fields
+   private boolean CheckAllFields(){
+       boolean check=false;
+       if(validateAdmissionNo.CheckAdmissionNumber(eAdmissionNumber) && validateFields.checkOptionalTextField(eSecondName)&&
+       validateFields.checkTextField(eFirstName)&& validateFields.checkTextField(eLastName)){
+
+          check=true;
+       }else{
+          check=false;
+       }
+      validateAdmissionNo.CheckAdmissionNumber(eAdmissionNumber); validateFields.checkOptionalTextField(eSecondName);
+              validateFields.checkTextField(eFirstName); validateFields.checkTextField(eLastName);
+
+       return check;
+   }
 }

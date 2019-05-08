@@ -1,9 +1,11 @@
 package sample.model.examination;
 
+import sample.dataAccessObject.DBConnector;
 import sample.dataAccessObject.examination.AverageMarksDao;
 import sample.dataAccessObject.examination.CatMarkDao;
 import sample.dataAccessObject.examination.EndTermDao;
 
+import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDate;
@@ -26,12 +28,12 @@ public class CalculateAverageMarks {
     EndTermDao endTermDao=new EndTermDao();
 
     public void AddCatAndEndTermMark(int form,int admissionNumber,int term,String stream){
-
+         Connection connection= DBConnector.getConnection();
         LocalDate today=LocalDate.now();
         LocalTime now=LocalTime.now();
 
         try {
-           ResultSet rs= cM.getCurrentStudentMarks(form,term,admissionNumber);
+           ResultSet rs= cM.getCurrentStudentMarks(form,term,admissionNumber,connection);
 
            while(rs.next()){
                Maths=rs.getInt("maths");
@@ -47,7 +49,7 @@ public class CalculateAverageMarks {
                        ComputerStudies=rs.getInt("computer_studies");
                        agriculture=rs.getInt("agriculture");
            }
-            ResultSet rs1= Ed.getCurrentStudentEndTermMarks(form,term,admissionNumber);
+            ResultSet rs1= Ed.getCurrentStudentEndTermMarks(form,term,admissionNumber,connection);
 
             while(rs1.next()){
                 Maths1=rs1.getInt("maths");
@@ -83,26 +85,35 @@ public class CalculateAverageMarks {
             //if the records exist it is updated else it is added to the database
             if (checkIfRecordsExist(form,admissionNumber,term) && total!=0){
                 averageMarksDao.InsertAverageMarks(admissionNumber,nMath,nEnglish,nKiswahili, nBiology,nPhysics,nChemistry,nHistory,
-                      nGeography ,nCre,nBusiness,nComputer,nAgriculture,form,term,today,now,total,stream);
+                      nGeography ,nCre,nBusiness,nComputer,nAgriculture,form,term,today,now,total,stream,connection);
             }else if(total!=0){
                 averageMarksDao.UpdateAverageMarks(admissionNumber,nMath,nEnglish,nKiswahili, nBiology,nPhysics,nChemistry,nHistory,
-                        nGeography ,nCre,nBusiness,nComputer,nAgriculture,form,term,today,now,total,stream);
+                        nGeography ,nCre,nBusiness,nComputer,nAgriculture,form,term,today,now,total,stream,connection);
             }
 
             if(checkRecords(form,admissionNumber,term)){
-                averageMarksDao.DeleteAvearageMarks(averageMarksId); //used to delete data in the average marks table
+                averageMarksDao.DeleteAvearageMarks(averageMarksId,connection); //used to delete data in the average marks table
             }
 
         } catch (SQLException e) {
             e.printStackTrace();
+        }finally{
+           if(connection!=null){
+              try {
+                 connection.close();
+              } catch (SQLException e) {
+                 e.printStackTrace();
+              }
+           }
         }
     }
 
     //this method is used to check if the records exist in the average mark table in the database
     public boolean checkIfRecordsExist(int form,int admissionNumber,int term){
         boolean check=false; int sform = 0,sterm = 0;
+        Connection connection =DBConnector.getConnection();
         try {
-           ResultSet rs= averageMarksDao.getCurrentStudentAveragemMarks(form,term,admissionNumber);
+           ResultSet rs= averageMarksDao.getCurrentStudentAverageMarks(form,term,admissionNumber,connection);
            while(rs.next()){
                sform=rs.getInt("form");
                sterm=rs.getInt("term");
@@ -115,6 +126,14 @@ public class CalculateAverageMarks {
             }
         } catch (SQLException e) {
             e.printStackTrace();
+        }finally {
+           if (connection!=null){
+              try {
+                 connection.close();
+              } catch (SQLException e) {
+                 e.printStackTrace();
+              }
+           }
         }
 
         return check;
@@ -122,14 +141,15 @@ public class CalculateAverageMarks {
 
     //this method checks if any records exist in the cat and endTerm tables  in the database
     public boolean checkRecords(int form,int admissionNumber,int term){
+       Connection connection=DBConnector.getConnection();
         int sform = 0,sform1=0,mTerm=0,mTerm1=0; boolean check=false;
         try {
-            ResultSet rs=cM.getCurrentStudentMarks(form,term,admissionNumber);
+            ResultSet rs=cM.getCurrentStudentMarks(form,term,admissionNumber,connection);
             while(rs.next()){
                 sform=rs.getInt("form");
                 mTerm=rs.getInt("term");
             }
-            ResultSet  rs2= Ed.getCurrentStudentEndTermMarks(form,term,admissionNumber);
+            ResultSet  rs2= Ed.getCurrentStudentEndTermMarks(form,term,admissionNumber,connection);
             while(rs2.next()){
                 sform1=rs2.getInt("form");
                 mTerm1=rs2.getInt("term");
@@ -143,6 +163,14 @@ public class CalculateAverageMarks {
 
         } catch (SQLException e) {
             e.printStackTrace();
+        }finally {
+           if(connection!=null){
+              try{
+                 connection.close();
+              }catch (SQLException e){
+                 e.printStackTrace();
+              }
+           }
         }
 
         return check;

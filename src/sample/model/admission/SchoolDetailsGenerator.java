@@ -1,6 +1,9 @@
 package sample.model.admission;
 
+import sample.dataAccessObject.DBConnector;
 import sample.dataAccessObject.admission.StudentDao;
+
+import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.Random;
 
@@ -18,10 +21,19 @@ private StudentDao dataAccessObject =new StudentDao();
   //this method generates and return the new student's admission number
     public int getAdmissionNumber(){
     int lastAdmissionNumber = 0;
+       Connection connection= DBConnector.getConnection();
     try {
-      lastAdmissionNumber= dataAccessObject.getLastAdmissionNumber();
+      lastAdmissionNumber= dataAccessObject.getLastAdmissionNumber(connection);
     } catch (SQLException e) {
         e.printStackTrace();
+    }finally {
+       if (connection!=null){
+          try {
+             connection.close();
+          } catch (SQLException e) {
+             e.printStackTrace();
+          }
+       }
     }
 
         return lastAdmissionNumber + 1;

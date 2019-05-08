@@ -9,10 +9,12 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import sample.dataAccessObject.DBConnector;
 import sample.dataAccessObject.examination.AverageMarksDao;
 import sample.model.examination.AverageModelTable;
 
 import java.net.URL;
+import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
@@ -59,40 +61,67 @@ public class AverageMarks implements Initializable {
 
     //this method is used to search using admission Number
     public void search(ActionEvent actionEvent) {
+        Connection connection= DBConnector.getConnection();
         try {
             ResultSet rs;
             if(searchTextField.getText().isEmpty()){
-                rs= averageMarksDao.ReadAverageMarks();
+                rs= averageMarksDao.ReadAverageMarks(connection);
             }else{
-            rs=averageMarksDao.Search(Integer.parseInt(searchTextField.getText()));
+            rs=averageMarksDao.Search(Integer.parseInt(searchTextField.getText()),connection);
             }
             fillTable(rs);
         } catch (SQLException e) {
             e.printStackTrace();
+        }finally {
+            if (connection!=null){
+                try {
+                    connection.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
         }
     }
 
     //this method is used to load the table view with all the avearge marks from database
     public void loadTable(){
+        Connection connection=DBConnector.getConnection();
         try {
             ResultSet rs;
-            rs= averageMarksDao.ReadAverageMarks();
+            rs= averageMarksDao.ReadAverageMarks(connection);
             fillTable(rs);
         } catch (SQLException e) {
             e.printStackTrace();
+        }finally {
+            if (connection!=null){
+                try {
+                    connection.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
         }
     }
 
     //this method is used to search the average table using form
     public void loadFormTable(ActionEvent actionEvent) {
+        Connection connection=DBConnector.getConnection();
         try {
             if (SearchForms.getValue().toString().matches("All")){
-                fillTable(averageMarksDao.ReadAverageMarks());
+                fillTable(averageMarksDao.ReadAverageMarks(connection));
             }else{
-                fillTable( averageMarksDao.SearchForm(Integer.parseInt(SearchForms.getValue().toString())));
+                fillTable( averageMarksDao.SearchForm(Integer.parseInt(SearchForms.getValue().toString()),connection));
             }
         } catch (SQLException e) {
             e.printStackTrace();
+        }finally {
+            if (connection!=null){
+                try {
+                    connection.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
         }
     }
 

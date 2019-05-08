@@ -23,7 +23,7 @@
     <JFXTextField fx:id="studentLastName" labelFloat="true" layoutX="404.0" layoutY="88.0" prefHeight="37.0" prefWidth="160.0" promptText="LastName" styleClass="promptText" unFocusColor="#f28333" />
     <JFXTextField fx:id="studentMiddleName" labelFloat="true" layoutX="212.0" layoutY="88.0" prefHeight="37.0" prefWidth="160.0" promptText="SecondName" styleClass="promptText" />
 
-    <Label layoutX="283.0" layoutY="163.0" text="Select Gender" />
+    <Label fx:id="GenderLabel" layoutX="283.0" layoutY="163.0" text="Select Gender" />
     <JFXRadioButton fx:id="male" layoutX="276.0" layoutY="188.0" mnemonicParsing="false" text="male">
         <toggleGroup>
             <ToggleGroup fx:id="Gender" />
@@ -31,7 +31,7 @@
     </JFXRadioButton>
     <JFXRadioButton fx:id="female" layoutX="342.0" layoutY="188.0" mnemonicParsing="false" text="female" toggleGroup="$Gender" />
 
-    <Label layoutX="48.0" layoutY="163.0" text="County of residence" textFill="#71f016" />
+    <Label fx:id="CountyLabel" layoutX="48.0" layoutY="163.0" text="County of residence" textFill="#71f016" />
     <JFXComboBox fx:id="County" layoutX="11.0" layoutY="188.0" prefHeight="36.0" prefWidth="207.0" promptText="select County">
       <opaqueInsets>
          <Insets />
@@ -47,12 +47,12 @@
     <JFXTextField fx:id="guardianEmail" labelFloat="true" layoutX="34.0" layoutY="386.0" promptText="Email address" styleClass="promptText" />
 
     <Label layoutX="247.0" layoutY="452.0" style="-fx-text-fill: black;" text="SCHOOL DETAILS" textFill="#ab3520" />
-    <Label layoutX="263.0" layoutY="483.0" style="-fx-text-fill: black;" text="Select form">
+    <Label fx:id="FormLabel" layoutX="263.0" layoutY="483.0" style="-fx-text-fill: black;" text="Select form">
         <graphic>
             <RequiredFieldValidator fx:id="selectFormValidator" message="invalid" />
         </graphic></Label>
     <JFXComboBox fx:id="Form" layoutX="259.0" layoutY="500.0" prefHeight="17.0" prefWidth="94.0" styleClass="choiceBox" />
-    <Label layoutX="32.0" layoutY="483.0" style="-fx-text-fill: black;" text="Select student type" />
+    <Label fx:id="StudentTypeLabel" layoutX="32.0" layoutY="483.0" style="-fx-text-fill: black;" text="Select student type" />
 
     <JFXRadioButton fx:id="boarder" layoutX="27.0" layoutY="504.0" mnemonicParsing="false" text="Boarder">
         <toggleGroup>
@@ -86,6 +86,9 @@
                <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
            </padding></TextArea>
    </AnchorPane>
+   <JFXButton buttonType="RAISED" layoutX="896.0" layoutY="628.0" mnemonicParsing="false" onAction="#ResendEmail" prefHeight="31.0" prefWidth="110.0" text="Resend Email"><graphic>
+       <MaterialDesignIconView fill="#544646" glyphName="EMAIL" size="18.0" strokeType="OUTSIDE" strokeWidth="0.0" />
+   </graphic></JFXButton>
 
 
 </AnchorPane>

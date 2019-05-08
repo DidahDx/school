@@ -7,8 +7,6 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.paint.LinearGradient?>
-<?import javafx.scene.paint.Stop?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane fx:id="slashPane" maxHeight="407.0" maxWidth="683.0" minHeight="366.0" minWidth="575.0" prefHeight="366.0" prefWidth="575.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controllers.splashScreen">
@@ -28,18 +26,10 @@
          <effect>
             <ColorInput />
          </effect></ProgressIndicator>
-      <Label layoutX="169.0" layoutY="14.0" text="School management ">
+      <Label layoutX="169.0" layoutY="14.0" text="School management " textFill="#0f1cd7">
          <font>
             <Font name="Berlin Sans FB" size="27.0" />
-         </font>
-         <textFill>
-            <LinearGradient endX="0.7761904761904762" endY="0.5285714285714286" startX="0.7238095238095238" startY="0.5047619047619047">
-               <stops>
-                  <Stop color="#8a3d3d" />
-                  <Stop color="WHITE" offset="1.0" />
-               </stops>
-            </LinearGradient>
-         </textFill></Label>
+         </font></Label>
    </children>
    <cursor>
       <Cursor fx:constant="WAIT" />

@@ -27,5 +27,9 @@
          <MaterialDesignIconView fill="#4a4242" glyphName="PRINTER" size="18.0" strokeType="OUTSIDE" strokeWidth="0.0" />
       </graphic></JFXButton>
    <JFXTextField fx:id="bankName" labelFloat="true" layoutX="37.0" layoutY="153.0" prefHeight="28.0" prefWidth="231.0" promptText="Bank Name" />
+    <JFXButton buttonType="RAISED" layoutX="544.0" layoutY="576.0" mnemonicParsing="false" onAction="#ResendEmail" prefHeight="31.0" prefWidth="110.0" text="Resend Email"><graphic>
+        <MaterialDesignIconView fill="#544646" glyphName="EMAIL" size="18.0" strokeType="OUTSIDE" strokeWidth="0.0" />
+    </graphic></JFXButton>
+
 
 </AnchorPane>

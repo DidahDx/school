@@ -1,9 +1,11 @@
 package sample.model.finance;
 
+import sample.dataAccessObject.DBConnector;
 import sample.dataAccessObject.admission.StudentDao;
 import sample.dataAccessObject.finance.FeeDao;
 import sample.dataAccessObject.finance.SetFeesDao;
 
+import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
@@ -19,8 +21,9 @@ public class CalculateFees {
    public Double getExpectedFees(int admissionNumber){
 
        Double feeExpected=0.0;
+      Connection connection= DBConnector.getConnection();
        try {
-           ResultSet rs1= studentDao.searchTable(admissionNumber);
+           ResultSet rs1= studentDao.searchTable(admissionNumber,connection);
 
            while(rs1.next()){
 
@@ -30,7 +33,7 @@ public class CalculateFees {
 
            }
 
-           ResultSet rs2=setFeesDao.ViewFees(sform);
+           ResultSet rs2=setFeesDao.ViewFees(sform,connection);
 
            while(rs2.next()){
 
@@ -57,7 +60,16 @@ public class CalculateFees {
 
        } catch (SQLException e) {
            e.printStackTrace();
+       }finally {
+          if (connection!=null){
+             try {
+                connection.close();
+             } catch (SQLException e) {
+                e.printStackTrace();
+             }
+          }
        }
+
        return feeExpected;
    }
 
@@ -66,17 +78,18 @@ public class CalculateFees {
        int form=0,checkForm=5;
        int term=0,checkTerm=5;
        boolean check=false;
+       Connection connection=DBConnector.getConnection();
        try {
 
            //this is used to check which term and form the student is current in
-         ResultSet rs2= studentDao.searchTable(admissionNumber);
+         ResultSet rs2= studentDao.searchTable(admissionNumber,connection);
          while(rs2.next()){
              checkForm=rs2.getInt("form");
              checkTerm=rs2.getInt("term");
          }
 
          //this is used to check if the student has paid any fee in the current term
-         ResultSet rs= feeDao.searchForCheckingFees(admissionNumber,checkForm,checkTerm);
+         ResultSet rs= feeDao.searchForCheckingFees(admissionNumber,checkForm,checkTerm,connection);
            while(rs.next()){
                form=rs.getInt("form");
                term=rs.getInt("term");
@@ -90,7 +103,16 @@ public class CalculateFees {
 
        } catch (SQLException e) {
            e.printStackTrace();
+       }finally {
+          if (connection!=null){
+             try {
+                connection.close();
+             } catch (SQLException e) {
+                e.printStackTrace();
+             }
+          }
        }
+
        return check;
    }
 
@@ -99,19 +121,27 @@ public class CalculateFees {
    public double CalculateBalance(double amountPaid,int admissionNumber){
        double balance=0.0;
         double feeExpected=0.0;
-
+          Connection connection=DBConnector.getConnection();
         //this checks if the expected fees for the current term is set or not
        if(setExpectedFees(admissionNumber)){
            feeExpected=getExpectedFees(admissionNumber);
        }
 
        try {
-           ResultSet rs=feeDao.getBalance(admissionNumber);
+           ResultSet rs=feeDao.getBalance(admissionNumber,connection);
            while (rs.next()){
              balance= rs.getDouble("balance");    //getting cuurent balance
            }
        } catch (SQLException e) {
            e.printStackTrace();
+       }finally {
+          if (connection!=null){
+             try {
+                connection.close();
+             } catch (SQLException e) {
+                e.printStackTrace();
+             }
+          }
        }
 
        balance=balance+feeExpected;

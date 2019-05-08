@@ -17,9 +17,9 @@
             <VBox.margin>
                <Insets bottom="10.0" />
             </VBox.margin>
-            <image>
-               <Image url="@../images/library.jpg" />
-            </image>
+         <image>
+            <Image url="@../images/library.jpg" />
+         </image>
          </ImageView>
          <HBox alignment="CENTER" prefHeight="240.0" styleClass="hBox" stylesheets="@../css/admission.css">
             <JFXButton alignment="CENTER" buttonType="RAISED" contentDisplay="TOP" graphicTextGap="5.0" onAction="#studentsAdmission" prefHeight="128.0" prefWidth="241.0" style="-fx-background-color: #2858A6;" stylesheets="@../css/admission.css" text="Admit a new student">

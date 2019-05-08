@@ -13,6 +13,7 @@ import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import sample.Controller;
+import sample.dataAccessObject.DBConnector;
 import sample.dataAccessObject.admission.GuardianDao;
 import sample.dataAccessObject.admission.StudentDao;
 import sample.model.MyPrinter;
@@ -21,6 +22,7 @@ import sample.model.Validation;
 import sample.model.admission.SchoolDetailsGenerator;
 
 import java.net.URL;
+import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDate;
@@ -110,11 +112,19 @@ public class admissionsForm implements Initializable {
 
    //This is used to show a textField if students details table is empty
    private void setLastAdmissionNumber(){
-
+      Connection connection=DBConnector.getConnection();
       try {
-         admissionNumber =dao.getLastAdmissionNumber();
+         admissionNumber =dao.getLastAdmissionNumber(connection);
       } catch (SQLException e) {
          e.printStackTrace();
+      }finally {
+         if (connection!=null){
+            try {
+               connection.close();
+            } catch (SQLException e) {
+               e.printStackTrace();
+            }
+         }
       }
       if (admissionNumber==0){
          lastAdmissionNumber.setVisible(true);
@@ -187,21 +197,42 @@ public class admissionsForm implements Initializable {
 
          );
 
-
+         Connection connection= DBConnector.getConnection();
+         try {
          dao.SaveStudentsNames(studentFirstName.getText().trim(), studentMiddleName.getText().trim(), studentLastName.getText().trim(),
                  County.getValue(),gender, dateOfBirth.getValue(),
                  admissionNumber,today,studentType, Integer.parseInt(Form.getValue()),
-                 Dorm,now.minusNanos(now.getNano()),schoolDetailsGenerator.getStream(),term);
+                 Dorm,now.minusNanos(now.getNano()),schoolDetailsGenerator.getStream(),term,connection);
          /**TODO:How to Insert in two tables at once*/
-         gDao.AddGuardianDetails(guardianFirstName.getText().trim(), guardianLastName.getText().trim(),
-                 guardianEmail.getText().trim(), phoneNumber.getText().trim(),
-                 admissionNumber);
+
+            gDao.AddGuardianDetails(guardianFirstName.getText().trim(), guardianLastName.getText().trim(),
+                    guardianEmail.getText().trim(), phoneNumber.getText().trim(),
+                    admissionNumber,connection);
+         } catch (SQLException e) {
+            e.printStackTrace();
+
+            //this alert displays an error message
+            Alert alert=new Alert(Alert.AlertType.ERROR);
+            alert.setHeaderText(null);
+            alert.setContentText("Error entering details"); //the error message
+            alert.showAndWait();
+
+         }finally {
+            if (connection!=null){
+               try {
+                  connection.close();
+               } catch (SQLException e) {
+                  e.printStackTrace();
+               }
+            }
+         }
+
          setLastAdmissionNumber();
          sEmail.sendEmailMessage("Admission Details Slip",studentDetails.getText(), guardianEmail.getText().trim());
       }else{
          Alert alert=new Alert(Alert.AlertType.ERROR);
          alert.setHeaderText(null);
-         alert.setContentText("All fields in red are invalid inputs. Try  Again");
+         alert.setContentText("All fields in red have invalid inputs. Try  Again");
          alert.showAndWait();
       }
 
@@ -229,25 +260,34 @@ public class admissionsForm implements Initializable {
    }
 
    private void setTerm(){
+      Connection connection=DBConnector.getConnection();
       try {
-         ResultSet rs=dao.getTerm();
+         ResultSet rs=dao.getTerm(connection);
          while (rs.next()){
             term=rs.getInt("current_term");
          }
       } catch (SQLException e) {
          e.printStackTrace();
+      }finally {
+         if (connection!=null){
+            try {
+               connection.close();
+            } catch (SQLException e) {
+               e.printStackTrace();
+            }
+         }
       }
    }
 
 
    /*******************************************************************************************************************
     *
-    *        Validation methods
+    *                                          Validation methods
     *
     ******************************************************************************************************************/
 
    //This method sets the color the label after the text is validated and returns a true or false
-   private boolean checkTextField(TextField text){
+  boolean checkTextField(TextField text){
       boolean check;
       if(valid.validateLetters(text.getText().trim())) {
          check=true;
@@ -260,8 +300,8 @@ public class admissionsForm implements Initializable {
    }
 
    //This method sets the color the label after the text is validated and returns a true or false
-   private boolean checkOptionalTextField(TextField text){
-      boolean check=false;
+  boolean checkOptionalTextField(TextField text){
+      boolean check;
       if(text.getText().trim().isEmpty()){
          text.setStyle("-fx-prompt-text-fill:#FFB60D; ");
          check=true;
@@ -280,7 +320,7 @@ public class admissionsForm implements Initializable {
 
    //used to check if the gender radio button is selected
    private boolean CheckGender(){
-      boolean check=false;
+      boolean check;
       if(male.isSelected() || female.isSelected()){
          GenderLabel.setStyle("-fx-text-fill: #FFB60D;");
          check=true;
@@ -294,7 +334,7 @@ public class admissionsForm implements Initializable {
 
    //used to check if the forms is selected
    private boolean CheckForm(){
-      boolean check=false;
+      boolean check;
       if(Form.getValue()=="1"||Form.getValue()=="2"||Form.getValue()=="3"||Form.getValue()=="4"){
          FormLabel.setStyle("-fx-text-fill: #FFB60D;");
          check=true;
@@ -307,7 +347,7 @@ public class admissionsForm implements Initializable {
 
    //used to check if the student type is selected
    private boolean checkStudentType(){
-      boolean check=false;
+      boolean check;
       if(boarder.isSelected() || DayScholar.isSelected()){
          StudentTypeLabel.setStyle("-fx-text-fill: #FFB60D;");
          check=true;
@@ -320,7 +360,7 @@ public class admissionsForm implements Initializable {
 
    //used to check if the county is selected
    private boolean CheckCounty(){
-      boolean check =false;
+      boolean check;
       if(County.getValue()!=null){
          CountyLabel.setStyle("-fx-text-fill: #FFB60D;");
          check=true;
@@ -333,7 +373,7 @@ public class admissionsForm implements Initializable {
 
    //used to validate the phone number
    private boolean CheckPhoneNumber(TextField text){
-      boolean check=false;
+      boolean check;
       if(text.getText().trim().isEmpty()){
          text.setStyle("-fx-prompt-text-fill:#FFB60D; ");
          check=true;
@@ -354,11 +394,7 @@ public class admissionsForm implements Initializable {
    //used to validate the Emails
    private boolean CheckEmail(TextField text){
       boolean check=false;
-      if(text.getText().trim().isEmpty()){
-         text.setStyle("-fx-prompt-text-fill:#FFB60D; ");
-         check=true;
-      }
-      else{
+
          if(validate.validateEmail(text.getText().trim())){
             text.setStyle("-fx-prompt-text-fill:#FFB60D; ");
             check=true;
@@ -366,15 +402,12 @@ public class admissionsForm implements Initializable {
             check=false;
             text.setStyle("-fx-prompt-text-fill:red;");
          }
-      }
+
       return check;
    }
 
-
-
-
    //used to check if all required fields have the correct input
-   public boolean checkAllField(){
+   private boolean checkAllField(){
       boolean check;
 
       if(checkTextField(guardianFirstName) && checkTextField(guardianLastName)&&
@@ -394,5 +427,10 @@ public class admissionsForm implements Initializable {
       CheckPhoneNumber(phoneNumber); CheckEmail(guardianEmail);
 
       return check;
+   }
+
+   //used to resend emails
+   public void ResendEmail(ActionEvent actionEvent) {
+      sEmail.sendEmailMessage("Admission Details Slip",studentDetails.getText(), guardianEmail.getText().trim());
    }
 }

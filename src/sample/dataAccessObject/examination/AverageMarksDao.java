@@ -137,6 +137,19 @@ public class AverageMarksDao {
         return rs;
     }
 
+    //this method is used to search the database for average marks for a particular form
+    public ResultSet SearchFormAndTerm(int admissionNumber,Connection connection) throws SQLException {
+        String sql="SELECT * FROM average_marks WHERE admission_number= ?";
+        rs=null;
+        PreparedStatement ps=null;
+
+        ps=connection.prepareStatement(sql);
+        ps.setInt(1,admissionNumber);
+        rs= ps.executeQuery();
+
+        return rs;
+    }
+
     //this is used to read all the for Average marks for a particular student from the database
     public ResultSet getCurrentStudentAverageMarks(int form, int term, int admissionNumber, Connection connection) throws SQLException {
         String sql="SELECT * FROM average_marks WHERE form=? and term=? and admission_number=?";

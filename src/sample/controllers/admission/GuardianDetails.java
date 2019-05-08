@@ -11,14 +11,16 @@ import javafx.fxml.Initializable;
  import javafx.scene.control.cell.PropertyValueFactory;
  import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
-import sample.dataAccessObject.admission.GuardianDao;
+ import sample.dataAccessObject.DBConnector;
+ import sample.dataAccessObject.admission.GuardianDao;
 import sample.dataAccessObject.admission.StudentDao;
  import sample.model.Validation;
  import sample.model.admission.GuardianModelTable;
 
  import javax.xml.soap.Text;
  import java.net.URL;
-import java.sql.ResultSet;
+ import java.sql.Connection;
+ import java.sql.ResultSet;
 import java.sql.SQLException;
  import java.util.Arrays;
  import java.util.Optional;
@@ -56,7 +58,8 @@ public class GuardianDetails implements Initializable {
     private StudentDao dao=new StudentDao();
     private GuardianDao gDao=new GuardianDao();
     private ObservableList forms=FXCollections.observableArrayList();
-    private studentDetails student=new studentDetails();
+    private ObservableList listStream=FXCollections.observableArrayList();
+
     private Validation validate=new Validation();
     int guardianId=0;  String emailHolder="";
 
@@ -66,10 +69,21 @@ public class GuardianDetails implements Initializable {
         loadTable(); //initial fills the table
         eStudentName.setEditable(false);
          forButtonVisibility(true);
-         student.fillStream(stream);
+         fillStream(stream);
          eEmail.setText(" ");
 
     }
+
+   //this loads the comboBox with the stream/
+   public void fillStream(ComboBox Stream){
+      listStream.removeAll(listStream);
+
+      String[] stream = {"EAST", "WEST"};
+      listStream.addAll(Arrays.asList(stream));
+
+      Stream.getItems().addAll(listStream);
+      Stream.setValue(stream[1]);
+   }
 
     //this loads the choiceBox with the form numbers 1,2,3,4 and All
     public void fillForm(ObservableList<String> forms, ComboBox SearchForms){
@@ -85,17 +99,25 @@ public class GuardianDetails implements Initializable {
     //this method is used to search for guardians using students admission number
     public void search() {
    ResultSet rs;
-
+         Connection connection=DBConnector.getConnection();
         try {
         if(!(searchTextField.getText().trim().isEmpty())) {
-            rs = gDao.searchGuardianTable(Integer.parseInt(searchTextField.getText().trim()));
+            rs = gDao.searchGuardianTable(Integer.parseInt(searchTextField.getText().trim()),connection);
         }else{
-            rs=gDao.loadGuardianTable();
+            rs=gDao.loadGuardianTable(connection);
         }
         
         fillTable(rs);
         } catch (SQLException e) {
             e.printStackTrace();
+        }finally {
+           if (connection!=null){
+              try {
+                 connection.close();
+              } catch (SQLException e) {
+                 e.printStackTrace();
+              }
+           }
         }
     }
 
@@ -112,9 +134,11 @@ public class GuardianDetails implements Initializable {
        emailHolder=guardianModelTable.getEmail();
 
         String firstName = null,lastName=null;
+
+       Connection connection= DBConnector.getConnection();
         try {
-          rsId=gDao.checkGuardianEmail(guardianModelTable.getEmail());
-            rs= dao.loadStudentsName(guardianModelTable.getAdmissionNumber());
+          rsId=gDao.checkGuardianEmail(guardianModelTable.getEmail(),connection);
+            rs= dao.loadStudentsName(guardianModelTable.getAdmissionNumber(),connection);
         while(rs.next()){
             firstName=rs.getString("students_details.first_name");
              lastName=rs.getString("students_details.last_name");
@@ -129,42 +153,68 @@ public class GuardianDetails implements Initializable {
 
         } catch (SQLException e) {
             e.printStackTrace();
+        }finally {
+           if (connection!=null){
+              try {
+                 connection.close();
+              } catch (SQLException e) {
+                 e.printStackTrace();
+              }
+           }
         }
+
         edit(false);
     }
 
     //this loads the whole table
     private void loadTable(){
     ResultSet rs;
-
+   Connection connection=DBConnector.getConnection();
         try {
-            rs=gDao.loadGuardianTable();
+            rs=gDao.loadGuardianTable(connection);
             fillTable(rs);
         } catch (SQLException e) {
             e.printStackTrace();
+        }finally {
+           if (connection!=null){
+              try {
+                 connection.close();
+              } catch (SQLException e) {
+                 e.printStackTrace();
+              }
+           }
         }
     }
 
     //this method loads the guardians for a particular form
     public void loadForms(ActionEvent actionEvent) {
         ResultSet rs;
+        Connection connection=DBConnector.getConnection();
         try {
              if(!(SearchForms.getValue().toString()== "All")) {
-                 rs = gDao.loadGuardianForms(Integer.parseInt(SearchForms.getValue().toString()));
+                 rs = gDao.loadGuardianForms(Integer.parseInt(SearchForms.getValue().toString()),connection);
              }
              else{
-                 rs=gDao.loadGuardianTable();
+                 rs=gDao.loadGuardianTable(connection);
              }
 
              if (!(SearchForms.getValue().toString()== "All") &&
                      (stream.getValue().toString().matches("EAST")||(stream.getValue().toString().matches("WEST") ))){
-                 rs=gDao.loadGuardianStream(Integer.parseInt(SearchForms.getValue().toString()),stream.getValue().toString());
+                 rs=gDao.loadGuardianStream(Integer.parseInt(SearchForms.getValue().toString()),stream.getValue().toString(),connection);
              }
 
             fillTable(rs);
 
         } catch (SQLException e) {
             e.printStackTrace();
+        }finally {
+           if (connection!=null){
+              try {
+                 connection.close();
+              } catch (SQLException e) {
+                 e.printStackTrace();
+              }
+           }
         }
     }
 
@@ -190,44 +240,54 @@ public class GuardianDetails implements Initializable {
     //this handles adding a guardian details
     public void AddNewGuardian(ActionEvent actionEvent) {
 
-       if(CheckAllFields()){
+       if(CheckAllFields()) {
 
           Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
           alert.setHeaderText(null);
           alert.setContentText(Content("ADDED"));
+          Connection connection = DBConnector.getConnection();
+          try {
+             if ((validate.validatePhoneNumber(ePhoneNumber.getText().trim()) || ePhoneNumber.getText().isEmpty())) {
 
-          if((validate.validatePhoneNumber(ePhoneNumber.getText().trim()) || ePhoneNumber.getText().isEmpty())){
+                if (validate.validateEmail(eEmail.getText().trim()) && !(emailHolder.matches(eEmail.getText().trim()))
+                        && !(eEmail.getText().isEmpty())) {
+                   Optional<ButtonType> answer = alert.showAndWait();
 
-              if(validate.validateEmail(eEmail.getText().trim()) && !(emailHolder.matches(eEmail.getText().trim()))
-                      && !(eEmail.getText().isEmpty())){
-                 Optional<ButtonType> answer = alert.showAndWait();
-
-                 if (answer.get() == ButtonType.OK)
-                 {
-                    gDao.AddGuardianDetails(eGuardianFirstName.getText().trim(), eGuardianLastName.getText().trim(),
-                            eEmail.getText().trim(), ePhoneNumber.getText().trim(), Integer.parseInt(eAdmissionNumber.getText()));
-                    forButtonVisibility(true);
-                    edit(false);
-                 }
-              }
-              else if(!(emailHolder.matches(eEmail.getText().trim())) || eEmail.getText().isEmpty()){
-                 Optional<ButtonType> answer = alert.showAndWait();
-                 eEmail.setText(" ");
-                 if (answer.get() == ButtonType.OK)
-                  {
-                     gDao.AddGuardianDetails(eGuardianFirstName.getText().trim(), eGuardianLastName.getText().trim(),
-                             eEmail.getText().trim(), ePhoneNumber.getText().trim(), Integer.parseInt(eAdmissionNumber.getText()));
+                   if (answer.get() == ButtonType.OK) {
+                      gDao.AddGuardianDetails(eGuardianFirstName.getText().trim(), eGuardianLastName.getText().trim(),
+                              eEmail.getText().trim(), ePhoneNumber.getText().trim(), Integer.parseInt(eAdmissionNumber.getText()), connection);
                       forButtonVisibility(true);
-                     edit(false);
-                  }
-              }
-           }
-        }else{
-           Alert alert1=new Alert(Alert.AlertType.ERROR);
-           alert1.setHeaderText(null);
-           alert1.setContentText("Invalid inputs in red TextFields. Try again");
-           alert1.showAndWait();
-        }
+                      edit(false);
+                   }
+                } else if (!(emailHolder.matches(eEmail.getText().trim())) || eEmail.getText().isEmpty()) {
+                   Optional<ButtonType> answer = alert.showAndWait();
+                   eEmail.setText(" ");
+                   if (answer.get() == ButtonType.OK) {
+                      gDao.AddGuardianDetails(eGuardianFirstName.getText().trim(), eGuardianLastName.getText().trim(),
+                              eEmail.getText().trim(), ePhoneNumber.getText().trim(), Integer.parseInt(eAdmissionNumber.getText()),connection);
+                      forButtonVisibility(true);
+                      edit(false);
+                   }
+                }
+             }
+          }catch (SQLException e){
+             e.printStackTrace();
+          }finally {
+             if (connection!=null){
+                try {
+                   connection.close();
+                } catch (SQLException e) {
+                   e.printStackTrace();
+                }
+             }
+          }
+
+          }else{
+             Alert alert1 = new Alert(Alert.AlertType.ERROR);
+             alert1.setHeaderText(null);
+             alert1.setContentText("Invalid inputs in red TextFields. Try again");
+             alert1.showAndWait();
+          }
 
         loadTable();
     }
@@ -261,13 +321,26 @@ public class GuardianDetails implements Initializable {
     Alert alert=new Alert(Alert.AlertType.CONFIRMATION);
     alert.setHeaderText(null);
     alert.setContentText(Content("UPDATED"));
-
+  Connection connection=DBConnector.getConnection();
         Optional<ButtonType> answer= alert.showAndWait();
 
         if(answer.get() ==ButtonType.OK ){
-            gDao.UpdateGuardianDetails(eGuardianFirstName.getText().trim(), eGuardianLastName.getText().trim(),
-                    eEmail.getText().trim(), ePhoneNumber.getText().trim(),guardianId);
-              forButtonVisibility(true);
+           try {
+              gDao.UpdateGuardianDetails(eGuardianFirstName.getText().trim(), eGuardianLastName.getText().trim(),
+                      eEmail.getText().trim(), ePhoneNumber.getText().trim(),guardianId,connection);
+           } catch (SQLException e) {
+              e.printStackTrace();
+           }finally {
+              if (connection!=null){
+                 try {
+                    connection.close();
+                 } catch (SQLException e) {
+                    e.printStackTrace();
+                 }
+              }
+           }
+
+           forButtonVisibility(true);
         }
         edit(false);
         loadTable();
@@ -305,14 +378,22 @@ public class GuardianDetails implements Initializable {
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setHeaderText(null);
         alert.setContentText(Content(" DELETED "));
-
+        Connection connection =DBConnector.getConnection();
             Optional<ButtonType> answer = alert.showAndWait();
 
             if (answer.get() == ButtonType.OK) {
                 try {
-                    gDao.deleteGuardian(guardianId);
+                    gDao.deleteGuardian(guardianId,connection);
                 }catch (SQLException e){
                     e.printStackTrace();
+                }finally {
+                   if (connection!=null){
+                      try {
+                         connection.close();
+                      } catch (SQLException e) {
+                         e.printStackTrace();
+                      }
+                   }
                 }
             }
         edit(false);
@@ -341,8 +422,8 @@ public class GuardianDetails implements Initializable {
     ******************************************************************************************************************/
 
    //used to validate the admission Number
-   private boolean CheckAdmissionNumber(TextField text){
-       boolean check=false;
+    boolean CheckAdmissionNumber(TextField text){
+       boolean check;
      if(validate.validateNumbers(text.getText().trim())){
         text.setStyle("-fx-prompt-text-fill:#FFB60D; ");
         check=true;
@@ -355,7 +436,7 @@ public class GuardianDetails implements Initializable {
 
    //used to validate the guardians names
    private boolean CheckName(TextField text){
-       boolean check=false;
+       boolean check;
        if(validate.validateLetters(text.getText().trim())){
           check=true;
           text.setStyle("-fx-prompt-text-fill:#FFB60D; ");
@@ -368,7 +449,7 @@ public class GuardianDetails implements Initializable {
 
    //used to validate the phone number
    private boolean CheckPhoneNumber(TextField text){
-      boolean check=false;
+      boolean check;
       if(text.getText().trim().isEmpty()){
          text.setStyle("-fx-prompt-text-fill:#FFB60D; ");
          check=true;
@@ -388,7 +469,7 @@ public class GuardianDetails implements Initializable {
 
    //used to validate the Emails
    private boolean CheckEmail(TextField text){
-      boolean check=false;
+      boolean check;
       if(text.getText().trim().isEmpty()){
          text.setStyle("-fx-prompt-text-fill:#FFB60D; ");
          check=true;
@@ -406,7 +487,7 @@ public class GuardianDetails implements Initializable {
    }
 
     //used to check the validation of all the fields
-    public boolean CheckAllFields(){
+    private boolean CheckAllFields(){
      boolean check=false;
         if(CheckAdmissionNumber(eAdmissionNumber) && CheckName(eGuardianFirstName)&& CheckName(eGuardianLastName) &&
                 CheckPhoneNumber(ePhoneNumber) && CheckEmail(eEmail)){

@@ -1,49 +1,87 @@
 package sample.controllers.admission;
 
+import com.jfoenix.controls.JFXComboBox;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
-import javafx.scene.chart.PieChart;
-import javafx.scene.control.Label;
+import javafx.scene.chart.BarChart;
+import javafx.scene.chart.LineChart;
+import javafx.scene.chart.XYChart;
+import sample.dataAccessObject.DBConnector;
 import sample.dataAccessObject.admission.SchoolStatisticsDao;
 
 import java.net.URL;
+import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Arrays;
 import java.util.ResourceBundle;
 
 public class DormStatistics implements Initializable {
-    public PieChart pieChart;
-    public Label eSetGender;
 
-    SchoolStatisticsDao schoolStatisticsDao =new SchoolStatisticsDao();
-    ObservableList<PieChart.Data> pieData= FXCollections.observableArrayList();
+    public LineChart<?,?> dormBarChart;
+
+   private SchoolStatisticsDao schoolStatisticsDao =new SchoolStatisticsDao();
+
+   private ResultSet rs=null,rs2=null,rs3=null,rs4=null;
+    private int BKenya,BElgon,GKili,GLongont;
+    ObservableList setGender= FXCollections.observableArrayList();
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
-        loadPieChart();
-//        pieChart.setData(pieData);
+        LoadData();
     }
 
-    public void loadPieChart(){
 
-        ResultSet rs,rs1;
+    public void LoadData() {
+         XYChart.Series series=new XYChart.Series();
+       Connection connection= DBConnector.getConnection();
+
         try {
 
-            rs= schoolStatisticsDao.GenderSchoolStatistics("male");
-            rs1= schoolStatisticsDao.GenderSchoolStatistics("female");
-            while(rs.next() && rs1.next()){
-                pieData.addAll(new PieChart.Data("male",rs.getInt("COUNT(admission_number)")),
-                        new PieChart.Data("female",rs1.getInt("COUNT(admission_number)")),
-                        new PieChart.Data("test",40),new PieChart.Data("best",20),
-                        new PieChart.Data("some",15));
 
-            }
+           rs= schoolStatisticsDao.getTotalDorm("male","Kenya",connection);
+               while(rs.next()){
+                   BKenya=rs.getInt("COUNT(admission_number)");
+                  series.getData().add(new XYChart.Data("BOYS DORM Kenya", BKenya));
+               }
 
+               rs2= schoolStatisticsDao.getTotalDorm("male","Elgon",connection);
+               while(rs2.next()){
+                  BElgon=rs2.getInt("COUNT(admission_number)");
+                  series.getData().add(new XYChart.Data("BOYS DORM Elgon",BElgon));
+               }
+
+
+           rs3= schoolStatisticsDao.getTotalDorm("female","Kilimanjaro",connection);
+           while(rs3.next()){
+             GKili=rs3.getInt("COUNT(admission_number)");
+              series.getData().add(new XYChart.Data("GIRLS DORM Kilimanjaro",GKili));
+           }
+
+           rs4= schoolStatisticsDao.getTotalDorm("female","Longonot",connection);
+           while(rs4.next()){
+              GLongont=rs4.getInt("COUNT(admission_number)");
+              series.getData().add(new XYChart.Data("GIRLS DORM Longonot",GLongont));
+
+        }
 
         } catch (SQLException e) {
-            e.printStackTrace();
+           e.printStackTrace();
+        }finally {
+           if (connection!=null){
+              try {
+                 connection.close();
+              } catch (SQLException e) {
+                 e.printStackTrace();
+              }
+           }
         }
+
+       dormBarChart.getData().addAll(series);
+       dormBarChart.setTitle("Dorm Population For Boys and Girls");
     }
+
 }

@@ -26,7 +26,7 @@ public class MyPrinter {
                 boolean success = job.printPage(pageLayout,node); // Prints the specified node eg. anchorPane
                 if (success) {
                     job.endJob();
-                    alert.setContentText("Printed successfully");
+                    alert.setContentText("Successfully sent to Printer");
                     alert.showAndWait();
                 }else{
                     alert.setContentText("Print Failed");

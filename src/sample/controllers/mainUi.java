@@ -17,6 +17,7 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
 import sample.Controller;
 import sample.controllers.user.login;
+import sample.model.admission.ChangeTermAndYear;
 
 import java.io.IOException;
 import java.net.URL;
@@ -24,8 +25,8 @@ import java.util.ResourceBundle;
 
 public class mainUi implements Initializable {
 
-    public String userId;
-    public String role;
+    private  String userId;
+    private String role;
     @FXML public MaterialDesignIconView threeDots;
     @FXML public  Label loggedIn;
     @FXML public FontAwesomeIconView user;
@@ -38,9 +39,10 @@ public class mainUi implements Initializable {
     @FXML private AnchorPane AnchorPane;
     @FXML private Label showSideMenuName;
     private Controller controller=new Controller();
-
+    private ChangeTermAndYear changeTermAndYear=new ChangeTermAndYear();
 
     public mainUi() {
+
      userId= login.id;
      role=login.role;
     }
@@ -48,6 +50,7 @@ public class mainUi implements Initializable {
     //this loads the dashboard to center of the borderPane(mainUi.fxml) when the programs initial runs mainUi.fxml
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+
         loggedIn.setText(userId);
         user.setStyleClass("user-circle");
 
@@ -58,8 +61,9 @@ public class mainUi implements Initializable {
             e.printStackTrace();
         }
 
-        /**TODO: Access rights commented to be removed */
-       // AccessRights(role);
+        AccessRights(role);
+        changeTermAndYear.SetTerm();
+        changeTermAndYear.setYear();
     }
 
     //this loads the dashboard user interface to center of the borderPane of the main user interface(mainUi.fxml)
@@ -114,7 +118,6 @@ public class mainUi implements Initializable {
         borderPane.setStyle("-fx-margin:0;");
         borderPane.setLayoutX(0);
         borderPane.setLayoutY(0);
-
     }
 
 
@@ -183,7 +186,8 @@ public class mainUi implements Initializable {
         try {
             loadUiTabs("adminPanel");
             showSideMenuName.setText(("Administrative Panel").toUpperCase());
-        } catch (IOException e) {
+        }
+        catch (IOException e) {
             e.printStackTrace();
         }
     }

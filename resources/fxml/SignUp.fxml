@@ -3,24 +3,24 @@
 <?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXRadioButton?>
 <?import com.jfoenix.controls.JFXTextField?>
-<?import com.jfoenix.validation.RequiredFieldValidator?>
 <?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.layout.AnchorPane?>
 
+<?import com.jfoenix.controls.JFXPasswordField?>
 <AnchorPane fx:id="anchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="697.0" prefWidth="751.0" styleClass="containerBody" stylesheets="@../css/login.css" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controllers.user.signUp">
-   <JFXTextField fx:id="FirstName" onKeyPressed="#recommend1" focusColor="#ffb60d" labelFloat="true" layoutX="62.0" layoutY="156.0" prefHeight="37.0" prefWidth="186.0" promptText="FirstName*" styleClass="promptText" unFocusColor="WHITE" />
+   <JFXTextField fx:id="FirstName" focusColor="#ffb60d" labelFloat="true" layoutX="62.0" layoutY="156.0" onKeyPressed="#recommend1" prefHeight="37.0" prefWidth="186.0" promptText="FirstName*" styleClass="promptText" unFocusColor="WHITE" />
 
-   <JFXTextField fx:id="lastName" onKeyPressed="#recommend" focusColor="#ffb60d" labelFloat="true" layoutX="434.0" layoutY="156.0" prefHeight="28.0" prefWidth="186.0" promptText="LastName*" styleClass="promptText" unFocusColor="WHITE" />
+   <JFXTextField fx:id="lastName" focusColor="#ffb60d" labelFloat="true" layoutX="434.0" layoutY="156.0" onKeyPressed="#recommend" prefHeight="28.0" prefWidth="186.0" promptText="LastName*" styleClass="promptText" unFocusColor="WHITE" />
 
-   <JFXTextField fx:id="userName" onKeyPressed="#userRecommend" focusColor="#ffb60d" labelFloat="true" layoutX="54.0" layoutY="252.0" prefHeight="37.0" prefWidth="202.0" promptText="UserName*" styleClass="promptText" unFocusColor="WHITE" />
+   <JFXTextField fx:id="userName" focusColor="#ffb60d" labelFloat="true" layoutX="54.0" layoutY="252.0" onKeyPressed="#userRecommend" prefHeight="37.0" prefWidth="202.0" promptText="UserName*" styleClass="promptText" unFocusColor="WHITE" />
 
    <JFXTextField fx:id="email" focusColor="#ffb60d" labelFloat="true" layoutX="415.0" layoutY="359.0" prefHeight="37.0" prefWidth="244.0" promptText="Email Address*" styleClass="promptText" unFocusColor="WHITE" />
 
    <JFXTextField fx:id="phoneNumber" focusColor="#ffb60d" labelFloat="true" layoutX="415.0" layoutY="474.0" prefHeight="37.0" prefWidth="244.0" promptText="Phone Number*" styleClass="promptText" unFocusColor="WHITE" />
 
-   <Label layoutX="385.0" layoutY="271.0" text="Gender*" />
+   <Label fx:id="genderLabel" layoutX="385.0" layoutY="271.0" text="Gender*" />
 
    <JFXRadioButton fx:id="male" layoutX="470.0" layoutY="273.0" mnemonicParsing="false" styleClass="radioButton" text="Male">
       <toggleGroup>
@@ -32,13 +32,10 @@
    <JFXRadioButton fx:id="female" layoutX="559.0" layoutY="273.0" mnemonicParsing="false" styleClass="radioButton" text="Female" toggleGroup="$gender" />
 
    <Label layoutX="333.0" layoutY="4.0" prefHeight="27.0" prefWidth="70.0" text="SIGN UP" textFill="#f01a85" />
-   <JFXTextField fx:id="password" onKeyPressed="#passwordRecommend"
-                 focusColor="#ffb60d" labelFloat="true" layoutX="54.0" layoutY="359.0"
-                 prefHeight="28.0" prefWidth="202.0" promptText="Password*" styleClass="promptText" unFocusColor="WHITE" />
+   <JFXPasswordField fx:id="password" focusColor="#ffb60d" labelFloat="true" layoutX="54.0" layoutY="359.0" onKeyPressed="#passwordRecommend" prefHeight="28.0" prefWidth="202.0" promptText="Password*" styleClass="promptText" unFocusColor="WHITE" />
 
-   <JFXTextField fx:id="confirmPassword" onKeyPressed="#confirmPasswordRecommend" focusColor="#ffb60d" labelFloat="true" layoutX="54.0" layoutY="474.0" prefHeight="28.0" prefWidth="202.0" promptText="Confirm password*" styleClass="promptText" unFocusColor="WHITE" />
+   <JFXPasswordField fx:id="confirmPassword" focusColor="#ffb60d" labelFloat="true" layoutX="54.0" layoutY="474.0" onKeyPressed="#confirmPasswordRecommend" prefHeight="28.0" prefWidth="202.0" promptText="Confirm password*" styleClass="promptText" unFocusColor="WHITE" />
    <JFXButton fx:id="button" buttonType="RAISED" layoutX="568.0" layoutY="566.0" onAction="#handleSubmit" text="Submit" textFill="#e41818" />
-   <Label fx:id="requiredFields" layoutX="93.0" layoutY="61.0" style="-fx-text-fill:red;" text="* Fields Required" />
    <FontAwesomeIconView glyphName="ARROW_LEFT" layoutX="22.0" layoutY="36.0" onMouseClicked="#backToLogin" size="22.0" strokeType="OUTSIDE" strokeWidth="0.0" />
    <FontAwesomeIconView glyphName="USER_CIRCLE" layoutX="330.0" layoutY="107.0" size="75" strokeType="OUTSIDE" strokeWidth="0.0" />
 </AnchorPane>

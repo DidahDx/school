@@ -6,7 +6,7 @@
       <sourceFolder url="file://$MODULE_DIR$/src" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/resources" type="java-resource" />
     </content>
-    <orderEntry type="jdk" jdkName="1.8 (2)" jdkType="JavaSDK" />
+    <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="fontawesomefx" level="project" />
     <orderEntry type="library" name="jfoenix" level="project" />
@@ -22,5 +22,8 @@
     <orderEntry type="library" name="controlsfx-8.40" level="project" />
     <orderEntry type="library" name="io.github.typhon0:AnimateFX:1.2.0" level="project" />
     <orderEntry type="library" name="com.sun.mail:javax.mail:1.6.2" level="project" />
+    <orderEntry type="library" exported="" name="External Lib School" level="project" />
+    <orderEntry type="library" exported="" name="lib" level="project" />
+    <orderEntry type="library" name="com.zaxxer:HikariCP:3.3.1" level="project" />
   </component>
 </module>

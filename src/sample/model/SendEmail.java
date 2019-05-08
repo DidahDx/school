@@ -1,5 +1,7 @@
 package sample.model;
 
+import javafx.scene.control.Alert;
+
 import javax.mail.Message;
 import javax.mail.Session;
 import javax.mail.Transport;
@@ -24,6 +26,7 @@ public class SendEmail {
 
             String to = tReceiver;
             String[] recipientList = to.split(",");
+
             InternetAddress[] recipientAddress = new InternetAddress[recipientList.length];
             int counter = 0;
             for (String recipient : recipientList) {
@@ -60,14 +63,20 @@ public class SendEmail {
             System.out.println("email sent");
             check=true;
 
+            Alert alert=new Alert(Alert.AlertType.WARNING);
+            alert.setHeaderText(null);
+            alert.setContentText(" Email sent ");
+            alert.showAndWait();
+
         } catch (Exception e) {
             e.printStackTrace();
             check=false;
+            Alert alert=new Alert(Alert.AlertType.WARNING);
+            alert.setHeaderText(null);
+            alert.setContentText("Failed to send email try again");
+            alert.showAndWait();
         }
 
         return check;
     }
-
-
-
 }

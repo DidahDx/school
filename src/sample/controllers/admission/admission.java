@@ -26,16 +26,16 @@ public class admission implements Initializable {
 
     //changes user interface to EditStudentDetails
     public void editStudentDetails(ActionEvent actionEvent) {
-         control.changeUi("studentDetails");
+         control.changeModUi("studentDetails");
       }
 
     //changes user interface to Guardian Details
     public void EditGuardianDetails(ActionEvent actionEvent) {
-        control.changeUi("guardianDetails");
+        control.changeModUi("guardianDetails");
     }
 
     //changes user interface to school
     public void schoolStatistics(ActionEvent actionEvent) {
-        control.changeUi("schoolStatistics");
+        control.changeModUi("schoolStatistics");
     }
 }

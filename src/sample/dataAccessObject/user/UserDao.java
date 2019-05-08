@@ -11,7 +11,7 @@ public class UserDao {
 
     //this method is used to login using the tUserName and Password
     public ResultSet login(String UserName,String Password ,Connection con) throws SQLException {
-        String sql="select user_name,password,role from users_details where user_name=? and password=?";
+        String sql="select user_id,user_name,password,role from users_details where user_name=? and password=?";
         PreparedStatement ps=con.prepareStatement(sql);
         ps.setString(1,UserName);
         ps.setString(2,Password);

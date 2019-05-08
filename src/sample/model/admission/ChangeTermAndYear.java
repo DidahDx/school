@@ -1,8 +1,10 @@
 package sample.model.admission;
 
+import sample.dataAccessObject.DBConnector;
 import sample.dataAccessObject.admission.StudentDao;
 import sun.security.pkcs11.Secmod;
 
+import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDate;
@@ -36,23 +38,20 @@ StudentDao stDao=new StudentDao();
     public void SetTerm(){
         int currentTerm=CheckTerm();
         int DBterm = 0;
-
+      Connection connection=DBConnector.getConnection();
         try {
-         ResultSet rs= stDao.getTerm();
+         ResultSet rs= stDao.getTerm(connection);
          while (rs.next()){
              DBterm=rs.getInt("current_term"); //getting the term stored in database
          }
-        }
-        catch (SQLException e) {
-            e.printStackTrace();
-        }
+
 
         if (currentTerm>DBterm){
             if (currentTerm!=DBterm){
                  //updates term to currentTerm
                 try {
-                    stDao.setTerm(currentTerm);
-                    ChangeStudentTerm();
+                    stDao.setTerm(currentTerm,connection);
+                    ChangeStudentTerm(connection);
                 }
                 catch (SQLException e) {
                     e.printStackTrace();
@@ -62,11 +61,23 @@ StudentDao stDao=new StudentDao();
         else if((currentTerm==1) && (DBterm==3)){
                 //updates term to currentTerm
             try {
-                stDao.setTerm(currentTerm);
-                ChangeStudentTerm();
+                stDao.setTerm(currentTerm,connection);
+                ChangeStudentTerm(connection);
             } catch (SQLException e) {
                 e.printStackTrace();
             }
+        }
+        }
+        catch (SQLException e) {
+           e.printStackTrace();
+        }finally {
+           if (connection!=null){
+              try {
+                 connection.close();
+              } catch (SQLException e) {
+                 e.printStackTrace();
+              }
+           }
         }
     }
 
@@ -81,32 +92,45 @@ StudentDao stDao=new StudentDao();
     public void setYear() {
        int CurrentYear = CheckYear();
        int DBYear = 0;
+       Connection connection=DBConnector.getConnection();
        try {
-          ResultSet rs = stDao.getYear();
+          ResultSet rs = stDao.getYear(connection);
           while (rs.next()) {
              DBYear = rs.getInt("current_year"); //getting the year in the database
           }
-       } catch (SQLException e) {
-          e.printStackTrace();
-       }
+
 
        if (CurrentYear > DBYear) {
           if (CurrentYear != DBYear) {
              try {
-                stDao.setYear(CurrentYear);  //changing year in database to current year
-                ChangeStudentForm();
+                stDao.setYear(CurrentYear,connection);  //changing year in database to current year
+                ChangeStudentForm(connection);
              } catch (SQLException e) {
                 e.printStackTrace();
              }
           }
        }
+
+       } catch (SQLException e) {
+          e.printStackTrace();
+       }finally {
+          if (connection!=null){
+             try {
+                connection.close();
+             } catch (SQLException e) {
+                e.printStackTrace();
+             }
+          }
+       }
+
     }
 
     //this method is used to change the students form
-   private void ChangeStudentForm(){
+   private void ChangeStudentForm(Connection connection){
       int adminNo=0,form=0;
+
       try {
-         ResultSet rs=stDao.getAllStudentDetails();
+         ResultSet rs=stDao.getAllStudentDetails(connection);
 
          while(rs.next()){
             form=rs.getInt("form");
@@ -114,21 +138,23 @@ StudentDao stDao=new StudentDao();
 
             if (form!=0 && adminNo!=0){
                form++;
-               stDao.UpdateStudentsForm(form,adminNo);
+               stDao.UpdateStudentsForm(form,adminNo,connection);
             }
          }
 
       } catch (SQLException e) {
          e.printStackTrace();
       }
+
    }
 
     //this method is used to change the students term
-    public void ChangeStudentTerm(){
+    public void ChangeStudentTerm(Connection connection){
        int adminNo=0,term=0;
+
        try {
-          ResultSet rs=stDao.getAllStudentDetails();
-          ResultSet rs1=stDao.getTerm();
+          ResultSet rs=stDao.getAllStudentDetails(connection);
+          ResultSet rs1=stDao.getTerm(connection);
           while (rs1.next()){
              term=rs1.getInt("current_term"); //gets current term from database
           }
@@ -137,7 +163,7 @@ StudentDao stDao=new StudentDao();
              adminNo=rs.getInt("admission_number");
 
              if (term!=0 && adminNo!=0){
-                stDao.UpdateStudentsTerm(term,adminNo);
+                stDao.UpdateStudentsTerm(term,adminNo,connection);
              }
           }
        } catch (SQLException e) {

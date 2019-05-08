@@ -7,9 +7,11 @@ import javafx.scene.chart.LineChart;
 import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.XYChart;
 import javafx.scene.layout.AnchorPane;
+import sample.dataAccessObject.DBConnector;
 import sample.dataAccessObject.admission.SchoolStatisticsDao;
 
 import java.net.URL;
+import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
@@ -41,42 +43,50 @@ public class dashboard implements Initializable {
         LineChart.getData().addAll(series);}
 
         public void setSchoolStatistics(){
-
+           Connection connection= DBConnector.getConnection();
             try {
-               ResultSet rs=schoolStatisticsDao.StreamFormStatistics(1,"EAST");
+               ResultSet rs=schoolStatisticsDao.StreamFormStatistics(1,"EAST",connection);
                while(rs.next()) {
                  E1=rs.getInt("COUNT(admission_number)");
                }
-                ResultSet rs1=schoolStatisticsDao.StreamFormStatistics(1,"WEST");
+                ResultSet rs1=schoolStatisticsDao.StreamFormStatistics(1,"WEST",connection);
                 while(rs1.next()) {
                     W1=rs1.getInt("COUNT(admission_number)");
                 }
-                ResultSet rs2=schoolStatisticsDao.StreamFormStatistics(2,"EAST");
+                ResultSet rs2=schoolStatisticsDao.StreamFormStatistics(2,"EAST",connection);
                 while(rs2.next()) {
                     E2=rs2.getInt("COUNT(admission_number)");
                 }
-                ResultSet rs3=schoolStatisticsDao.StreamFormStatistics(2,"WEST");
+                ResultSet rs3=schoolStatisticsDao.StreamFormStatistics(2,"WEST",connection);
                 while(rs3.next()) {
                     W2=rs3.getInt("COUNT(admission_number)");
                 }
-                ResultSet rs4=schoolStatisticsDao.StreamFormStatistics(3,"EAST");
+                ResultSet rs4=schoolStatisticsDao.StreamFormStatistics(3,"EAST",connection);
                 while(rs4.next()) {
                     E3=rs4.getInt("COUNT(admission_number)");
                 }
-                ResultSet rs5=schoolStatisticsDao.StreamFormStatistics(3,"WEST");
+                ResultSet rs5=schoolStatisticsDao.StreamFormStatistics(3,"WEST",connection);
                 while(rs5.next()) {
                     W3=rs5.getInt("COUNT(admission_number)");
                 }
-                ResultSet rs6=schoolStatisticsDao.StreamFormStatistics(4,"EAST");
+                ResultSet rs6=schoolStatisticsDao.StreamFormStatistics(4,"EAST",connection);
                 while(rs6.next()) {
                     E4=rs6.getInt("COUNT(admission_number)");
                 }
-                ResultSet rs7=schoolStatisticsDao.StreamFormStatistics(4,"WEST");
+                ResultSet rs7=schoolStatisticsDao.StreamFormStatistics(4,"WEST",connection);
                 while(rs7.next()) {
                     W4=rs7.getInt("COUNT(admission_number)");
                 }
             } catch (SQLException e) {
                 e.printStackTrace();
+            }finally{
+               if(connection!=null){
+                  try {
+                     connection.close();
+                  } catch (SQLException e) {
+                     e.printStackTrace();
+                  }
+               }
             }
         }
 

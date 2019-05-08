@@ -13,10 +13,12 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import sample.Controller;
+import sample.dataAccessObject.DBConnector;
 import sample.dataAccessObject.user.UserDao;
 import sample.model.Validation;
 
 import java.net.URL;
+import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
@@ -41,6 +43,7 @@ public class login implements Initializable {
     JFXTextField showPasswordField;
 
     public static String id,role;
+    public static int User_id;
     private Controller con = new Controller();
     private Validation valid =new Validation();
     private UserDao userDao=new UserDao();
@@ -55,17 +58,18 @@ public class login implements Initializable {
 
 //handles login by checking the database for correct tUserName and password if it is true or false
     public void handleLogin(ActionEvent actionEvent) {
-
+       Connection connection= DBConnector.getConnection();
         ResultSet rs;
-        if(valid.validate(emailTextField.getText().trim()) && valid.validatePassword(passwordField.getText().trim()))
+        if(valid.validateAlphaNumericValues(emailTextField.getText().trim()) && valid.validatePassword(passwordField.getText().trim()))
         {
             try {
-               rs=userDao.login(emailTextField.getText().trim(),passwordField.getText().trim());
+               rs=userDao.login(emailTextField.getText().trim(),passwordField.getText().trim(),connection);
 
                 if (rs.next())
                 {
                     id=emailTextField.getText();
                     role=rs.getString("role");
+                    User_id=rs.getInt("user_id");
 
                     if(!role.isEmpty() && !role.matches("block")) {
                         con.changeUi("mainUi");
@@ -82,6 +86,14 @@ public class login implements Initializable {
                 }
             } catch (SQLException e) {
                 e.printStackTrace();
+            }finally {
+               if(connection!=null){
+                  try {
+                     connection.close();
+                  } catch (SQLException e) {
+                     e.printStackTrace();
+                  }
+               }
             }
         }else{
             errorLabel.setText("Wrong username or password");

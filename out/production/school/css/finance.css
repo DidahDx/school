@@ -8,12 +8,13 @@
 
 .jfx-text-field{
     -fx-prompt-text-fill: #25375E;
-    -fx-font-size:12;
+    -fx-font-size:16;
     -fx-text-fill: black;
 }
 
 .jfx-combo-box{
-    -fx-prompt-text-fill: #1E2735;
+    /*-fx-prompt-text-fill: #1E2735;*/
     -fx-font-weight: bold;
-    -fx-background-color: #586682;
+    -fx-font-size:16;
+    /*-fx-background-color: #586682;*/
 }
