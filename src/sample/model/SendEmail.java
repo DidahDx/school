@@ -9,17 +9,27 @@ import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 import java.util.Date;
 import java.util.Properties;
+import java.util.ResourceBundle;
 
 public class SendEmail {
+    private String userName="";
+    private String mPassword="";
+
+    public SendEmail() {
+        ResourceBundle rb= ResourceBundle.getBundle("database/email");     //USED TO LOAD THE PROPERTIES FILE CONTAINING email PROPERTIES
+        userName= rb.getString("user");                                   //GETS USERNAME FROM THE FILE
+        mPassword=rb.getString("password");                             //GETS PASSWORD FROM THE FILE
 
 
-    public boolean sendEmailMessage(String tSubject,String tMessage,String tReceiver){
+    }
+
+    public boolean sendEmailMessage(String tSubject, String tMessage, String tReceiver){
         boolean check=false;
         try {
         String host="smtp.gmail.com";
-        String user="projectuoe@gmail.com";
-        String password="123@project";
-        String from="projectuoe@gmail.com";
+        String user=userName;
+        String password=mPassword;
+        String from=userName;
         String subject=tSubject;
         String message=tMessage;
 
