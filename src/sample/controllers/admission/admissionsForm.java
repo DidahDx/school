@@ -252,6 +252,8 @@ public class admissionsForm implements Initializable {
          labelDOB.setStyle("-fx-text-fill: red;");
          dateOfBirth.setValue(null);
       }
+
+
    }
 
    // this method prints the student details
